@@ -4,7 +4,7 @@ import "./styles.css";
 
 const rootElem = document.querySelector("#root");
 
-const renderSeconds = time => {
+const renderSeconds = (time) => {
   const seconds = new Date(time).getSeconds();
 
   const backgroundColor = seconds % 2 === 0 ? "#fff" : "#000";
@@ -17,7 +17,7 @@ const renderSeconds = time => {
 
   const counterElem = (
     <div className="seconds" style={styles}>
-      {seconds}
+      Now is {seconds}
     </div>
   );
 
