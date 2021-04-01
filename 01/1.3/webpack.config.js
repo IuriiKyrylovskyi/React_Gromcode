@@ -10,6 +10,7 @@ module.exports = (env, argv) => {
     entry: "./src/index.js",
     output: {
       filename: "bundle.js",
+      path: path.resolve(__dirname, "review_build"),
     },
     module: {
       rules: [
