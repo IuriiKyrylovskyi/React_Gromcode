@@ -4,8 +4,26 @@ import "./styles.css";
 
 const rootElem = document.querySelector("#root");
 
-const seconds = new Date().getSeconds();
+const renderSeconds = time => {
+  const seconds = new Date(time).getSeconds();
 
-const counterElem = <div className="seconds">{seconds}</div>;
+  const backgroundColor = seconds % 2 === 0 ? "#fff" : "#000";
+  const textColor = seconds % 2 !== 0 ? "#fff" : "#000";
 
-ReactDOM.render(counterElem, rootElem);
+  const styles = {
+    color: textColor,
+    backgroundColor: backgroundColor,
+  };
+
+  const counterElem = (
+    <div className="seconds" style={styles}>
+      {seconds}
+    </div>
+  );
+
+  ReactDOM.render(counterElem, rootElem);
+};
+
+renderSeconds(new Date());
+
+setInterval(() => renderSeconds(new Date()), 1000);
