@@ -1,23 +1,17 @@
 import React from 'react'
 import moment from 'moment'
 
-const userData = {
-    firstName: 'John',
-    lastName: 'Doe',
-    birthDate: '1991-01-17T11:11:11.819Z',
-    birthPlace: 'London'
-};
 
 const bithDateFormatter = date => moment(date).format("D MMM YY")
 
-const Profile = () => {
+const Profile = props => {
 	return (
 		<div className='info'>
 			<p>
-				{`${userData.firstName} ${userData.lastName}`}
+				{`${props.userData.firstName} ${props.userData.lastName}`}
 			</p>
 			<p>
-				{`Was born ${bithDateFormatter(userData.birthDate)} in ${userData.birthPlace}`}
+				{`Was born ${bithDateFormatter(props.userData.birthDate)} in ${props.userData.birthPlace}`}
 			</p>
 		</div>
 	)
