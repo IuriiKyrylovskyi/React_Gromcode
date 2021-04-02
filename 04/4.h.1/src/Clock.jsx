@@ -7,7 +7,6 @@ const getTimeWithOffset = offset => {
     const utcOffset = currentTime.getTimezoneOffset() / 60;
     return new Date(currentTime.setHours(currentTime.getHours() + offset + utcOffset));
 }
-console.log(getTimeWithOffset(2));
 class Clock extends Component {
 	constructor(props) {
 		super(props);
@@ -15,7 +14,7 @@ class Clock extends Component {
 		this.state = {
 			time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a'),
 		};
-		
+
 		setInterval(() => {
 			this.setState({
 				time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a')
