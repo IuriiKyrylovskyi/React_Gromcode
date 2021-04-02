@@ -9,8 +9,8 @@ const Comment = props => {
   return (
     <div className="comment">
       <UserInfo user={props.user} />
-      <div className="comment__text">{props.author.text}</div>
-      <div className="comment__date">{formatDate(props.author.date)}</div>
+      <div className="comment__text">{props.text}</div>
+      <div className="comment__date">{formatDate(props.date)}</div>
     </div>
   );
 }
