@@ -4,7 +4,6 @@ import moment from 'moment';
 const formatDate = date => moment(date).format("DD MMM YYYY");
 
 const Profile = props => {
-	console.log(new Date(props.userData.birthDate).getFullYear());
 	return (
 		<div className='profile'>
 			<div className='profile__name'>
