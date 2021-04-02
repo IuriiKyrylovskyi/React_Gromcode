@@ -12,12 +12,12 @@ class Clock extends Component {
 		super(props);
 			
 		this.state = {
-			time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a'),
+			time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a').toUpperCase(),
 		};
 
 		setInterval(() => {
 			this.setState({
-				time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a')
+				time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a').toUpperCase()
 			})
 		}, 1000)
 	}
