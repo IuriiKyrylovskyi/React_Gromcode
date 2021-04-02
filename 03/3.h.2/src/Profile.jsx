@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-const formatDate = date => moment(date).format("DD MMM YYYY");
+const formatDate = date => moment(date).format("DD MMM YY");
 
 const Profile = props => {
 	return (
@@ -10,7 +10,7 @@ const Profile = props => {
 				{`${props.userData.firstName} ${props.userData.lastName}`}
 			</div>
 			<div className='profile__birth'>
-				Was born {formatDate(props.userData.birthDate)} in {props.userData.birthPlace}
+				{`Was born ${formatDate(props.userData.birthDate)} in ${props.userData.birthPlace}`}
 			</div>
 		</div>
 	)
