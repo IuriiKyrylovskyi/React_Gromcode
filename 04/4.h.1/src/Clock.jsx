@@ -15,7 +15,7 @@ class Clock extends Component {
 		this.state = {
 			time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a'),
 		};
-		console.log(this.state);
+		
 		setInterval(() => {
 			this.setState({
 				time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a')
