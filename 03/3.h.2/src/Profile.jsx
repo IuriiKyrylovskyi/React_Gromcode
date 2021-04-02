@@ -5,13 +5,13 @@ const bithDateFormatter = date => moment(date).format("D MMM YY")
 
 const Profile = props => {
 	return (
-		<div className='info'>
-			<p>
+		<div className='profile'>
+			<div className='profile__name'>
 				{`${props.userData.firstName} ${props.userData.lastName}`}
-			</p>
-			<p>
+			</div>
+			<div className='profile__birth'>
 				{`Was born ${bithDateFormatter(props.userData.birthDate)} in ${props.userData.birthPlace}`}
-			</p>
+			</div>
 		</div>
 	)
 };
