@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './clock.scss'
+import moment from 'moment'
 
 const getTimeWithOffset = offset => {
     const currentTime = new Date();
@@ -12,13 +13,12 @@ class Clock extends Component {
 		super(props);
 			
 		this.state = {
-			time: new Date().toLocaleString(),
-			// time: getTimeWithOffset(props.offset),
+			time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a'),
 		};
 		console.log(this.state);
 		setInterval(() => {
 			this.setState({
-				time: this.state.time
+				time: moment(getTimeWithOffset(props.offset)).format('h:mm:ss a')
 			})
 		}, 1000)
 	}
