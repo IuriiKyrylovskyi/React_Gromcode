@@ -8,7 +8,7 @@ const userData = {
     birthPlace: 'London'
 };
 
-const bithDateFormatter = date => moment(date).locale("en-ie").format("D MMM YY")
+const bithDateFormatter = date => moment(date).format("D MMM YY")
 
 const Profile = () => {
 	return (
