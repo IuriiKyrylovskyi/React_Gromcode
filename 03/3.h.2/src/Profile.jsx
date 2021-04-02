@@ -1,7 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 
-
 const bithDateFormatter = date => moment(date).format("D MMM YY")
 
 const Profile = props => {
