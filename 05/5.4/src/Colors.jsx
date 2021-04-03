@@ -21,17 +21,17 @@ class Colors extends React.Component{
 					</button>
 				<button
 					className="colors__button"
-						style={{
-						backgroundColor: BLUE,
-					}}
-					onClick={() => this.changeBgColor(BLUE)}>
-				</button>
-				<button
-					className="colors__button"
 					style={{
 						backgroundColor: GREEN,
 					}}
 					onClick={() => this.changeBgColor(GREEN)}></button>
+					<button
+						className="colors__button"
+							style={{
+							backgroundColor: BLUE,
+						}}
+						onClick={() => this.changeBgColor(BLUE)}>
+					</button>
 			</div>
 		);
  }
