@@ -2,7 +2,6 @@ import React from 'react';
 
 class Button extends React.Component{
 	handleClick(e) {
-		e.preventDefault();
 		alert('Good job!');
 	}
 
