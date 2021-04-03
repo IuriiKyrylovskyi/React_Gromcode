@@ -10,7 +10,7 @@ class Button extends React.Component{
 		return (
 			<button
 				className="fancy-button"
-				onClick={handleClick}
+				onClick={this.handleClick}
 			>
 				Click me!
 			</button>
