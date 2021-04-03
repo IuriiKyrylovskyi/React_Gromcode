@@ -33,7 +33,7 @@ class Counter extends React.Component{
 				<button
 					data-action="decrease"
 					class="counter__button">
-					-
+					{this.state.decrement}
 				</button>
 				<span class="counter__value">
 					{this.state.counter}
@@ -41,7 +41,7 @@ class Counter extends React.Component{
 				<button
 					data-action="increase"
 					class="counter__button">
-					+
+					{this.state.increment}
 				</button>
 			</div>
 		);
