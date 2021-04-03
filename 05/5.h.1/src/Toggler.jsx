@@ -5,23 +5,23 @@ class Toggler extends React.Component{
 		super(props);
 		
 		this.state = {
-			text: 'Off'
-		}
+			isToggleOff: true
+		};
 	}
 
-	changeStatusBtn = () => {
-		this.setState({
-			text: 'On'
-		})
+	handleClick = () => {
+		this.setState(state => ({
+			isToggleOff: !state.isToggleOff
+		}));
 	}
 
 	render() {
 		return (
 			<button
 				className="toggler"
-				onClick={this.changeStatusBtn}
+				onClick={this.handleClick}
 			>
-				{this.state.text}
+				{this.state.isToggleOff ? 'Off' : 'On'}
 			</button>
 		);
  }
