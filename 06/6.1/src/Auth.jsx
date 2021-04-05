@@ -28,7 +28,6 @@ class Auth extends React.Component {
 	render() {
 		return (
 			<div className='panel'>
-				{/* <div><pre>{JSON.stringify(typeof this.state)}</pre></div> */}
 				<Greeting isLoggedIn={this.state.isLoggedIn} />
 				{
 					this.state.isLoggedIn
