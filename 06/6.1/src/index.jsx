@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import ColorPicker from './ColorPicker';
+import Auth from './Auth';
 
 const rootElem = document.querySelector('#root');
 
-ReactDOM.render(<ColorPicker />, rootElem);
+ReactDOM.render(<Auth />, rootElem);
