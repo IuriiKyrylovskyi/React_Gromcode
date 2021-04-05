@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Login = ({ click }) => {
+const Login = ({ onLogin }) => {
 	return (
 		<button
 			className='login btn'
-			onClick={click}
+			onClick={onLogin}
 		>
 			Login
 		</button>
