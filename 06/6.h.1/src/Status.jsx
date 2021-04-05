@@ -7,7 +7,7 @@ class Status extends React.Component{
 		super(props);
 
 		this.state = {
-			isOnline: true
+			isOnline: false
 		}
 	}
 
