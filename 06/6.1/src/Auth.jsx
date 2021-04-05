@@ -8,8 +8,9 @@ class Auth extends React.Component {
 		super(props);
 			
 		this.state = {
-			isLoggedIn: true,
+			isLoggedIn: false,
 		}
+		console.log(this.state)
 	}
 
 	handleLogIn = () => {
@@ -27,11 +28,12 @@ class Auth extends React.Component {
 	render() {
 		return (
 			<div className='panel'>
+				{/* <div><pre>{JSON.stringify(typeof this.state)}</pre></div> */}
 				<Greeting isLoggedIn={this.state.isLoggedIn} />
 				{
 					this.state.isLoggedIn
-					? <Logout onClick={this.handleLogOut} />
-					: <Login onClick={this.handleLogIn} />
+					? <Logout click={this.handleLogOut} />
+					: <Login click={this.handleLogIn} />
 				}
 			</div>
 		)

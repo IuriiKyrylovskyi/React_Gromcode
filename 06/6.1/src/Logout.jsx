@@ -1,11 +1,14 @@
 import React from 'react';
 
-const handleLogout = ({ onLogout }) => {
+const Logout = ({ click }) => {
 	return (
-		<button className='logout btn'>
+		<button
+			className='logout btn'
+			onClick={click}
+		>
 			Logout
 		</button>
 	)
 }
 
-export default handleLogout;
+export default Logout;
