@@ -9,22 +9,17 @@ class Status extends React.Component{
 		this.state = {
 			isOnline: true
 		}
-
-		// setStatus = () => {
-		// 	this.setState({
-		// 		isOnline: false
-		// 	})
-		// }
 	}
 
 	render() {
-		if (!this.state.isOnline) {
-			return (
-				<Offline />
-			)
-		}
 		return (
-			<Online />
+			<div className='status'>
+				{
+					!this.state.isOnline
+						? <Offline />
+						: <Online />
+				}
+			</div>
 		)
 	}
 }
