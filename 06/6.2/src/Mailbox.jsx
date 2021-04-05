@@ -2,16 +2,16 @@ import React from 'react';
 
 const Mailbox = ({ unreadMessages }) => {
 	return (
-		<>
-			<div className='mailbox__text'>
+		<div className='mailbox'>
+			<span className='mailbox__text'>
 				Messages
-			</div>
+			</span>
 			{unreadMessages.length > 0 && 
-				<div className='mailbox__count'>
+				<span className='mailbox__count'>
 					{unreadMessages.length}
-				</div>
+				</span>
 			}
-		</>
+		</div>
 	)
 }
 
