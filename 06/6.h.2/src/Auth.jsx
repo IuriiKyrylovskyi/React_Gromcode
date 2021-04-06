@@ -9,7 +9,7 @@ class Auth extends React.Component{
 
 		this.state = {
 			isLoggedin: false,
-			spinnerSize: '50px',
+			spinnerSize: 50,
 		}
 		console.log(this.state)
 	}
