@@ -2,26 +2,11 @@ import React from 'react';
 import Online from './Online';
 import Offline from './Offline';
 
-class Status extends React.Component{
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			isOnline: true
-		}
+const Status = props => {
+	if (props.isOnline) {
+		return <Online />
 	}
-
-	render() {
-		return (
-			<div className='status'>
-				{
-					!this.state.isOnline
-						? <Offline />
-						: <Online />
-				}
-			</div>
-		)
-	}
+	return  <Offline />
 }
 
 export default Status;
