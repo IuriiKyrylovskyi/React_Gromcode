@@ -5,7 +5,12 @@ const Logout = ({ onLogout }) => {
 		return null;
 	}
 	return (
-		<button class="logout btn">Logout</button>
+		<button
+			className="logout btn"
+			onClick={onLogout}
+		>
+			Logout
+		</button>
 	)
 }
 

@@ -5,7 +5,12 @@ const Login = ({ onLogin }) => {
 		return null;
 	}
 	return (
-		<button class="login btn">Login</button>
+		<button
+			className="login btn"
+			onClick={onLogin}
+		>
+			Login
+		</button>
 	)
 }
 

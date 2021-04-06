@@ -4,12 +4,11 @@ const Spinner = ({ size }) => {
 	const spinnerStyle = {
 		width: { size },
 		height: { size },
-		borderRaduis: '50%',
 	}
 
 	return (
 		<span
-			class="spinner"
+			className="spinner"
 			style={spinnerStyle}
 		>
 		</span>
