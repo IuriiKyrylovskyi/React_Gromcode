@@ -29,6 +29,7 @@ class Auth extends React.Component{
 	render() {
 		return (
 			<>
+				{/* <div><pre>{JSON.stringify(this.state)}</pre></div> */}
 				<Login onLogin={this.handleLogin} />
 				<Spinner size={this.state.spinnerSize}/>
 				<Logout onLogout={this.handleLogout} />
