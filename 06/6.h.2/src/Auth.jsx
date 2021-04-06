@@ -10,6 +10,7 @@ class Auth extends React.Component{
 		this.state = {
 			isLoggedin: false,
 			spinnerSize: 50,
+			activeSpinner: true,
 		}
 		console.log(this.state)
 	}
@@ -26,13 +27,27 @@ class Auth extends React.Component{
 		})
 	}
 
+	timeOut = (spinner, btn) => {
+		spinner;
+		setTimeout(() => {
+			btn
+		}, 2000)
+	}
+
 	render() {
 		return (
 			<>
 				{/* <div><pre>{JSON.stringify(this.state)}</pre></div> */}
-				<Login onLogin={this.handleLogin} />
-				<Spinner size={this.state.spinnerSize}/>
-				<Logout onLogout={this.handleLogout} />
+				{
+					!this.state.isLoggedin
+						? <Login onLogin={this.handleLogin} />
+						// <Login onLogin={this.handleLogin} />
+						: this.timeOut(
+							<Spinner size={this.state.spinnerSize} />,
+							<Logout onLogout={this.handleLogout} />
+							)
+				}
+				
 			</>
 		)
 	}

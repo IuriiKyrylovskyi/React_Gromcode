@@ -2,8 +2,8 @@ import React from 'react';
 
 const Spinner = ({ size }) => {
 	const spinnerStyle = {
-		width: { size },
-		height: { size },
+		width: size,
+		height: size,
 	}
 
 	return (
