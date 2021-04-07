@@ -6,15 +6,16 @@ const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPage}) =>
 
 	return (
 		<div className="pagination">
+			{console.log(Math.ceil(totalItems / itemsPerPage))}
 			{isPrevPageAvailable === 1
-				? <button className="btn" onClick={goPrev} disable={'true'}></button>
+				? <button className="btn" disable={'true'}></button>
 				: <button className="btn" onClick={goPrev}>←</button>
 			}
 
 			<span className="pagination__page">{currentPage}</span>
 
 			{isNextPageAvailable === Math.ceil(totalItems / itemsPerPage)
-				? <button className="btn" onClick={goNext} disable={'true'}></button>
+				? <button className="btn" disable={'true'}></button>
 				: <button className="btn" onClick={goNext}>→</button>
 			}
 		</div>
