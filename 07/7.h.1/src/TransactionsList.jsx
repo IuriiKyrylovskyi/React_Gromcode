@@ -3,7 +3,7 @@ import Ttansaction from './Transaction';
 
 const TransactionsList = ({ transactions }) => {
 	return (
-		<ul class="transactions">
+		<ul className="transactions">
 			{
 				transactions
 					.map(transaction => <Ttansaction key={transaction.id} {...transaction} />)
