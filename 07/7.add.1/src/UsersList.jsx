@@ -7,7 +7,6 @@ class UsersList extends React.Component {
 		super(props)
 
 		this.state = {
-			users: props.users,
 			currentPage: 1,
 			itemsPerPage: 3,
 			totalItems: props.users.length,
