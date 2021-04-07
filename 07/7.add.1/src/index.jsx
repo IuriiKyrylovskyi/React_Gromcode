@@ -26,6 +26,26 @@ const usersArr = [
     age: 45,
     name: 'Sam',
   },
+  {
+    id: 'id-10',
+    age: 29,
+    name: 'Bobik',
+  },
+  {
+    id: 'id-11',
+    age: 37,
+    name: 'Tomas',
+  },
+  {
+    id: 'id-12',
+    age: 28,
+    name: 'Taddy',
+  },
+  {
+    id: 'id-13',
+    age: 55,
+    name: 'Samon',
+  },
 ];
 
 
