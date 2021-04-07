@@ -3,10 +3,14 @@ import User from './User';
 import Pagination from './Pagination';
 
 class UsersList extends React.Component {
-	state = {
-		users,
-		currentPage: 1,
-		itemsPerPage: 3,
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			users: users,
+			currentPage: 1,
+			itemsPerPage: 3,
+		}
 	}
 
 	goPrev = () => {
