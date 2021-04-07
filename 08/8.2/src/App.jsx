@@ -24,7 +24,7 @@ class App extends Component {
 					this.state.isVisible &&
 					<div className="box">
 						<Clock location="Irpin'" offset={3} />
-						<Clock location="New York" offset={-7}/>
+						<Clock location="New York" offset={-5}/>
 						<Clock location="Vienna" offset={2} />
 					</div>
 				}
