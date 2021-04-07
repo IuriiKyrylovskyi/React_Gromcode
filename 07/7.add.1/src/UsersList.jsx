@@ -16,7 +16,9 @@ class UsersList extends React.Component {
 	
 	goPrev = () => {
 		this.setState({
-			currentPage: this.state.currentPage - 1 //> 0 || 1,
+			currentPage: this.state.currentPage > 1
+										? this.state.currentPage - 1
+										: 1,
 		})
 	}
 
