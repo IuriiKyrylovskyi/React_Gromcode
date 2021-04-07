@@ -8,15 +8,15 @@ class UsersList extends React.Component {
 
 		this.state = {
 			users: props.users,
-			currentPage: 3,
+			currentPage: 1,
 			itemsPerPage: 3,
 			totalItems: props.users.length,
 		}
 	}
-
+	
 	goPrev = () => {
 		this.setState({
-			currentPage: this.state.currentPage - 1,
+			currentPage: this.state.currentPage - 1 //> 0 || 1,
 		})
 	}
 
@@ -26,31 +26,26 @@ class UsersList extends React.Component {
 		})
 	}
 
-	// totalItems = () => {
-	// 	this.setState({
-	// 		totalItems: this.users.length,
-	// 	})
-	// }
-
 	render() {
+		const indexMin = (this.state.currentPage - 1) * this.state.itemsPerPage;
+		const indexMax = indexMin + this.state.itemsPerPage;
+
 		return (
 			<div>
 				<Pagination
 					{...this.state}
-					// currentPage={this.state.currentPage}
-					// itemsPerPage={this.state.itemsPerPage}
-					// totalItems={this.state.totalItems}
 					goPrev={this.goPrev}
 					goNext={this.goNext}
 				/>
 			
 				<ul className="users">
 					{
-						this.state.users
-							.splice(
-								(this.state.currentPage - 1) * this.state.itemsPerPage,
-								this.state.itemsPerPage
-							)
+						this.props.users
+							.filter((user, index) => index >= indexMin && index < indexMax)
+							// .splice(
+							// 	(this.state.currentPage - 1) * this.state.itemsPerPage,
+							// 	this.state.itemsPerPage
+							// )
 							.map(user => <User key={user.id} {...user} />)
 					}
 				</ul>
