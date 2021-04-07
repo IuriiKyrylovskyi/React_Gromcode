@@ -1,37 +1,42 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
+const getTimeWithOffset = offset => {
+    const currentTime = new Date();
+    const utcOffset = currentTime.getTimezoneOffset() / 60;
+    return new Date(currentTime.setHours(currentTime.getHours() + offset + utcOffset));
+}
 class Clock extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			location: props.location,
-			offset: props.offset,
-			currentTime: new Date(),
+			currentTime: moment(getTimeWithOffset(props.offset)).format('h:mm:ss A'),
+
 		}
 	}
-	
 
 	componentDidMount() {
-		setInterval(() => {
+		this.interval = setInterval(() => {
 			this.setState({
-				currentTime: new Date(),
-			})
-		}, 1000)
+				currentTime: moment(getTimeWithOffset(this.props.offset)).format('h:mm:ss A'),
+			});
+		}, 1000);
+
+	}
+	
+	componentWillUnmount() {
+		clearInterval(this.interval);
 	}
 
 	render() {
-		const locationHours = moment(this.state.currentTime).format('h') + this.state.offset;
-		const minAndSec = moment(this.state.currentTime).format('mm:ss A');
-
 		return (
 			<div className="clock">
 				<div className="clock__location">
-						{this.state.location}
+						{this.props.location}
 				</div>
 				<div className="clock__time">
-						{locationHours}:{minAndSec}
+						{this.state.currentTime}
 				</div>
 			</div>
 		)
