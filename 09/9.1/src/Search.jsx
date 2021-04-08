@@ -11,17 +11,18 @@ class Search extends Component {
 		});
 	}
 
-	handleClick = e => {
-		alert(`Search text: ${this.state.value}`);
-		// this.setState({
-		// 	value: '',
-		// });
+	searh = e => {
+		// alert(`Search text: ${this.state.value}`);
 		e.preventDefault();
+	}
+
+	handleClick = () => {
+		alert(`Search text: ${this.state.value}`);
 	}
 
 	render() {
 		return (
-			<form className="search" >
+			<form className="search" onSubmit={this.search}>
 				<input
 					type="text"
 					value={this.state.value}
@@ -30,6 +31,7 @@ class Search extends Component {
 				/>
 				<button
 					className="search__button"
+					type="submit"
 					onClick={this.handleClick}
 				>
 					Search
