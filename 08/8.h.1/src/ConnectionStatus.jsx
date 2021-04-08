@@ -25,32 +25,21 @@ class ConnectionStatus extends Component {
 		})
 	}
 
-	ifElseMethod = (yes, no) => {
-		return this.state.status ? yes : no;
-	}
-
 	render() {
 		return (
-			<div className={this.ifElseMethod("status", "status status_offline")}>
-				{this.ifElseMethod('online', 'offline')}
+			<div
+				className={
+					this.state.status
+						? "status"
+						: "status status_offline"
+				}
+			>
+				{this.state.status
+					? 'online'
+					: 'offline'}
 			</div>
 		)
 	}
-	// render() {
-	// 	return (
-	// 		<div
-	// 			className={
-	// 				this.state.status
-	// 					? "status"
-	// 					: "status status_offline"
-	// 			}
-	// 		>
-	// 			{this.state.status
-	// 				? 'online'
-	// 				: 'offline'}
-	// 		</div>
-	// 	)
-	// }
 }
 
 export default ConnectionStatus;
