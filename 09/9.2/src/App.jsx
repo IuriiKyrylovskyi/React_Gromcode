@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UserForm from './UserForm';
 
 class App extends Component {
-	createUser = (user) => {
+	createUser = user => {
 		console.log(user);
 	}
 
