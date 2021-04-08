@@ -5,4 +5,4 @@ import App from './App';
 
 const rootElem = document.querySelector('#root');
 
-ReactDOM.render(<App createUser={user} />, rootElem);
+ReactDOM.render(<App />, rootElem);
