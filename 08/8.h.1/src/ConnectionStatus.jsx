@@ -30,13 +30,13 @@ class ConnectionStatus extends Component {
 		if (this.state.status) {
 			return (
 				<div className="status">
-					Online
+					online
 				</div>
 			)
 		}
 		return (
 				<div className="status status_offline">
-					Offline
+					offline
 				</div>
 		)
 	}
