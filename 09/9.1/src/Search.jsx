@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
 
 class Search extends Component {
-	state = {
-		value: '',
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			value: '',
+		}
 	}
 
 	handleChange = e => {
 		this.setState({
-			value: e.target.value,
+			value: e.target.value
 		});
 	}
-
-	// searh = e => {
-	// 	alert(`Search text: ${this.state.value}`);
-	// 	e.preventDefault();
-	// }
-
-	handleClick = () => {
+	
+	search = event => {
+		event.preventDefault();
 		alert(`Search text: ${this.state.value}`);
-		e.preventDefault();
 	}
-
+	
 	render() {
 		return (
 			<form className="search"
-				// onSubmit={this.search}
+				onSubmit={this.search}
 			>
 				<input
 					type="text"
@@ -35,7 +34,6 @@ class Search extends Component {
 				<button
 					className="search__button"
 					type="submit"
-					onClick={this.handleClick}
 				>
 					Search
 				</button>
