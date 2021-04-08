@@ -8,7 +8,6 @@ class ConnectionStatus extends Component {
 			status: window.navigator.onLine,
 		}
 	}
-	
 
 	componentDidMount() {
 		window.addEventListener('online', this.getStatus);
@@ -26,20 +25,33 @@ class ConnectionStatus extends Component {
 		})
 	}
 
+
+	// render() {
+	// 	if (this.state.status) {
+	// 		return (
+	// 			<div className="status">
+	// 				online
+	// 			</div>
+	// 		)
+	// 	}
+	// 	return (
+	// 			<div className="status status_offline">
+	// 				offline
+	// 			</div>
+	// 	)
+	// }
 	render() {
-		if (this.state.status) {
-			return (
-				<div className="status">
-					online
-				</div>
-			)
-		}
 		return (
-				<div className="status status_offline">
-					offline
-				</div>
+			<div
+				className={
+					this.state.status ? "status" : "status status_offline"
+				}
+			>
+				{this.state.status ? 'online' : 'offline'}
+			</div>
 		)
 	}
+		
 }
 
 export default ConnectionStatus;
