@@ -22,7 +22,7 @@ class ConnectionStatus extends Component {
 
 	getStatus = e => {
 		this.setState({
-			status: window.navigator.onLine,
+			status: e.target.navigator.onLine,
 		})
 	}
 
