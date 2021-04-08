@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 
 class User extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			user: null,
-		}
+	state = {
+		user: null,
 	}
 
 	componentDidMount() {
@@ -29,6 +25,7 @@ class User extends Component {
 		};
 
 		const { avatar_url, location, name } = this.state.user;
+		
 		return (
 			<div className="user">
 				<img
