@@ -11,18 +11,21 @@ class Search extends Component {
 		});
 	}
 
-	searh = e => {
-		// alert(`Search text: ${this.state.value}`);
-		e.preventDefault();
-	}
+	// searh = e => {
+	// 	alert(`Search text: ${this.state.value}`);
+	// 	e.preventDefault();
+	// }
 
 	handleClick = () => {
 		alert(`Search text: ${this.state.value}`);
+		e.preventDefault();
 	}
 
 	render() {
 		return (
-			<form className="search" onSubmit={this.search}>
+			<form className="search"
+				// onSubmit={this.search}
+			>
 				<input
 					type="text"
 					value={this.state.value}
