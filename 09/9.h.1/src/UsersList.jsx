@@ -16,11 +16,17 @@ class UsersList extends Component {
         .toLowerCase()
         .includes(e.target.value.toLowerCase()))
     
-    this.setState({
-      users: filteredUsers ,
-      count: filteredUsers.length,
-      text: e.target.value,
-    })
+    e.target.value.trim() !== ""
+      ? this.setState({
+          users: filteredUsers ,
+          count: filteredUsers.length,
+          text: e.target.value,
+      })
+      : this.setState({
+          users: this.props.users ,
+          count: this.props.users.length,
+          text: e.target.value,
+        })
   }
 
   render() {
