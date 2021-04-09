@@ -6,10 +6,6 @@ class Filter extends Component{
    count: '',
   }
 
-  filterText = () => {
-
-  }
-
   handleChange = e => {
     console.log(e.target.value);
     this.setState({
