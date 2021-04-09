@@ -8,8 +8,6 @@ class UsersList extends Component {
     count: this.props.users.length,
     text: '',
   }
-
-
  
   handleFilterOnChange = e => {
     if (e.target.value.trim() === "") {
