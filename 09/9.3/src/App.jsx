@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserForm from './userForm';
+import UserForm from './UserForm';
 
 class App extends Component{
   createUser = user => {
