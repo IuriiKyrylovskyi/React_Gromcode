@@ -13,7 +13,13 @@ class UsersList extends Component {
  
   handleFilterOnChange = e => {
     if (e.target.value.trim() === "") {
-      return
+      this.setState({
+        users: this.props.users ,
+        count: this.props.users.length,
+        text: e.target.value,
+      })
+
+      return;
     }
     const filteredUsers = this.props.users
       .filter(user =>
@@ -21,10 +27,10 @@ class UsersList extends Component {
         .toLowerCase()
         .includes(e.target.value.toLowerCase()))
     
-    this.setState({
-      users: filteredUsers ,
-      count: filteredUsers.length,
-      text: e.target.value,
+      this.setState({
+          users: filteredUsers ,
+          count: filteredUsers.length,
+          text: e.target.value,
     })
   }
 
