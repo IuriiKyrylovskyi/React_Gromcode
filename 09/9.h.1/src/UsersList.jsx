@@ -5,44 +5,31 @@ import Filter from './Filter';
 class UsersList extends Component {
   state = {
     users: this.props.users,
-    value: '',
+    count: this.props.users.length,
+    text: '',
   }
 
-  filteredUsers = () => {
-    const text = this.filterText;
-
-    const filtered = this.state.users
+  handleFilterOnChange = e => {
+    const filteredUsers = this.state.users
       .filter(user =>
         user.name
-          .toLowerCase()
-          .contains(text.toLowerCase()))
-    
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase()))
+
     this.setState({
-      users: filtered,
+      users: filteredUsers ,
+      count: filteredUsers.length,
+      text: e.target.value,
     })
-  }
-
-  // amountFilteredUsers = () => {
-  //   this.filteredUsers.filtered.length()
-  // }
-
-  filterText = text => {
-    this.setState({
-      text: text
-    });
-  }
-
-  count = () => {
-    this.state.users.length();
   }
 
   render() {
     return (
        <div>
         <Filter
-          filterText={this.filtertext}
-          count={this.count}
-          onChange={'func'}
+          filterText={this.state.text}
+          count={this.state.count}
+          onChange={this.handleFilterOnChange}
         />
         <ul className="users">
           {this.state.users.map(user => <User key={user.id} {...user} />)}
