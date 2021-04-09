@@ -15,7 +15,7 @@ class UsersList extends Component {
         user.name
         .toLowerCase()
         .includes(e.target.value.toLowerCase()))
-
+    
     this.setState({
       users: filteredUsers ,
       count: filteredUsers.length,
