@@ -16,7 +16,10 @@ class Filter extends Component{
       value: e.target.value,
     })
 
-    this.props.onChange(this.state.value)
+  }
+  
+  onChange = () => {
+    this.props.filterText(this.state.value)
   }
 
   render() {
@@ -28,7 +31,7 @@ class Filter extends Component{
         <input
           type="text"
           className="filter__input"
-          value={this.state.value} //.toLowerCase()}
+          value={this.state.value} 
           onChange={this.handleChange}
         />
       </div>

@@ -8,23 +8,23 @@ const rootElem = document.querySelector('#root');
 const usersArr = [
   {
     id: 'id-0',
-    age: 21,
     name: 'Bob',
+    age: 21,
   },
   {
     id: 'id-1',
-    age: 17,
     name: 'Tom',
+    age: 17,
   },
   {
     id: 'id-2',
-    age: 18,
     name: 'Tad',
+    age: 18,
   },
   {
     id: 'id-3',
-    age: 45,
     name: 'Sam',
+    age: 45,
   },
 ]
 
