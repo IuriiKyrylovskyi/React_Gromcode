@@ -9,17 +9,21 @@ class UsersList extends Component {
     text: '',
   }
  
+  
   handleFilterOnChange = e => {
+    const { users } = this.props
+    
     if (e.target.value.trim() === "") {
       this.setState({
-        users: this.props.users ,
-        count: this.props.users.length,
+        users: users ,
+        count: users.length,
         text: e.target.value,
       })
 
       return;
     }
-    const filteredUsers = this.props.users
+    
+    const filteredUsers = users
       .filter(user =>
         user.name
         .toLowerCase()
@@ -33,15 +37,17 @@ class UsersList extends Component {
   }
 
   render() {
+    const { text, count, users } = this.state;
+    
     return (
        <div>
         <Filter
-          filterText={this.state.text}
-          count={this.state.count}
+          filterText={text}
+          count={count}
           onChange={this.handleFilterOnChange}
         />
         <ul className="users">
-          {this.state.users.map(user => <User key={user.id} {...user} />)}
+          {users.map(user => <User key={user.id} {...user} />)}
         </ul>
       </div>
     )
