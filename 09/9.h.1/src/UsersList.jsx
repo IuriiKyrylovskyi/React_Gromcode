@@ -9,24 +9,27 @@ class UsersList extends Component {
     text: '',
   }
 
+
+ 
   handleFilterOnChange = e => {
-    const filteredUsers = this.state.users
+    if (e.target.value.trim() === "") {
+      return this.setState({
+                users: this.props.users ,
+                count: this.props.users.length,
+                text: e.target.value,
+      })
+    }
+    const filteredUsers = this.props.users
       .filter(user =>
         user.name
         .toLowerCase()
         .includes(e.target.value.toLowerCase()))
     
-    e.target.value.trim() !== ""
-      ? this.setState({
+      this.setState({
           users: filteredUsers ,
           count: filteredUsers.length,
           text: e.target.value,
-      })
-      : this.setState({
-          users: this.props.users ,
-          count: this.props.users.length,
-          text: e.target.value,
-        })
+    })
   }
 
   render() {
