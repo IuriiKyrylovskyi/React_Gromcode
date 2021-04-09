@@ -1,11 +1,15 @@
 import React from 'react';
 import User from './User';
+import Filter from './Filter';
 
 const UsersList = ({users}) => {
   return (
-    <ul className="users">
-      {users.map(user => <User {...user} />)}
-    </ul>
+     <div>
+      <Filter filterText={ } count={ } onChange={ } />
+      <ul className="users">
+        {users.map(user => <User key={user.id} {...user} />)}
+      </ul>
+    </div>
   )
 }
 
