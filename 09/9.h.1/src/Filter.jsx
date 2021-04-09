@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 class Filter extends Component{
  state = {
-   value: '',
-   count: '',
+   value: this.props.filterText,
+   count: this.props.count,
+
   }
 
   handleChange = e => {
@@ -15,7 +16,7 @@ class Filter extends Component{
   }
   
   onChange = () => {
-    this.props.filterText(this.state.value)
+    this.props.onChange(this.state.value)
   }
 
   render() {
