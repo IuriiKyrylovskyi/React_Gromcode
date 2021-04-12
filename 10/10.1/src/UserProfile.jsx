@@ -1,12 +1,12 @@
 import React from 'react';
 import User from './User';
 
-const UserProfile = ({userData}) => {
-  if (!userData) {
+const UserProfile = props => {
+  if (!props.userData) {
     return null;
   }
   return (
-    <User userData={userData} />
+    <User userData={props.userData} />
   )
 }
 
