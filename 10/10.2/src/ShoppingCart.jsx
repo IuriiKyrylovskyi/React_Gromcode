@@ -5,13 +5,30 @@ import ProductsList from './ProductsList';
 class ShoppingCart extends Component{
   state = {
     userName: this.props.userName,
-    products,
+    cartItems: [
+      {
+        id: 1,
+        name: 'iPad Pro',
+        price: 799,
+      },
+      {
+        id: 2,
+        name: 'iPhone 11',
+        price: 999,
+      }
+    ],
   }
   render() {
+    const { userName, cartItems } = this.state;
+    
+    const total = cartItems.reduce(
+      (acc, item) => acc + item.price, 0
+    )
+
     return (
       <div className="column">
-        <CartTitle count={count} userName={ this.state.userName }/>
-        <ProductsList cartItems={ this.state.products }/>
+        <CartTitle count={total} userName={ userName }/>
+        <ProductsList cartItems={ cartItems }/>
       </div>
     )
   }

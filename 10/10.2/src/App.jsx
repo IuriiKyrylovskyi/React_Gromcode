@@ -5,16 +5,21 @@ import Profile from './Profile';
 
 class App extends Component{
   state = {
-    user: this.props.user,
+    userData: {
+      firstName: 'John',
+      lastName: 'Doe',
+    },
   }
 
   render() {
+    const { firstName, lastName } = this.state.userData;
+
     return (
       <div className="page">
-        <h1 className="title">Hello, John Doe</h1>
+        <h1 className="title">{`Hello, ${firstName} ${lastName}`}</h1>
         <main className="content">
-          <ShoppingCart userName={ this.props.user.name }/>
-          <Profile userData={ this.props.user }/>
+          <ShoppingCart userName={ firstName } />
+          <Profile userData={ firstName, lastName } />
         </main>
       </div>
     )
