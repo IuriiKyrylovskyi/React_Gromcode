@@ -3,6 +3,8 @@ import BoilingVerdict from './BoilingVerdict';
 import TemperatureInput from './TemperatureInput';
 
 class Calculator extends Component{
+  state = {}
+
   toCelsius = fahrenheit => {
     return (fahrenheit - 32) * 5 / 9;
   }
@@ -55,7 +57,7 @@ class Calculator extends Component{
         />
         <TemperatureInput
           scale='f'
-          temperature={celsius}
+          temperature={fahrenheit}
           onTemperatureChange={this.handleFahrenheitChange}
         />
         <BoilingVerdict
