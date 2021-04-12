@@ -7,4 +7,4 @@ const rootElem = document.querySelector('#root');
 
 const userName = 'github';
 
-ReactDOM.render(<App userName={ userName } />, rootElem);
+ReactDOM.render(<App userId={ userName } />, rootElem);

@@ -4,19 +4,19 @@ import UserProfile from './UserProfile';
 
 class App extends Component{
   state = {
-    user: null,
+    userData: null,
   }
 
   componentDidMount() {
-		this.fetchUser(this.props.userName);
+		this.fetchUser(this.props.userId);
 	}
 
-  fetchUser = userName => {
-		fetch(`https://api.github.com/users/${userName}`)
+  fetchUser = userId => {
+		fetch(`https://api.github.com/users/${userId}`)
 			.then(response => response.json())
-			.then(data => {
+			.then(userData => {
 				this.setState({
-					user: data,
+					userData,
 				})
 		})
 	}
@@ -25,9 +25,9 @@ class App extends Component{
     return (
       <div className="page">
         <header className="header">
-          <UserMenu userData={this.state.user} />
+          <UserMenu userData={this.state.userData} />
         </header>
-        <UserProfile userData={this.state.user} />
+        <UserProfile userData={this.state.userData} />
       </div>
     )
   }
