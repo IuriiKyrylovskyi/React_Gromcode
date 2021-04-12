@@ -5,6 +5,6 @@ import App from './App';
 
 const rootElem = document.querySelector('#root');
 
-const userName = 'facebook';
+const userName = 'github';
 
 ReactDOM.render(<App userName={ userName } />, rootElem);

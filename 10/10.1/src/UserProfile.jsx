@@ -1,7 +1,7 @@
 import React from 'react';
 import User from './User';
 
-const UserProfile = ({ userData }) => {
+const UserProfile = ({userData}) => {
   if (!userData) {
     return null;
   }

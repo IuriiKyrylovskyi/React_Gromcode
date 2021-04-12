@@ -8,7 +8,7 @@ class App extends Component{
   }
 
   componentDidMount() {
-		this.fetchUser(this.props.userId);
+		this.fetchUser(this.props.userName);
 	}
 
   fetchUser = userName => {
@@ -25,9 +25,9 @@ class App extends Component{
     return (
       <div className="page">
         <header className="header">
-          <UserMenu UserData={this.state.UserData} />
-          <UserProfile UserData={this.state.UserData} />
-         </header>
+          <UserMenu userData={this.state.user} />
+        </header>
+        <UserProfile userData={this.state.user} />
       </div>
     )
   }
