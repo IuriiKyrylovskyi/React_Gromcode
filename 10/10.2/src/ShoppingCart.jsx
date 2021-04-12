@@ -4,7 +4,6 @@ import ProductsList from './ProductsList';
 
 class ShoppingCart extends Component{
   state = {
-    userName: this.props.userName,
     cartItems: [
       {
         id: 1,
@@ -19,15 +18,13 @@ class ShoppingCart extends Component{
     ],
   }
   render() {
-    const { userName, cartItems } = this.state;
-    
-    const total = cartItems.reduce(
-      (acc, item) => acc + item.price, 0
-    )
+    const { cartItems } = this.state;
+
+    const count = cartItems.length;
 
     return (
       <div className="column">
-        <CartTitle count={total} userName={ userName }/>
+        <CartTitle count={count} userName={ this.props.userName }/>
         <ProductsList cartItems={ cartItems }/>
       </div>
     )
