@@ -21,15 +21,15 @@ class App extends Component{
   }
 
   render() {
-    const { firstName, lastName } = this.state.userData;
+    const { userData } = this.state;
 
     return (
       <div className="page">
-        <h1 className="title">{`Hello, ${firstName} ${lastName}`}</h1>
+        <h1 className="title">{`Hello, ${userData.firstName} ${userData.lastName}`}</h1>
         <main className="content">
-          <ShoppingCart userName={ firstName } />
+          <ShoppingCart userName={ userData.firstName } />
           <Profile
-            userData={this.state.userData}
+            userData={userData}
             handleChange={this.handleChange}
           />
         </main>
