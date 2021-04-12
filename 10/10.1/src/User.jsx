@@ -1,6 +1,6 @@
 import React from 'react';
 
-const User = ({name, location, avatar_url}) => {
+const User = ({ name, location, avatar_url }) => {
   return (
     <div className="user">
       <img

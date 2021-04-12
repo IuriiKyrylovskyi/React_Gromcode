@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import User from './User';
 
-class UserProfile extends Component {
-  render() {
-    return (
-      <User userData={this.props.userdata} />
-    )
+const UserProfile = ({ userData }) => {
+  if (!userData) {
+    return null;
   }
+  return (
+    <User userData={userData} />
+  )
 }
 
 export default UserProfile;

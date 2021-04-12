@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import Search from './Search';
+import App from './App';
 
 const rootElem = document.querySelector('#root');
 
-ReactDOM.render(<Search />, rootElem);
+const userName = 'facebook';
+
+ReactDOM.render(<App userName={ userName } />, rootElem);
