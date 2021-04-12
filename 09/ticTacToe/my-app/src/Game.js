@@ -26,11 +26,11 @@ class Game extends React.Component {
     history: [
       {
         squares: Array(9).fill(null),
+        // position: null,
       },
     ],
     xIsNext: true,
     stepNumber: 0,
-    position: null,
   };
 
   handleClick(i) {
@@ -48,11 +48,11 @@ class Game extends React.Component {
       history: history.concat([
         {
           squares: squares,
+          position: i + 1,
         },
       ]),
       xIsNext: !this.state.xIsNext,
       stepNumber: history.length,
-      position: i + 1,
     });
   }
 
@@ -71,7 +71,7 @@ class Game extends React.Component {
     // const row = parseInt((this.state.position + 2) / 3);
     // const column = (this.state.position + 2) % 3 + 1
  
-    let pos = this.state.position;
+    let pos = this.state.history.position;
 
     const moves = history.map((step, move) => {
       const desc = move ? "Go to move #" + move + pos : "Go to game start";
