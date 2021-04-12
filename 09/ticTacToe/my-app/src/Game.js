@@ -70,9 +70,11 @@ class Game extends React.Component {
 
     // const row = parseInt((this.state.position + 2) / 3);
     // const column = (this.state.position + 2) % 3 + 1
+ 
+    let pos = this.state.position;
 
     const moves = history.map((step, move) => {
-      const desc = move ? "Go to move #" + move : "Go to game start";
+      const desc = move ? "Go to move #" + move + pos : "Go to game start";
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{`${desc}`}</button>
@@ -90,7 +92,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board status={status} squares={current.squares} onClick={(i) => this.handleClick(i)} position={this.state.position} />
+          <Board squares={current.squares} onClick={(i) => this.handleClick(i)} position={this.state.position} />
         </div>
         <div className="game-info">
           <div>{status}</div>
