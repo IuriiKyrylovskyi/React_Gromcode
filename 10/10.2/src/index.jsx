@@ -5,6 +5,6 @@ import App from './App';
 
 const rootElem = document.querySelector('#root');
 
-const userName = 'github';
+const user = 'github';
 
-ReactDOM.render(<App userId={ userName } />, rootElem);
+ReactDOM.render(<App user={ user } />, rootElem);
