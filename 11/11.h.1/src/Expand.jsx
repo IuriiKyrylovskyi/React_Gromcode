@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 // import PropTypes from 'prop-types';
 
-const Expand = ({ isOpen, title, children, handleToggle, degrees }) => {
+const Expand = ({ isOpen, title, children, handleToggle }) => {
    return (
      <div className="expand border">
       <div className="expand__header">
@@ -13,9 +13,18 @@ const Expand = ({ isOpen, title, children, handleToggle, degrees }) => {
         <button
           className="expand__toggle-btn"
           onClick={handleToggle}
-          style={{transform: `rotate(${degrees}deg)`}}
-        >
-          <FontAwesomeIcon icon={faChevronUp} />
+         >
+           {
+             !isOpen
+              ? <FontAwesomeIcon
+                  icon={faChevronUp}
+                  style={{transform: `rotate(180deg)`}}
+               />
+              : <FontAwesomeIcon
+                  icon={faChevronUp}
+                  style={{transform: `rotate(0deg)`}}
+               />
+           }
         </button>
       </div>
       {
