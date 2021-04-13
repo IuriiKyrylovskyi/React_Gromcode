@@ -6,16 +6,10 @@ class App extends Component{
     isOpen: false,
   }
 
-  onToggle = () => {
-    if (this.state.isOpen) {
-      this.setState({
-        isOpen: false,
-      })
-    } else {
-       this.setState({
-         isOpen: true,
-      })
-    }
+  handleToggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    })
   }
 
   render() {
@@ -24,7 +18,7 @@ class App extends Component{
         <Expand
           isOpen={this.state.isOpen}
           title={'Some title'}
-          handleToggle={this.onToggle}
+          onToggle={this.handleToggle}
         >
           <p>
             Hooks are a new addition in React 16.8. They let you use state and other React features

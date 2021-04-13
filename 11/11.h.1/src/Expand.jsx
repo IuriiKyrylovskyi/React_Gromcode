@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 // import PropTypes from 'prop-types';
 
-const Expand = ({ isOpen, title, children, handleToggle }) => {
+const Expand = ({ isOpen, title, children, onToggle }) => {
    return (
      <div className="expand border">
       <div className="expand__header">
@@ -12,7 +12,7 @@ const Expand = ({ isOpen, title, children, handleToggle }) => {
         </span>
         <button
           className="expand__toggle-btn"
-          onClick={handleToggle}
+          onClick={onToggle}
          >
            {
              !isOpen
