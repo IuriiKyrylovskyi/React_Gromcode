@@ -37,7 +37,7 @@ class App extends Component{
         />
         <Numbers
           title={'Just 17'}
-          number={'17'}
+          number={17}
         />
       </div>
     )
