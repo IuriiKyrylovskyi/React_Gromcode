@@ -4,6 +4,10 @@ import EvenNumbers from './EvenNumbers';
 import OddNumbers from './OddNumbers';
 
 class App extends Component{
+  state = {
+    number: 0,
+  }
+
   render() {
     return (
       <div className="app">
