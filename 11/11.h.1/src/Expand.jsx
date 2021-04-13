@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const Expand = ({ isOpen, title, children, handleToggle, degrees }) => {
    return (
@@ -30,6 +30,20 @@ const Expand = ({ isOpen, title, children, handleToggle, degrees }) => {
           }
     </div>
   )
+}
+
+Expand.propTypes = {
+  isOpen: PropTypes.bool,
+  children: PropTypes.element.isRequired,
+  title: PropTypes.string,
+  handleToggle: PropTypes.func.isRequired,
+  degrees: PropTypes.number.isRequired,
+
+}
+
+Expand.defaultProps = {
+  isOpen: false,
+  title: '',
 }
 
 export default Expand;
