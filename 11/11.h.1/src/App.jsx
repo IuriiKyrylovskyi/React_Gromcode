@@ -16,8 +16,8 @@ class App extends Component{
     return (
       <div className="app">
         <Expand
-          isOpen={this.state.isOpen}
           title={'Some title'}
+          isOpen={this.state.isOpen}
           onToggle={this.handleToggle}
         >
           <p>
