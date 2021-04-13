@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 const Expand = ({ isOpen, title, children, handleToggle, degrees }) => {
    return (
      <div className="expand border">
-       {console.log(degrees)}
       <div className="expand__header">
         <span className="expand__title">
           {title}
