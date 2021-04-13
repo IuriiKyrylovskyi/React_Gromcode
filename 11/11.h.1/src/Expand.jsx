@@ -27,7 +27,6 @@ const Expand = ({ isOpen, title, children, handleToggle }) => {
       </div>
       <div
         className="expand__content"
-        // hideContent={hideContent}
       >
         {children}
       </div>
