@@ -17,12 +17,6 @@ class App extends Component{
       })
     }
   }
-  
-  // hideContent = () => {
-  //   this.setState({
-  //     isOpen: false,
-  //   })
-  // }
 
   render() {
     return (

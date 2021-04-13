@@ -4,14 +4,7 @@ import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import PropsTypes from 'prop-types';
 
 const Expand = ({ isOpen, title, children, handleToggle }) => {
-  let hideContent, deg;
-
-  if (!isOpen) {
-    children = null;
-    deg = 0;
-  }
-
-  return (
+   return (
     <div className="expand border">
       <div className="expand__header">
         <span className="expand__title">
@@ -25,11 +18,15 @@ const Expand = ({ isOpen, title, children, handleToggle }) => {
           <FontAwesomeIcon icon={faChevronUp} />
         </button>
       </div>
-      <div
-        className="expand__content"
-      >
-        {children}
-      </div>
+      {
+        !isOpen
+          ? null
+          : (<div
+              className="expand__content"
+            >
+              {children}
+            </div>)
+          }
     </div>
   )
 }
