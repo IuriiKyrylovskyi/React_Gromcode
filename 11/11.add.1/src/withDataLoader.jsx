@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Spinner from './Spinner';
 
-export const withDataLoader = data => {
-  return class extends Component{
+const  withDataLoader = (data, Component) => {
+  return class withDataLoader extends React.Component{
     state = {
       data,
     }
 
-    handleChange = () => {
-      const loadedData = fetch(data).then(response => response.json())
-      this.setState({
-        data: loadedData,
-      })
+    componentDidMount() {
+      fetch(data)
+        .then(response => response.json())
+        .then(loadedData => this.setState({ data: loadedData }))
     }
     
     render() {
-      if (!data) {
+      if (this.state.data !== loadedData) {
         return (
           <Spinner />
         )
       }
-      return <withDataLoader data={this.state.data} {...this.props}/>;
+      return <Component data={this.state.data} {...this.props}/>;
     }
   }
 }
 
-// export withDataLoader;
+export default withDataLoader ;
 
