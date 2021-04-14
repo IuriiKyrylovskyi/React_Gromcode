@@ -3,7 +3,7 @@ import Expand from './Expand';
 
 class App extends Component{
   state = {
-    isExpanded: true,
+    isExpanded: false,
   }
 
   handleToggle = () => {
