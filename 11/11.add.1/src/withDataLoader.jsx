@@ -4,7 +4,7 @@ import Spinner from './Spinner';
 const  withDataLoader = (data, Component) => {
   return class withDataLoader extends React.Component{
     state = {
-      data,
+      data: [],
     }
 
     componentDidMount() {
@@ -14,12 +14,12 @@ const  withDataLoader = (data, Component) => {
     }
     
     render() {
-      if (this.state.data !== loadedData) {
+      if (this.state.data.length > 0) {
         return (
           <Spinner />
         )
       }
-      return <Component data={this.state.data} {...this.props}/>;
+      return <Component data={this.state.data} />;
     }
   }
 }
