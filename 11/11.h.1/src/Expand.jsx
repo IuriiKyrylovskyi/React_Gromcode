@@ -1,6 +1,6 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 
 const Expand = ({ isOpen, title, children, onToggle }) => {
@@ -16,12 +16,12 @@ const Expand = ({ isOpen, title, children, onToggle }) => {
          >
            {
              !isOpen
-              ? <FontAwesomeIcon
-                  icon={faChevronUp}
+              ? <i className="fas fa-chevron-up" //FontAwesomeIcon
+                  // icon={faChevronUp}
                   style={{transform: `rotate(180deg)`}}
                />
-              : <FontAwesomeIcon
-                  icon={faChevronUp}
+              : <i className="fas fa-chevron-down" //FontAwesomeIcon
+                  // icon={faChevronUp}
                   style={{transform: `rotate(0deg)`}}
                />
            }
