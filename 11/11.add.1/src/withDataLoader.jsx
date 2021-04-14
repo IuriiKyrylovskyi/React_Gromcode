@@ -20,7 +20,7 @@ export const withDataLoader = data => {
           <Spinner />
         )
       }
-      return this.state.data;
+      return <withDataLoader data={this.state.data} {...this.props}/>;
     }
   }
 }
