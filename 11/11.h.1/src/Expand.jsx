@@ -24,14 +24,13 @@ const Expand = ({ isExpand, title, children, onToggle }) => {
         </button>
       </div>
       {
-        !isExpand
-          ? null
-          : (<div
-              className="expand__content"
-            >
-              {children}
-            </div>)
-          }
+        isExpand &&
+        (<div
+          className="expand__content"
+          >
+          {children}
+        </div>)
+      }
     </div>
   )
 }
