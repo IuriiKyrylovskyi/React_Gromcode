@@ -24,5 +24,5 @@ const  withDataLoader = (data, Component) => {
   }
 }
 
-export default withDataLoader ;
+export { withDataLoader } ;
 
