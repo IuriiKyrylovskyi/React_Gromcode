@@ -3,12 +3,12 @@ import Expand from './Expand';
 
 class App extends Component{
   state = {
-    isOpen: false,
+    isExpand: false,
   }
 
   handleToggle = () => {
     this.setState({
-      isOpen: !this.state.isOpen,
+      isExpand: !this.state.isExpand,
     })
   }
 
@@ -17,7 +17,7 @@ class App extends Component{
       <div className="app">
         <Expand
           title={'Some title'}
-          isOpen={this.state.isOpen}
+          isExpand={this.state.isExpand}
           onToggle={this.handleToggle}
         >
           <p>
