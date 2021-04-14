@@ -14,16 +14,16 @@ const Expand = ({ isExpanded, title, children, onToggle }) => {
           className="expand__toggle-btn"
           onClick={onToggle}
          >
+           {isExpanded ? (
+             <i className="fas fa-chevron-up"/>
+           ) : (
+             <i className="fas fa-chevron-down"/>
+           )}
           {isExpanded ? (
             <FontAwesomeIcon icon={faChevronUp} />
           ) : (
-              <FontAwesomeIcon icon={faChevronDown} />
+            <FontAwesomeIcon icon={faChevronDown} />
           )}
-          {/* {isExpanded ? (
-            <i className="fas fa-chevron-up"/>
-          ) : (
-            <i className="fas fa-chevron-down"/>
-          )} */}
         </button>
       </div>
       {isExpanded && (
