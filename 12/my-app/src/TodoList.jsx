@@ -17,6 +17,22 @@ class TodoList extends Component {
     // { text: 'Watch movie', done: false, id: 6 },
   }
 
+  fetchTasksList = () => {
+    fetch(baseUrl)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then(tasksList => {
+        console.log(tasksList);
+        this.setState({
+          tasks: tasksList,
+          value: '',
+        })
+      })
+  }
+
   handleChange = e => {
     this.setState({
       value: e.target.value,
@@ -29,9 +45,9 @@ class TodoList extends Component {
     const newTask = {
       text: this.state.value,
       done: false,
-      // id: Math.random(),
     }
 
+    console.log(this.state.value);
     fetch(baseUrl, {
       method: 'POST',
       headers: {
@@ -40,15 +56,7 @@ class TodoList extends Component {
       body: JSON.stringify(newTask),
     }).then(response => {
       if (response.ok) {
-        fetch(baseUrl)
-          .then(res => {
-            if (res.ok) {
-              return res.json();
-            }
-          })
-          .then(tasksList => {
-            this.setState({ tasks: tasksList })
-          })
+        this.fetchTasksList();
       } else {
         throw new Error('Failed to create task')
       }
