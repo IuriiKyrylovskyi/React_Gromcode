@@ -40,6 +40,9 @@ class TodoList extends Component {
   }
 
   handleStatusChange = id => {
+    // const taskElem = e.target.closest('list-item');
+    // const id = taskElem.id
+
     const updatedTasks = this.state.tasks.map(task => {
       if (task.id === id) {
         return {
