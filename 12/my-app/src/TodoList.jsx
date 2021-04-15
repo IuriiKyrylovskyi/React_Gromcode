@@ -20,9 +20,9 @@ class TodoList extends Component {
     this.fetchTasks();
   }
 
-  // componentDidUpdate() {
-  //   this.handleChange();
-  // }
+  componentDidUpdate() {
+    this.handleChange();
+  }
 
   fetchTasks = () => {
     fetchTasksList()
