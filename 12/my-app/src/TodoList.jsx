@@ -71,7 +71,7 @@ class TodoList extends Component {
         />
         <TasksList
           tasks={tasks}
-          handleStatusChange={this.handleStatusChange}
+          handleStatusChange={()=>this.handleStatusChange(this.id)}
         />
       </main>
     )

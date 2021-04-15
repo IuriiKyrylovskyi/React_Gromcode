@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Task = ({ text, done, handleStatusChange, handleDelete }) => {
+const Task = ({id, text, done, handleStatusChange, handleDelete }) => {
   const listItemClasses = `list-item ${done ? 'list-item_done' : ''}`
   
   return (
@@ -9,7 +9,7 @@ const Task = ({ text, done, handleStatusChange, handleDelete }) => {
         type="checkbox"
         className="list-item__checkbox"
         defaultChecked={done}
-        onChange={handleStatusChange}
+        onChange={()=>handleStatusChange(id)}
       />
         <span className='list-item__text'>{text}</span>
       <button
