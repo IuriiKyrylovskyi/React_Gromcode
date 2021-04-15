@@ -1,7 +1,7 @@
 import React from 'react';
 import Spinner from './Spinner';
 
-const  withDataLoader = (data, Component) => {
+const  withDataLoader  = data => WrappedComponent => {
   return class withDataLoader extends React.Component{
     state = {
       data: [],
@@ -14,12 +14,10 @@ const  withDataLoader = (data, Component) => {
     }
     
     render() {
-      if (this.state.data.length > 0) {
-        return (
-          <Spinner />
+        return ( this.state.data.length === 0
+         ? <Spinner />
+         : <WrappedComponent data={this.state.data} />
         )
-      }
-      return <Component data={this.state.data} />;
     }
   }
 }
