@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 class Expand extends Component{
-  // = ({ isExpanded, title, children, onToggle }) => {
   state = {
     isExpanded: false,
   }
@@ -20,7 +19,7 @@ class Expand extends Component{
 
     return (
       <div className="expand border">
-      <div className="expand__header">
+        <div className="expand__header">
         <span className="expand__title">
           {this.props.title}
         </span>
@@ -28,16 +27,16 @@ class Expand extends Component{
           className="expand__toggle-btn"
           onClick={this.onToggle}
           >
-          {isExpanded ? (
+          {/* {isExpanded ? (
             <i className="fas fa-chevron-up"/>
             ) : (
               <i className="fas fa-chevron-down"/>
-          )}
+          )} */}
           {isExpanded ? (
             <FontAwesomeIcon icon={faChevronUp} />
             ) : (
-              <FontAwesomeIcon icon={faChevronDown} />
-              )}
+            <FontAwesomeIcon icon={faChevronDown} />
+          )}
         </button>
       </div>
       {isExpanded && (
