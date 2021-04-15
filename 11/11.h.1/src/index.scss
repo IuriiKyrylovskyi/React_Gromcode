@@ -45,3 +45,48 @@ body {
     opacity: 0.7;
   }
 }
+
+.fas {
+  position: relative;
+  width: 20px;
+  height: 10px;
+  right: 20px;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11px;
+    height: 2.5px;
+    background: #000;
+    transform: rotate(40deg);
+    border-radius: 2px;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 8px;
+    width: 11px;
+    height: 2.5px;
+    background: #000;
+    transform: rotate(-40deg);
+    border-radius: 2px;
+  }
+}
+.fa-chevron-up {
+  &:before {
+    transform: rotate(-40deg);
+  }
+  &:after {
+    transform: rotate(40deg);
+  }
+}
+.fa-chevron-down {
+  &:before {
+    transform: rotate(40deg);
+  }
+  &:after {
+    transform: rotate(-40deg);
+  }
+}
