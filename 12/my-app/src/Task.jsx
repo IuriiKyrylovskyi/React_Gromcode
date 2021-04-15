@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Task = ({id, text, done, handleStatusChange, handleDelete }) => {
+const Task = ({id, text, done, handleStatusChange, handleTaskDelete }) => {
   const listItemClasses = `list-item ${done ? 'list-item_done' : ''}`
   
   return (
@@ -14,7 +14,7 @@ const Task = ({id, text, done, handleStatusChange, handleDelete }) => {
         <span className='list-item__text'>{text}</span>
       <button
         className="list-item__delete-btn"
-        onClick={handleDelete}
+        onClick={()=>handleTaskDelete(id)}
       >
       </button>
     </li>
