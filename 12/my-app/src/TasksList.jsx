@@ -8,7 +8,8 @@ const TasksList = ({ tasks, handleStatusChange}) => {
 
   return (
     <ul className="list">
-      {sortedList.map(task => (<Task key={task.id} {...task} handleStatusChange={handleStatusChange} />))}
+      {sortedList.map(task =>
+        (<Task key={task.id} {...task} handleStatusChange={handleStatusChange} />))}
     </ul>
   )
 }
