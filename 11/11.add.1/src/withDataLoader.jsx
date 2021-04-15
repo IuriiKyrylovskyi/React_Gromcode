@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from './Spinner';
 
 const  withDataLoader  = data => WrappedComponent => {
-  return class withDataLoader extends React.Component{
+  return class extends React.Component{
     state = {
       data: [],
     }
