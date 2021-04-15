@@ -9,7 +9,7 @@ const Task = ({ text, done, handleStatusChange, handleDelete }) => {
         type="checkbox"
         className="list-item__checkbox"
         defaultChecked={done}
-        // onChange={handleStatusChange}
+        onChange={handleStatusChange}
       />
         <span className='list-item__text'>{text}</span>
       <button

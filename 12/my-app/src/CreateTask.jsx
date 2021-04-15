@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CreateTask = ({ value, handleChange, handleTaskCreate }) => {
+const CreateTask = ({ value, handleChange, onCreate }) => {
   return (
     <div className="create-task">
       <input
@@ -11,7 +11,7 @@ const CreateTask = ({ value, handleChange, handleTaskCreate }) => {
       />
       <button
         className="btn create-task__btn"
-        onClick={handleTaskCreate}
+        onClick={onCreate}
       >Create</button>
     </div>
   )
