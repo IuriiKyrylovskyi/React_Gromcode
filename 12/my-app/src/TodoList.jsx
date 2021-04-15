@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import CreateTask from './CreateTask';
 import TasksList from './TasksList';
+import {fetchTasksList, createTask, updateTask, deleteTask} from './tasksGateway';
 
-const baseUrl = 'https://607884cee7f4f50017184723.mockapi.io/tasks';
-// const baseUrl = 'https://www.mockapi.io/projects/607884cee7f4f50017184724/tasks';
 
 class TodoList extends Component {
   state = {
@@ -18,20 +17,15 @@ class TodoList extends Component {
   }
 
   componentDidMount() {
-    this.fetchTasksList();
+    this.fetchTasks();
   }
 
   // componentDidUpdate() {
   //   this.handleChange();
   // }
 
-  fetchTasksList = () => {
-    fetch(baseUrl)
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
+  fetchTasks = () => {
+    fetchTasksList()
       .then(tasksList => {
         console.log(tasksList);
         this.setState({
@@ -55,19 +49,9 @@ class TodoList extends Component {
       done: false,
     }
 
-    fetch(baseUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      },
-      body: JSON.stringify(newTask),
-    }).then(response => {
-      if (response.ok) {
-        this.fetchTasksList();
-      } else {
-        throw new Error('Failed to create task')
-      }
-    })
+    createTask(newTask)
+      .then(() => this.fetchTasks())
+   
 
     // const updatedTasks = tasks.concat(newTask);
     // console.log(updatedTasks);
@@ -86,19 +70,8 @@ class TodoList extends Component {
       done: !done,
     };
 
-    fetch(`${baseUrl}/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      },
-      body: JSON.stringify(updatedTask),
-    }).then(response => {
-      if (response.ok) {
-        this.fetchTasksList();
-      } else {
-        throw new Error('Failed to update task')
-      }
-    })
+    updateTask(id, updatedTask)
+      .then(() => this.fetchTasks())
 
     // const updatedTasks = this.state.tasks.map(task => {
     //   if (task.id === id) {
@@ -116,15 +89,9 @@ class TodoList extends Component {
   }
 
   handleTaskDelete = id => {
-    fetch(`${baseUrl}/${id}`, {
-      method: 'DELETE',
-    }).then(response => {
-      if (response.ok) {
-        this.fetchTasksList();
-      } else {
-        throw new Error('Failed to delete task')
-      }
-    })
+    deleteTask(id)
+      .then(() => this.fetchTasks())
+
 
     // const updatedTasks = this.state.tasks
     //   .filter(task => task.id !== id)
