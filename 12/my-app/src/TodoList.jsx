@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CreateTask from './CreateTask';
 import TasksList from './TasksList';
 
-const baseUrl = 'https://607884cee7f4f50017184723.mockapi.io//tasks';
+const baseUrl = 'https://607884cee7f4f50017184723.mockapi.io/tasks';
 // const baseUrl = 'https://www.mockapi.io/projects/607884cee7f4f50017184724/tasks';
 
 class TodoList extends Component {
@@ -11,11 +11,19 @@ class TodoList extends Component {
     tasks: [],
     // { text: 'Buy milk', done: false, id: 1 },
     // { text: 'Go for a walk', done: false, id: 2 },
-    // { text: 'Charhe phone', done: true, id: 3 },
+    // { text: 'Charge phone', done: true, id: 3 },
     // { text: 'Plant flowers', done: true, id: 4 },
     // { text: 'Make todoList', done: false, id: 5 },
     // { text: 'Watch movie', done: false, id: 6 },
   }
+
+  componentDidMount() {
+    this.fetchTasksList();
+  }
+
+  // componentDidUpdate() {
+  //   this.handleChange();
+  // }
 
   fetchTasksList = () => {
     fetch(baseUrl)
@@ -47,11 +55,10 @@ class TodoList extends Component {
       done: false,
     }
 
-    console.log(this.state.value);
     fetch(baseUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json;utc-8',
+        'Content-Type': 'application/json;charset=utf-8'
       },
       body: JSON.stringify(newTask),
     }).then(response => {
@@ -72,28 +79,59 @@ class TodoList extends Component {
   }
 
   handleStatusChange = id => {
-    const updatedTasks = this.state.tasks.map(task => {
-      if (task.id === id) {
-        return {
-          ...task,
-          done: !task.done
-        };
+    const {text, done} = this.state.tasks.find(task => task.id === id);
+
+    const updatedTask = {
+      text,
+      done: !done,
+    };
+
+    fetch(`${baseUrl}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(updatedTask),
+    }).then(response => {
+      if (response.ok) {
+        this.fetchTasksList();
+      } else {
+        throw new Error('Failed to update task')
       }
-      return task;
     })
 
-    this.setState({
-      tasks: updatedTasks
-    })
+    // const updatedTasks = this.state.tasks.map(task => {
+    //   if (task.id === id) {
+    //     return {
+    //       ...task,
+    //       done: !task.done
+    //     };
+    //   }
+    //   return task;
+    // })
+
+    // this.setState({
+    //   tasks: updatedTasks
+    // })
   }
 
   handleTaskDelete = id => {
-    const updatedTasks = this.state.tasks
-      .filter(task => task.id !== id)
-
-    this.setState({
-      tasks: updatedTasks
+    fetch(`${baseUrl}/${id}`, {
+      method: 'DELETE',
+    }).then(response => {
+      if (response.ok) {
+        this.fetchTasksList();
+      } else {
+        throw new Error('Failed to delete task')
+      }
     })
+
+    // const updatedTasks = this.state.tasks
+    //   .filter(task => task.id !== id)
+
+    // this.setState({
+    //   tasks: updatedTasks
+    // })
   }
 
 
