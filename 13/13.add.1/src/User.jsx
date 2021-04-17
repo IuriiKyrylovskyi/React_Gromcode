@@ -13,7 +13,14 @@ class User extends Component {
   }
 
   componentDidMount() {
-   this.fetchUser(this.props.match.params.userId);
+   this.handleUserIdChange(this.state.userId);
+   this.fetchUser(this.state.userId);
+  }
+
+  handleUserIdChange = userId => {
+    if (userId !== this.props.match.params.userId) {
+      return setState({ userId: this.props.match.params.userId });
+    }
   }
 
   fetchUser = userId => {
