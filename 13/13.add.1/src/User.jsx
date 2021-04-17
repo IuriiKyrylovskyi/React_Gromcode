@@ -4,7 +4,7 @@ const baseUrl = 'https://api.github.com/users';
 
 class User extends Component {
   state = {
-    userId: this.props.match.params.userId,
+    userId: '',
     userData: {
       name: null,
       avatar_url: null,
@@ -13,18 +13,20 @@ class User extends Component {
   }
 
   componentDidMount() {
-   this.handleUserIdChange(this.state.userId);
-   this.fetchUser(this.state.userId);
+    this.fetchUser();
   }
 
-  handleUserIdChange = userId => {
-    if (userId !== this.props.match.params.userId) {
-      return setState({ userId: this.props.match.params.userId });
+  componentDidUpdate = prevProps => {
+    const newParam = this.props.match.params.userId;
+    const prevParam = prevProps.match.params.userId;
+
+    if (newParam !== prevParam) {
+      this.fetchUser()
     }
   }
 
-  fetchUser = userId => {
-    fetch(`${baseUrl}/${userId}`)
+  fetchUser = () => {
+    fetch(`${baseUrl}/${this.props.match.params.userId}`)
       .then(response => {
         if (response.ok) {
         return response.json()
@@ -32,16 +34,13 @@ class User extends Component {
         throw new Error('Failed to load data')
       })
       .then(userData => this.setState({
-        userData
+        userData,
+        userId: this.props.match.params.userId,
       }))
   }
 
   render(){
     if (this.state.userData !== null) {
-      // console.log(this.props.match);
-      // console.log(typeof this.props.match.params.userId);
-      console.log(this.state.userData);
-      
       const { avatar_url, name, location } = this.state.userData;
 
       return (
@@ -51,7 +50,6 @@ class User extends Component {
           src={avatar_url}
           className="user__avatar"
         />
-        {/* <img alt="User Avatar" src="https://avatars1.githubusercontent.com/u/9919?v=4" className="user__avatar" /> */}
         <div className="user__info">
           <span className="user__name">
             {name}
