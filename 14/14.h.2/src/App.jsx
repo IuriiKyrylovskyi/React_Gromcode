@@ -14,7 +14,7 @@ const locations = [
   },
   {
     location: 'Barselona',
-    offset: 5,
+    offset: -1,
     id: 3
   }
   
