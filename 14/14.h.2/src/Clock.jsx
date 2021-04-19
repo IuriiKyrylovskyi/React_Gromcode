@@ -6,7 +6,7 @@ const Clock = ({ location, offset }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log(new Date());
+      // console.log(new Date());
       setTime(new Date())
     }, 1000);
 
