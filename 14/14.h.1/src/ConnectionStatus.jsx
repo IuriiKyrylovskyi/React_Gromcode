@@ -1,24 +1,26 @@
 import React, {useState, useEffect} from 'react';
 
 const ConnectionStatus = () => {
-  const [status, handleStatus] = useState(window.navigator.online);
+  const [status, handleStatus] = useState(window.navigator.onLine);
 
   useEffect(() => {
-    // const { status } = window.navigator.online;
-    window.addEventListener('online', handleStatus(window.navigator.online))
+    window.addEventListener('online', e => handleStatus(e.target.navigator.onLine))
+    window.addEventListener('offline', e => handleStatus(e.target.navigator.offline))
 
     return () => {
-      window.removeEventListener('online', handleStatus(window.navigator.online))
+      window.removeEventListener('online', e => handleStatus(e.target.navigator.onLine))
+      window.removeEventListener('offline', e => handleStatus(e.target.navigator.offline))
     }
   },[])
 
   const statusClasses = `status ${status ? '' : 'status_offline'}`;
-  console.log(navigator.online);
+  const statusText = status ? 'online' : 'offline';
+
   return (
     <div
       className={statusClasses}
     >
-      {status}
+      {statusText}
     </div>
   )
 }
