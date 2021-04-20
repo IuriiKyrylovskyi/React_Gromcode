@@ -1,9 +1,9 @@
 import React from "react";
-
+import TimeLine from "../timeLine/TimeLine";
 import Event from "../event/Event";
 import { formatMins } from "../../../src/utils/dateUtils.js";
 
-const Hour = ({ dataHour, hourEvents }) => {
+const Hour = ({ dataHour, hourEvents, isNow }) => {
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {/* if no events in the current hour nothing will render here */}
@@ -26,6 +26,7 @@ const Hour = ({ dataHour, hourEvents }) => {
           />
         );
       })}
+      {isNow && <TimeLine />}
     </div>
   );
 };

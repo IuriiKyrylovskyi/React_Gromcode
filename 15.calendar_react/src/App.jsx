@@ -9,21 +9,50 @@ import "./common.scss";
 class App extends Component {
   state = {
     weekStartDate: new Date(),
+    isCurrentDate: true, 
   };
 
+  componentDidMount() {
+    this.handleCurrentDate();
+  }
+
   handleTodayBtnClick = () => {
-    this.setState({ weekStartDate: new Date()})
+    this.setState({
+      weekStartDate: new Date(),
+      isCurrentDate: true,
+    })
   }
 
   handleArrowBtnClick = diff => {
     const date = this.state.weekStartDate;
-    this.setState({
-      weekStartDate: new Date(date.setDate(date.getDate() + diff))
-    })
+    const currentDate = new Date(getWeekStartDate(new Date())).getTime();
+    const stateDate = new Date(getWeekStartDate(this.state.weekStartDate)).getTime();
+     
+    currentDate === stateDate
+       ? this.setState({
+          weekStartDate: new Date(date.setDate(date.getDate() + diff)),
+          isCurrentDate: true,
+       })
+       : this.setState({
+          weekStartDate: new Date(date.setDate(date.getDate() + diff)),
+          isCurrentDate: false
+       })
+  }
+
+  handleCurrentDate = () => {
+    const currentDate = new Date(getWeekStartDate(new Date())).getTime();
+    const stateDate = new Date(getWeekStartDate(this.state.weekStartDate)).getTime();
+    console.log(stateDate);
+    console.log(currentDate);
+    console.log(currentDate === stateDate);
+    return (currentDate === stateDate
+      ? this.setState({isCurrentDate: true})
+      : this.setState({ isCurrentDate: false })
+    )
   }
 
   render() {
-    const { weekStartDate } = this.state;
+    const { weekStartDate, isCurrentDate } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
     return (
@@ -33,7 +62,10 @@ class App extends Component {
           handleTodayBtn={this.handleTodayBtnClick}
           handleArrowBtn={this.handleArrowBtnClick}
         />
-        <Calendar weekDates={weekDates} />
+        <Calendar
+          weekDates={weekDates}
+          isNow={isCurrentDate}
+        />
       </>
     );
   }

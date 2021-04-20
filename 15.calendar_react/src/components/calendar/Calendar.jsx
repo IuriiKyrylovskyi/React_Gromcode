@@ -13,7 +13,8 @@ class Calendar extends Component {
   };
 
   render() {
-    const { weekDates } = this.props;
+    const { weekDates, isNow } = this.props;
+  console.log(isNow);
 
     return (
       <section className="calendar">
@@ -21,7 +22,11 @@ class Calendar extends Component {
         <div className="calendar__body">
           <div className="calendar__week-container">
             <Sidebar />
-            <Week weekDates={weekDates} events={this.state.events} />
+            <Week
+              weekDates={weekDates}
+              events={this.state.events}
+              isNow={isNow}
+            />
           </div>
         </div>
       </section>
