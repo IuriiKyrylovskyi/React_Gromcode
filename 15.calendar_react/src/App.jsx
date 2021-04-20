@@ -11,13 +11,28 @@ class App extends Component {
     weekStartDate: new Date(),
   };
 
+  handleTodayBtnClick = () => {
+    this.setState({ weekStartDate: new Date()})
+  }
+
+  handleArrowBtnClick = diff => {
+    console.log(this.state.weekStartDate);
+    const newDate = this.state.weekStartDate;
+    this.setState({ weekStartDate: newDate.setDate(newDate.getDate() + diff) })
+    console.log(this.state.weekStartDate);
+  }
+
   render() {
     const { weekStartDate } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
     return (
       <>
-        <Header />
+        <Header
+          weekDates={weekDates}
+          handleTodayBtn={this.handleTodayBtnClick}
+          handleArrowBtn={this.handleArrowBtnClick}
+        />
         <Calendar weekDates={weekDates} />
       </>
     );
