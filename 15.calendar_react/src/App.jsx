@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Header from "./components/header/Header.jsx";
-import Calendar from "./components/calendar/Calendar.jsx";
+import Header from "./components/header/Header";
+import Calendar from "./components/calendar/Calendar";
 
 import { getWeekStartDate, generateWeekRange } from "../src/utils/dateUtils.js";
 
@@ -22,17 +22,17 @@ class App extends Component {
       this.interval = setInterval(() => {
         this.setState({ isCurrentDate: this.state.isCurrentDate })
       }, 1000)
-      console.log(this.state.isCurrentDate);
     }
   }
   
   componentWillUnmount() {
-    if (!this.state.isCurrentDate) {
       clearInterval(this.interval)
-    }
   }
 
   handleTodayBtnClick = () => {
+    if (this.state.isCurrentDate) {
+      return;
+    }
     this.setState({
       weekStartDate: new Date(),
       isCurrentDate: true,
@@ -47,12 +47,17 @@ class App extends Component {
     console.log(stateDate);
     console.log(currentDate);
     console.log(currentDate === stateDate);
+
+    
     if (currentDate === stateDate) {
       return this.setState({
-          isCurrentDate: true,
-          weekStartDate: new Date(date.setDate(date.getDate() + diff)),
-         }) 
-    } 
+        isCurrentDate: true,
+        weekStartDate: new Date(date.setDate(date.getDate() + diff)),
+      }) 
+    }
+    
+    clearInterval(this.interval)
+    
     return this.setState({
           isCurrentDate: false,
           weekStartDate: new Date(date.setDate(date.getDate() + diff)),
@@ -80,7 +85,7 @@ class App extends Component {
   render() {
     const { weekStartDate, isCurrentDate } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
-
+console.log(isCurrentDate);
 
     //   const currentDate = new Date(getWeekStartDate(new Date())).getTime();
     // const stateDate = new Date(getWeekStartDate(this.state.weekStartDate)).getTime();

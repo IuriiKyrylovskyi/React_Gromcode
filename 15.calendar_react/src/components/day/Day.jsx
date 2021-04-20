@@ -7,7 +7,7 @@ const Day = ({ weekDates, dataDay, dayEvents, isNow }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
-
+  
   return (
     <div className="calendar__day" data-day={dataDay}>
       {hours.map((hour) => {
