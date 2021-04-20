@@ -13,7 +13,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.handleCurrentDate();
+   const this.interval = setInterval(() => {
+     this.setState({ isCurrentDate: this.state.isCurrentDate })
+    }, 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
   }
 
   handleTodayBtnClick = () => {
@@ -25,36 +31,52 @@ class App extends Component {
 
   handleArrowBtnClick = diff => {
     const date = this.state.weekStartDate;
-    const currentDate = new Date(getWeekStartDate(new Date())).getTime();
-    const stateDate = new Date(getWeekStartDate(this.state.weekStartDate)).getTime();
-     
-    currentDate === stateDate
-       ? this.setState({
-          weekStartDate: new Date(date.setDate(date.getDate() + diff)),
-          isCurrentDate: true,
-       })
-       : this.setState({
-          weekStartDate: new Date(date.setDate(date.getDate() + diff)),
-          isCurrentDate: false
-       })
-  }
 
-  handleCurrentDate = () => {
-    const currentDate = new Date(getWeekStartDate(new Date())).getTime();
-    const stateDate = new Date(getWeekStartDate(this.state.weekStartDate)).getTime();
+    const currentDate = new Date(getWeekStartDate(new Date()));
+    const stateDate = new Date(getWeekStartDate(this.state.weekStartDate));
     console.log(stateDate);
     console.log(currentDate);
     console.log(currentDate === stateDate);
-    return (currentDate === stateDate
-      ? this.setState({isCurrentDate: true})
-      : this.setState({ isCurrentDate: false })
-    )
+    if (currentDate === stateDate) {
+      return this.setState({
+          isCurrentDate: true,
+          weekStartDate: new Date(date.setDate(date.getDate() + diff)),
+         }) 
+    } 
+    return this.setState({
+          isCurrentDate: false,
+          weekStartDate: new Date(date.setDate(date.getDate() + diff)),
+         })
   }
+
+  // handleCurrentDate = () => {
+  //   const currentDate = new Date(getWeekStartDate(new Date())).getTime();
+  //   const stateDate = new Date(getWeekStartDate(this.state.weekStartDate)).getTime();
+  //   console.log(stateDate);
+  //   console.log(currentDate);
+  //   console.log(currentDate === stateDate);
+  //   return (currentDate === stateDate
+  //     ? this.setState({
+  //       ...this.state,
+  //       isCurrentDate: true
+  //     })
+  //     : this.setState({
+  //       ...this.state,
+  //       isCurrentDate: false
+  //     })
+  //   )
+  // }
 
   render() {
     const { weekStartDate, isCurrentDate } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
+
+    //   const currentDate = new Date(getWeekStartDate(new Date())).getTime();
+    // const stateDate = new Date(getWeekStartDate(this.state.weekStartDate)).getTime();
+    // console.log(stateDate);
+    // console.log(currentDate);
+    // console.log(currentDate === stateDate);
     return (
       <>
         <Header

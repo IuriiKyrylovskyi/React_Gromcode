@@ -3,7 +3,7 @@ import TimeLine from "../timeLine/TimeLine";
 import Event from "../event/Event";
 import { formatMins } from "../../../src/utils/dateUtils.js";
 
-const Hour = ({ dataHour, hourEvents, isNow }) => {
+const Hour = ({ dataDay, dataHour, hourEvents, isNow }) => {
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {/* if no events in the current hour nothing will render here */}
@@ -26,7 +26,10 @@ const Hour = ({ dataHour, hourEvents, isNow }) => {
           />
         );
       })}
-      {isNow && <TimeLine />}
+      {isNow &&
+        dataDay === new Date().getDate() &&
+        dataHour === new Date().getHours() &&
+        <TimeLine />}
     </div>
   );
 };

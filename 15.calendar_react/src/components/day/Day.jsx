@@ -22,6 +22,7 @@ const Day = ({ weekDates, dataDay, dayEvents, isNow }) => {
             dataHour={hour}
             hourEvents={hourEvents}
             isNow={isNow}
+            dataDay={dataDay}
           />
         );
       })}

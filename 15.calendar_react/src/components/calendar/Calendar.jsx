@@ -14,7 +14,6 @@ class Calendar extends Component {
 
   render() {
     const { weekDates, isNow } = this.props;
-  console.log(isNow);
 
     return (
       <section className="calendar">
