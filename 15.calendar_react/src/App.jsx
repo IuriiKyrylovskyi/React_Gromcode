@@ -26,7 +26,7 @@ class App extends Component {
   }
   
   componentWillUnmount() {
-      clearInterval(this.interval)
+    clearInterval(this.interval)
   }
 
   handleTodayBtnClick = () => {
@@ -57,7 +57,7 @@ class App extends Component {
     }
     
     clearInterval(this.interval)
-    
+
     return this.setState({
           isCurrentDate: false,
           weekStartDate: new Date(date.setDate(date.getDate() + diff)),
