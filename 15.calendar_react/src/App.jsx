@@ -15,16 +15,16 @@ class App extends Component {
   componentDidMount() {
     if (this.state.isCurrentDate) {
 
-      const timeSecDiff = 60 * 1000 - new Date().getUTCMilliseconds();
+      const timeSecDiff = 60 * 1000 - new Date().getMilliseconds();
 
       setTimeout(() => this.interval, timeSecDiff);
 
       this.interval = setInterval(() => {
-        this.setState({ isCurrentDate: this.state.isCurrentDate })
+        this.setState({ isCurrentDate: true })
       }, 1000)
     }
   }
-  
+
   componentWillUnmount() {
     clearInterval(this.interval)
   }
@@ -48,7 +48,6 @@ class App extends Component {
     console.log(currentDate);
     console.log(currentDate === stateDate);
 
-    
     if (currentDate === stateDate) {
       return this.setState({
         isCurrentDate: true,
@@ -67,9 +66,9 @@ class App extends Component {
   // handleCurrentDate = () => {
   //   const currentDate = new Date(getWeekStartDate(new Date())).getTime();
   //   const stateDate = new Date(getWeekStartDate(this.state.weekStartDate)).getTime();
-  //   console.log(stateDate);
-  //   console.log(currentDate);
-  //   console.log(currentDate === stateDate);
+  //   // console.log(stateDate);
+  //   // console.log(currentDate);
+  //   // console.log(currentDate === stateDate);
   //   return (currentDate === stateDate
   //     ? this.setState({
   //       ...this.state,
