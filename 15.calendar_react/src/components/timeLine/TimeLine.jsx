@@ -3,6 +3,7 @@ import './timeline.scss';
 
 const TimeLine = () => {
   const mins = new Date().getMinutes();
+  
   return (
     <div
       className="time-line"

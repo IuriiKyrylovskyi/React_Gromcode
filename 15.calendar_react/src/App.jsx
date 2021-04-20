@@ -13,13 +13,23 @@ class App extends Component {
   };
 
   componentDidMount() {
-   const this.interval = setInterval(() => {
-     this.setState({ isCurrentDate: this.state.isCurrentDate })
-    }, 1000)
-  }
+    if (this.state.isCurrentDate) {
 
+      const timeSecDiff = 60 * 1000 - new Date().getUTCMilliseconds();
+
+      setTimeout(() => this.interval, timeSecDiff);
+
+      this.interval = setInterval(() => {
+        this.setState({ isCurrentDate: this.state.isCurrentDate })
+      }, 1000)
+      console.log(this.state.isCurrentDate);
+    }
+  }
+  
   componentWillUnmount() {
-    clearInterval(this.interval)
+    if (!this.state.isCurrentDate) {
+      clearInterval(this.interval)
+    }
   }
 
   handleTodayBtnClick = () => {
