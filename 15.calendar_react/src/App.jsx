@@ -16,10 +16,10 @@ class App extends Component {
   }
 
   handleArrowBtnClick = diff => {
-    console.log(this.state.weekStartDate);
-    const newDate = this.state.weekStartDate;
-    this.setState({ weekStartDate: newDate.setDate(newDate.getDate() + diff) })
-    console.log(this.state.weekStartDate);
+    const date = this.state.weekStartDate;
+    this.setState({
+      weekStartDate: new Date(date.setDate(date.getDate() + diff))
+    })
   }
 
   render() {
