@@ -7,23 +7,29 @@ class TimeLine extends Component {
     isUpdate: true,
   }
 
-  // componentDidMount() {
-  //   if (this.isCurrentDate()) {
+  componentDidMount() {
+    if (this.isCurrentDate()) {
 
-  //     const timeSecDiff = 60 * 1000 - new Date().getMilliseconds();
+      const timeSecDiff = 60 * 1000 - new Date().getMilliseconds();
 
-  //     setTimeout(() => this.interval, timeSecDiff);
+      setTimeout(() => this.interval, timeSecDiff);
 
-  //     this.interval = setInterval(() => {
-  //       this.setState({isUpdate: true})
-  //     }, 1000)
-  //   }
-  // }
+      this.interval = setInterval(() => {
+        this.setState({
+          date: new Date(),
+          isUpdate: true,
+        })
+      }, 1000)
+    }
+  }
 
-  // componentWillUnmount() {
-  //   this.setState({isUpdate: false})
-  //   clearInterval(this.interval)
-  // }
+  componentWillUnmount() {
+    this.setState({
+      ...this.state,
+      isUpdate: false
+    })
+    clearInterval(this.interval)
+  }
 
   isCurrentDate = () => {
     const weekEndDate = this.state.date.getTime() + 7 * 24 * 60 * 1000;
@@ -34,23 +40,21 @@ class TimeLine extends Component {
 
   render() {
     if (!this.state.isUpdate) {
-      return;
+      return null;
     }
     
-    const { dataDay, dataHour } = this.props;
-
-    // if (this.state.isUpdate &&
-    //   dataDay === new Date().getDate() &&
-    //   dataHour === new Date().getHours()) {
-        const mins = new Date().getMinutes();
+    const { weekStartDate } = this.props;
+    const mins = this.state.date.getMinutes();
+ 
+    return (this.state.isUpdate &&
+      weekStartDate.getFullYear() === new Date().getFullYear() &&
+      weekStartDate.getMonth() === new Date().getMonth() &&
+      <div
+        className="time-line"
+        style={{top: mins}}
+      ></div>)
         
-        return (
-          <div
-            className="time-line"
-            style={{top: mins}}
-          ></div>
-        )
-      // }
+      
   }
 }
 
