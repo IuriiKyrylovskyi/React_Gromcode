@@ -39,22 +39,20 @@ class TimeLine extends Component {
   } 
 
   render() {
-    if (!this.state.isUpdate) {
-      return null;
-    }
-    
-    const { weekStartDate } = this.props;
+    // if (!this.state.isUpdate) {
+    //   return null;
+    // }
+    console.log('render timeLine');
     const mins = this.state.date.getMinutes();
  
-    return (this.state.isUpdate &&
-      weekStartDate.getFullYear() === new Date().getFullYear() &&
-      weekStartDate.getMonth() === new Date().getMonth() &&
+    return (
+      this.state.isUpdate &&
       <div
         className="time-line"
         style={{top: mins}}
-      ></div>)
-        
-      
+      >
+      </div>
+    )
   }
 }
 

@@ -24,9 +24,7 @@ class Calendar extends Component {
             <Week
               weekDates={weekDates}
               events={this.state.events}
-              // isNow={isNow}
-                        weekStartDate={weekStartDate}
-
+              weekStartDate={weekStartDate}
             />
           </div>
         </div>

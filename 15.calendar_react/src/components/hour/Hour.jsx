@@ -27,6 +27,8 @@ const Hour = ({weekStartDate, dataDay, dataHour, hourEvents }) => {
         );
       })}
       {/* {/* {isNow && */
+        weekStartDate.getFullYear() === new Date().getFullYear() &&
+        weekStartDate.getMonth() === new Date().getMonth() &&
         dataDay === new Date().getDate() &&
         dataHour === new Date().getHours() && 
       <TimeLine 

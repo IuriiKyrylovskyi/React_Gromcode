@@ -8,31 +8,18 @@ import "./common.scss";
 
 class App extends Component {
   state = {
-    // weekStartDate: getWeekStartDate(new Date()),
     weekStartDate: new Date(),
   };
 
-  // componentDidMount() {
-  //   if (this.isCurrentDate()) {
-
-  //     const timeSecDiff = 60 * 1000 - new Date().getMilliseconds();
-
-  //     setTimeout(() => this.interval, timeSecDiff);
-
-  //     this.interval = setInterval(() => {
-  //       this.setState({isRenderTimeLine: true})
-  //     }, 1000)
-  //   }
-  // }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.interval)
-  // }
-
   handleTodayBtnClick = () => {
-    // if (this.isCurrentDate()) {
-    //   return;
-    // }
+    const { weekStartDate } = this.state;
+    const weekStartTime = generateWeekRange(getWeekStartDate(weekStartDate))[0].getTime();
+    const weekEndTime = weekStartTime + 7 * 24 * 60 * 60 * 1000;
+    const nowTime = new Date().getTime();
+
+    if (nowTime > weekStartTime && nowTime < weekEndTime) {
+      return;
+    }
     this.setState({
       weekStartDate: new Date(),
     })
@@ -46,23 +33,11 @@ class App extends Component {
       weekStartDate: date,
     }) 
   }
-    
-  // isCurrentDate = () => {
-  //   const weekEndDate = this.state.weekStartDate.getTime() + 7 * 24 * 60 * 1000;
-  //   const nowTime = (new Date()).getTime();
- 
-  //   return (nowTime < weekEndDate && nowTime > this.state.weekStartDate.getTime());
-  // } 
 
   render() {
-    // console.log(this.isCurrentDate());
-    // if (!this.isCurrentDate()) {
-    //   clearInterval(this.interval);
-    // }
-
     const { weekStartDate } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
-    
+    console.log(weekStartDate);
     return (
       <>
         <Header
@@ -72,7 +47,6 @@ class App extends Component {
         />
         <Calendar
           weekDates={weekDates}
-          // isNow={this.isCurrentDate()}
           weekStartDate={weekStartDate}
         />
       </>
