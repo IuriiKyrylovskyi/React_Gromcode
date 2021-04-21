@@ -9,8 +9,8 @@ import "./common.scss";
 
 class App extends Component {
   state = {
-    weekStartDate: new Date(),
-    createEvent: false,
+    weekStartDate: getWeekStartDate(new Date()),
+    isOpen: false,
   };
 
   handleTodayBtnClick = () => {
@@ -23,7 +23,8 @@ class App extends Component {
       return;
     }
     this.setState({
-      weekStartDate: new Date(),
+      ...this.state,
+      weekStartDate: getWeekStartDate(new Date()),
     })
   }
 
@@ -32,14 +33,15 @@ class App extends Component {
     date.setDate(date.getDate() + diff)
 
     return this.setState({
+      ...this.state,
       weekStartDate: date,
     }) 
   }
 
-  handleCreate = () => {
+  handleOpenModal = () => {
     this.setState({
       ...this.state,
-      createEvent: !this.state.createEvent,
+      isOpen: !this.state.isOpen,
     })
   }
 
@@ -55,16 +57,16 @@ class App extends Component {
           weekDates={weekDates}
           handleTodayBtn={this.handleTodayBtnClick}
           handleArrowBtn={this.handleArrowBtnClick}
-          handleCreate={this.handleCreate}
+          handleOpen={this.handleOpenModal}
         />
         <Calendar
           weekDates={weekDates}
           weekStartDate={weekStartDate}
         />
-        {
-          this.state.createEvent &&
-          <Modal key={this.handleCreate}/>
-        }
+        <Modal
+          isOpen={this.state.isOpen}
+          handleClose={this.handleOpenModal}
+        />
       </>
     );
   }

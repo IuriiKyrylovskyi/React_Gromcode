@@ -4,19 +4,29 @@ import "./modal.scss";
 
 class Modal extends Component {
   //  state = {
-  //   createEvent: false,
+  //   isOpen: false,
   // };
+  
+  // handleOpen = () => {
+  //   this.setState({
+  //     createEvent: !this.state.isOpen,
+  //   })
+  // }
 
   render() {
-    const { handleCreate } = this.props;
+    const { isOpen, handleClose } = this.props;
+
+    if (!isOpen) {
+      return null;
+    }
 
     return (
-      <div className="modal overlay">
-        <div className="modal__content">
+      <div className="modal overlay" onClick={handleClose}>
+        <div className="modal__content" onClick={e => e.stopPropagation()}>
           <div className="create-event">
             <button
               className="create-event__close-btn"
-              onClick={handleCreate}
+              onClick={handleClose}
             >+</button>
             <form className="event-form">
               <input
