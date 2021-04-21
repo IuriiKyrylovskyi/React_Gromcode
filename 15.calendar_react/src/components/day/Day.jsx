@@ -3,7 +3,7 @@ import Hour from "../hour/Hour";
 
 import "./day.scss";
 
-const Day = ({ weekDates, dataDay, dayEvents, isNow }) => {
+const Day = ({ weekStartDate, dataDay, dayEvents }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
@@ -21,8 +21,9 @@ const Day = ({ weekDates, dataDay, dayEvents, isNow }) => {
             key={dataDay + hour}
             dataHour={hour}
             hourEvents={hourEvents}
-            isNow={isNow}
+            // isNow={isNow}
             dataDay={dataDay}
+            weekStartDate={weekStartDate}
           />
         );
       })}
