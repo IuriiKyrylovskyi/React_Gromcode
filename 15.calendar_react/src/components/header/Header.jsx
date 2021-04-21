@@ -6,7 +6,7 @@ import { months } from "../../utils/dateUtils.js";
 import "./header.scss";
 
 const Header = props => {
-  const { weekDates, handleTodayBtn, handleArrowBtn } = props;
+  const { weekDates, handleTodayBtn, handleArrowBtn, handleCreate } = props;
   // const prevMonth = moment(props.weekDates[0]).format('MMM');
   // const nextMonth = moment(props.weekDates[6]).format('MMM');
 
@@ -17,6 +17,7 @@ const Header = props => {
     <header className="header">
       <button
         className="button create-event-btn"
+        onClick={handleCreate}
       >
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>

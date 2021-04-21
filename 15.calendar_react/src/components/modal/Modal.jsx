@@ -3,12 +3,21 @@ import React, { Component } from "react";
 import "./modal.scss";
 
 class Modal extends Component {
+  //  state = {
+  //   createEvent: false,
+  // };
+
   render() {
+    const { handleCreate } = this.props;
+
     return (
       <div className="modal overlay">
         <div className="modal__content">
           <div className="create-event">
-            <button className="create-event__close-btn">+</button>
+            <button
+              className="create-event__close-btn"
+              onClick={handleCreate}
+            >+</button>
             <form className="event-form">
               <input
                 type="text"
