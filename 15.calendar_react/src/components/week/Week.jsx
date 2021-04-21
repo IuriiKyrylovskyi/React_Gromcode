@@ -22,7 +22,6 @@ const Week = ({ weekStartDate, weekDates, events }) => {
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}
             weekDates={weekDates}
-            // isNow={isNow}
             weekStartDate={weekStartDate}
           />
         );

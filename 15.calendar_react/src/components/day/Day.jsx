@@ -21,7 +21,6 @@ const Day = ({ weekStartDate, dataDay, dayEvents }) => {
             key={dataDay + hour}
             dataHour={hour}
             hourEvents={hourEvents}
-            // isNow={isNow}
             dataDay={dataDay}
             weekStartDate={weekStartDate}
           />
