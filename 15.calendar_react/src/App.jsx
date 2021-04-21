@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from 'moment';
 import Header from "./components/header/Header";
 import Calendar from "./components/calendar/Calendar";
 
@@ -42,13 +43,16 @@ class App extends Component {
   handleArrowBtnClick = diff => {
     const date = this.state.weekStartDate;
 
-    const currentDate = new Date(getWeekStartDate(new Date()));
-    const stateDate = new Date(getWeekStartDate(this.state.weekStartDate));
-    console.log(stateDate);
-    console.log(currentDate);
-    console.log(currentDate === stateDate);
+    const weekDates = generateWeekRange(getWeekStartDate(this.state.weekStartDate));
+const arr = weekDates.filter(day => moment(day).format('YYYY DD MMM') === moment(new Date()).format('YYYY DD MMM'));
 
-    if (currentDate === stateDate) {
+    // const currentDate = new Date(getWeekStartDate(new Date()));
+    // const stateDate = new Date(getWeekStartDate(this.state.weekStartDate));
+    // console.log(stateDate);
+    // console.log(currentDate);
+    // console.log(currentDate === stateDate);
+
+    if (arr.length) {
       return this.setState({
         isCurrentDate: true,
         weekStartDate: new Date(date.setDate(date.getDate() + diff)),
@@ -85,7 +89,8 @@ class App extends Component {
     const { weekStartDate, isCurrentDate } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 console.log(isCurrentDate);
-
+const arr = weekDates.filter(day => moment(day).format('YYYY DD MMM') === moment(new Date()).format('YYYY DD MMM'));
+console.log(arr.length);
     //   const currentDate = new Date(getWeekStartDate(new Date())).getTime();
     // const stateDate = new Date(getWeekStartDate(this.state.weekStartDate)).getTime();
     // console.log(stateDate);
