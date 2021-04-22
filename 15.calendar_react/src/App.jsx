@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "./components/header/Header";
 import Calendar from "./components/calendar/Calendar";
-import Modal from './components/modal/Modal';
 
 import { getWeekStartDate, generateWeekRange } from "../src/utils/dateUtils.js";
 
@@ -10,7 +9,6 @@ import "./common.scss";
 class App extends Component {
   state = {
     weekStartDate: getWeekStartDate(new Date()),
-    isOpen: false,
   };
 
   handleTodayBtnClick = () => {
@@ -23,7 +21,6 @@ class App extends Component {
       return;
     }
     this.setState({
-      ...this.state,
       weekStartDate: getWeekStartDate(new Date()),
     })
   }
@@ -33,20 +30,18 @@ class App extends Component {
     date.setDate(date.getDate() + diff)
 
     return this.setState({
-      ...this.state,
       weekStartDate: date,
     }) 
   }
 
   handleOpenModal = () => {
     this.setState({
-      ...this.state,
       isOpen: !this.state.isOpen,
     })
   }
 
   render() {
-    const { weekStartDate, isOpen } = this.state;
+    const { weekStartDate } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
     // console.log(weekStartDate);
     // console.log(this.state);
@@ -58,19 +53,12 @@ class App extends Component {
           handleTodayBtn={this.handleTodayBtnClick}
           handleArrowBtn={this.handleArrowBtnClick}
           handleOpen={this.handleOpenModal}
-          isOpen={isOpen}
         />
         <Calendar
           weekDates={weekDates}
           weekStartDate={weekStartDate}
           handleOpen={this.handleOpenModal}
         />
-        {isOpen &&
-        <Modal
-          isOpen={isOpen}
-          handleClose={this.handleOpenModal}
-        />
-        }
       </>
     );
   }
