@@ -7,7 +7,6 @@ class Modal extends Component {
     title: "",
     date: moment(new Date()),
     description: "",
-    dayMonthYear: moment().format('YYYY-MM-DD'),
   };
   
   handleChange = e => {
