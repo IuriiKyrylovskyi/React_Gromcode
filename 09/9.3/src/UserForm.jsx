@@ -51,6 +51,24 @@ class UserForm extends Component{
           <label className="form-label" id="about" htmlFor="about">About</label>
           <textarea name="about" className="form-input"/>
         </div>
+        <div className="form-control">
+          <label className="form-label" htmlFor="date">Date</label>
+          <input
+            className="form-input"
+            type="date"
+            id="date"
+            name="date"
+          />
+        </div>
+        <div className="form-control">
+          <label className="form-label" htmlFor="time">Time</label>
+          <input
+            className="form-input"
+            type="time"
+            id="time"
+            name="time"
+          />
+        </div>
         <button className="submit-button" type="submit">Submit</button>
       </form>
     )
