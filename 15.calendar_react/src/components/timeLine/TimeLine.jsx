@@ -5,7 +5,6 @@ class TimeLine extends Component {
   state = {
     date: new Date(),
     isUpdate: true,
-    // minutes: (new Date()).getMinutes(),
   }
 
   componentDidMount() {
@@ -19,7 +18,6 @@ class TimeLine extends Component {
         this.setState({
           date: new Date(),
           isUpdate: true,
-          // minutes: (new Date()).getMinutes(),
         })
       }, 1000)
     }
