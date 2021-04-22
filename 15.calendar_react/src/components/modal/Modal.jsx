@@ -4,11 +4,24 @@ import "./modal.scss";
 
 class Modal extends Component {
   state = {
-    title: "Your title",
-    date: moment(),
-    description: "Description",
+    title: "",
+    date: moment(new Date()),
+    description: "",
+    dayMonthYear: moment().format('YYYY-MM-DD'),
   };
   
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({
+      ...this.state,
+      [name]: value,
+    })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.state);
+  }
   // handleOpen = () => {
   //   this.setState({
   //     createEvent: !this.state.isOpen,
@@ -18,8 +31,10 @@ class Modal extends Component {
   render() {
     const { isOpen, handleClose } = this.props;
     const { title, date, description } = this.state;
-    const dayMonthYear =  date.format('YYYY-MM-DD')
-    const time =  date.format('hh:mm')
+    const dayMonthYear = date.format('YYYY-MM-DD');
+    const time = date.format('hh:mm');
+    
+    console.log(typeof dayMonthYear);
 
     if (!isOpen) {
       return null;
