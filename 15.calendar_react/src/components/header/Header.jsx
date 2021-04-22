@@ -13,18 +13,18 @@ class Header extends Component{
 
   handleOpenModal = () => {
     this.setState({
-      isOpen: !this.state.isOpen,
+      isOpen: !this.props.handleOpen(this.state.isOpen)
     })
   }
 
   render(){
-    const { weekDates, handleTodayBtn, handleArrowBtn, handleOpen } = this.props;
+    const { weekDates, handleTodayBtn, handleArrowBtn } = this.props;
     // const prevMonth = moment(props.weekDates[0]).format('MMM');
     // const nextMonth = moment(props.weekDates[6]).format('MMM');
     const { isOpen } = this.state;
     const monthAtWeekStart = months[new Date(weekDates[0]).getMonth()];
     const monthAtWeekEnd = months[new Date(weekDates[6]).getMonth()];
-    
+    // console.log(this.state);
     return (
       <header className="header">
         <button

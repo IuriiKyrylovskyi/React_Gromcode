@@ -34,10 +34,8 @@ class App extends Component {
     }) 
   }
 
-  handleOpenModal = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    })
+  handleOpenModal = openStatus => {
+    return openStatus;
   }
 
   render() {
