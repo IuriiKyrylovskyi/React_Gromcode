@@ -5,7 +5,7 @@ import "./modal.scss";
 class Modal extends Component {
   state = {
     title: "",
-    date: moment(new Date()),
+    date: new Date(),
     description: "",
   };
   
@@ -19,6 +19,7 @@ class Modal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    // console.log(this.state);
     console.log(this.state);
   }
   // handleOpen = () => {
@@ -30,10 +31,12 @@ class Modal extends Component {
   render() {
     const { isOpen, handleClose } = this.props;
     const { title, date, description } = this.state;
-    const dayMonthYear = date.format('YYYY-MM-DD');
-    const time = date.format('hh:mm');
+    const dayMonthYear = moment(date).format('YYYY-MM-DD');
+    const timeStart = moment(date).format('hh:mm');
+    const timeEnd = moment(date).format('hh:mm');
     
-    console.log(typeof dayMonthYear);
+    console.log(timeStart);
+    console.log(timeEnd);
 
     if (!isOpen) {
       return null;
@@ -71,7 +74,7 @@ class Modal extends Component {
                   type="time"
                   name="startTime"
                   className="event-form__field"
-                  value={time}
+                  value={timeStart}
                   onChange={this.handleChange}
                 />
                 <span>-</span>
@@ -79,7 +82,7 @@ class Modal extends Component {
                   type="time"
                   name="endTime"
                   className="event-form__field"
-                  value={time}
+                  value={timeEnd}
                   onChange={this.handleChange}
                 />
               </div>

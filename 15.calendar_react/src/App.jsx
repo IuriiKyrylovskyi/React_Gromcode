@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "./components/header/Header";
 import Calendar from "./components/calendar/Calendar";
-import Modal from "./components/modal/Modal";
 
 import { getWeekStartDate, generateWeekRange } from "../src/utils/dateUtils.js";
 
@@ -46,7 +45,7 @@ class App extends Component {
   }
 
   render() {
-    const { weekStartDate } = this.state;
+    const { weekStartDate, isOpen } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
     // console.log(weekStartDate);
     // console.log(this.state);
@@ -58,15 +57,12 @@ class App extends Component {
           handleTodayBtn={this.handleTodayBtnClick}
           handleArrowBtn={this.handleArrowBtnClick}
           handleOpen={this.handleOpenModal}
+          isOpen={isOpen}
         />
         <Calendar
           weekDates={weekDates}
           weekStartDate={weekStartDate}
           handleOpen={this.handleOpenModal}
-        />
-        <Modal
-          isOpen={this.state.isOpen}
-          handleClose={this.handleOpenModal}
         />
       </>
     );
