@@ -8,7 +8,9 @@ const modalRoot = document.querySelector('#modal');
 class Modal extends Component {
   state = {
     title: "",
-    date: new Date(),
+    date: '',
+    startTime: '',
+    endTime: '',
     description: "",
   };
     
@@ -41,7 +43,7 @@ class Modal extends Component {
 
   render() {
     const { isOpen, handleClose } = this.props;
-    const { title, date, description } = this.state;
+    const { title, date, startTime, endTime, description } = this.state;
     const dayMonthYear = moment(date).format('YYYY-MM-DD');
     const timeStart = moment().format('HH:mm');
     const timeEnd = moment(date).format('HH:mm');
@@ -87,7 +89,7 @@ class Modal extends Component {
                   type="time"
                   name="startTime"
                   className="event-form__field"
-                  value={timeStart}
+                  value={startTime}
                   onChange={this.handleChange}
                 />
                 <span>-</span>
@@ -95,7 +97,7 @@ class Modal extends Component {
                   type="time"
                   name="endTime"
                   className="event-form__field"
-                  value={timeEnd}
+                  value={endTime}
                   onChange={this.handleChange}
                 />
               </div>
