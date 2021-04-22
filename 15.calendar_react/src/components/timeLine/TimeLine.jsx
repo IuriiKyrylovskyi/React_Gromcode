@@ -4,20 +4,20 @@ import './timeline.scss';
 class TimeLine extends Component {
   state = {
     isUpdate: true,
-    minutes: new Date().getMinutes(),
+    minutes: (new Date()).getMinutes(),
   }
 
   componentDidMount() {
     if (this.isCurrentDate()) {
 
-      const timeSecDiff = 60 * 1000 - new Date().getMilliseconds();
+      const timeSecDiff = 60 * 1000 - (new Date()).getMilliseconds();
 
       setTimeout(() => this.interval, timeSecDiff);
 
       this.interval = setInterval(() => {
         this.setState({
-          minutes: new Date().getMinutes(),
           isUpdate: true,
+          minutes: (new Date()).getMinutes(),
         })
       }, 1000)
     }

@@ -38,12 +38,12 @@ class App extends Component {
     }) 
   }
 
-  // handleOpenModal = () => {
-  //   this.setState({
-  //     ...this.state,
-  //     isOpen: !this.state.isOpen,
-  //   })
-  // }
+  handleOpenModal = () => {
+    this.setState({
+      ...this.state,
+      isOpen: !this.state.isOpen,
+    })
+  }
 
   render() {
     const { weekStartDate } = this.state;
