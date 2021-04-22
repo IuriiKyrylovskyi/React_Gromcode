@@ -3,8 +3,8 @@ import './timeline.scss';
 
 class TimeLine extends Component {
   state = {
-    date: this.props.weekStartDate,
     isUpdate: true,
+    minutes: new Date().getMinutes(),
   }
 
   componentDidMount() {
@@ -16,7 +16,7 @@ class TimeLine extends Component {
 
       this.interval = setInterval(() => {
         this.setState({
-          date: new Date(),
+          minutes: new Date().getMinutes(),
           isUpdate: true,
         })
       }, 1000)
@@ -32,18 +32,17 @@ class TimeLine extends Component {
   }
 
   isCurrentDate = () => {
-    const weekEndDate = this.state.date.getTime() + 7 * 24 * 60 * 1000;
+    const weekStartDate = this.props.weekStartDate.getTime();
+    const weekEndDate = weekStartDate + 7 * 24 * 60 * 1000;
     const nowTime = (new Date()).getTime();
  
-    return (nowTime < weekEndDate && nowTime > this.state.date.getTime());
+    return (nowTime < weekEndDate && nowTime > weekStartDate);
   } 
 
   render() {
-    // if (!this.state.isUpdate) {
-    //   return null;
-    // }
     console.log('render timeLine');
-    const mins = this.state.date.getMinutes();
+    const mins = this.state.minutes;
+    // const mins = this.state.mins;
  
     return (
       this.state.isUpdate &&
