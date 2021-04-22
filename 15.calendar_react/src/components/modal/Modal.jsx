@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { createPortal } from "react-dom";
 import moment from 'moment';
 import "./modal.scss";
+
+const modalRoot = document.querySelector('#modal');
 
 class Modal extends Component {
   state = {
@@ -8,7 +11,18 @@ class Modal extends Component {
     date: new Date(),
     description: "",
   };
+    
+  element = document.createElement('div');
   
+  componentDidMount(){
+    modalRoot.appendChild(this.element);
+  }
+
+  componentWillUnmount() {
+    modalRoot.removeChild(this.element);
+  }
+  
+
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
@@ -42,7 +56,7 @@ class Modal extends Component {
       return null;
     }
 
-    return (
+    return createPortal(
       <div className="modal overlay" onClick={handleClose}>
         <div className="modal__content" onClick={e => e.stopPropagation()}>
           <div className="create-event">
@@ -102,7 +116,8 @@ class Modal extends Component {
             </form>
           </div>
         </div>
-      </div>
+      </div>,
+      this.element
     );
   }
 }

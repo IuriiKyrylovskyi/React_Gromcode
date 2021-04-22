@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from '../modal/Modal';
+// import Modal from '../modal/Modal';
 // import moment from 'moment';
 
 import { months } from "../../utils/dateUtils.js";
@@ -7,7 +7,7 @@ import { months } from "../../utils/dateUtils.js";
 import "./header.scss";
 
 const Header = props => {
-  const { weekDates, handleTodayBtn, handleArrowBtn, handleOpen, isOpen, } = props;
+  const { weekDates, handleTodayBtn, handleArrowBtn, handleOpen, isOpen } = props;
   // const prevMonth = moment(props.weekDates[0]).format('MMM');
   // const nextMonth = moment(props.weekDates[6]).format('MMM');
 
@@ -47,10 +47,10 @@ const Header = props => {
             : monthAtWeekStart + ' - ' + monthAtWeekEnd}`}
         </span>
       </div>
-       <Modal
+       {/* <Modal
           isOpen={isOpen}
           handleClose={handleOpen}
-        />
+        /> */}
     </header>
   );
 };
