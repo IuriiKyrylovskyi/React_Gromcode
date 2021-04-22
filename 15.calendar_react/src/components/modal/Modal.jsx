@@ -26,7 +26,6 @@ class Modal extends Component {
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
-      ...this.state,
       [name]: value,
     })
   }
