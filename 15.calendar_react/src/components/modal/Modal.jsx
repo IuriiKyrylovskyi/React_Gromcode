@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-
+import moment from 'moment';
 import "./modal.scss";
 
 class Modal extends Component {
-  //  state = {
-  //   isOpen: false,
-  // };
+  state = {
+    title: "Your title",
+    date: moment(),
+    description: "Description",
+  };
   
   // handleOpen = () => {
   //   this.setState({
@@ -15,7 +17,11 @@ class Modal extends Component {
 
   render() {
     const { isOpen, handleClose } = this.props;
-
+    const { title, date, description } = this.state;
+    const dayMonthYear =  date.format('YYYY-MM-DD')
+    const time =  date.format('hh:mm')
+console.log(time);
+    console.log(date);
     if (!isOpen) {
       return null;
     }
@@ -28,19 +34,31 @@ class Modal extends Component {
               className="create-event__close-btn"
               onClick={handleClose}
             >+</button>
-            <form className="event-form">
+            <form
+              className="event-form"
+              onSubmit={this.handleSubmit}
+            >
               <input
                 type="text"
                 name="title"
                 placeholder="Title"
                 className="event-form__field"
+                value={title}
+                onChange={this.handleChange}
               />
               <div className="event-form__time">
-                <input type="date" name="date" className="event-form__field" />
+                <input
+                  type="date"
+                  name="date"
+                  className="event-form__field"
+                  value={dayMonthYear}
+                  onChange={this.handleChange}
+                />
                 <input
                   type="time"
                   name="startTime"
                   className="event-form__field"
+                  value={time}
                   onChange={this.handleChange}
                 />
                 <span>-</span>
@@ -48,14 +66,21 @@ class Modal extends Component {
                   type="time"
                   name="endTime"
                   className="event-form__field"
+                  value={time}
+                  onChange={this.handleChange}
                 />
               </div>
               <textarea
                 name="description"
                 placeholder="Description"
                 className="event-form__field"
+                value={description}
+                onChange={this.handleChange}
               ></textarea>
-              <button type="submit" className="event-form__submit-btn">
+              <button
+                type="submit"
+                className="event-form__submit-btn"
+              >
                 Create
               </button>
             </form>

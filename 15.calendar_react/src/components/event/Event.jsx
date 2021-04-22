@@ -9,7 +9,11 @@ const Event = ({ height, marginTop, title, time }) => {
   };
 
   return (
-    <div style={eventStyle} className="event">
+    <div
+      style={eventStyle}
+      className="event"
+      // onClick={handleDelete}
+    >
       <div className="event__title">{title}</div>
       <div className="event__time">{time}</div>
     </div>
