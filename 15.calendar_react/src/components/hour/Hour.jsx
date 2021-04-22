@@ -12,11 +12,16 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, handleOpen }) => {
   //   })
   // }
 
+  const handleClick = () => {
+
+    console.log({ weekStartDate, dataDay, dataHour, hourEvents });
+  }
+
   return (
     <div
       className="calendar__time-slot"
       data-time={dataHour + 1}
-      onClick={handleOpen}
+      onClick={handleClick}
     >
       {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
