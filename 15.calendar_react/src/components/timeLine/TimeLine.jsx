@@ -42,7 +42,6 @@ class TimeLine extends Component {
   render() {
     console.log('render timeLine');
     const mins = this.state.minutes;
-    // const mins = this.state.mins;
  
     return (
       this.state.isUpdate &&
