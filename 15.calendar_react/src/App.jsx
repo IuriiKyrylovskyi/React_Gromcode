@@ -43,7 +43,7 @@ class App extends Component {
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
     // console.log(weekStartDate);
     // console.log(this.state);
-
+    console.log(this.handleOpenModal());
     return (
       <>
         <Header

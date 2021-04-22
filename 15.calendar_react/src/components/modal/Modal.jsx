@@ -38,16 +38,12 @@ class Modal extends Component {
     this.props.handleClose();
   }
 
-  selected = (e) => {
-    console.log('select' + e.target.value);
-  }
-
   render() {
     const { isOpen, handleClose } = this.props;
     const { title, date, startTime, endTime, description } = this.state;
     const dayMonthYear = moment(date).format('YYYY-MM-DD');
     const timeStart = moment().format('HH:mm');
-    const timeEnd = moment(date).format('HH:mm');
+    const timeEnd = moment().format('HH:mm');
     
     console.log(timeStart);
     console.log(timeEnd);
