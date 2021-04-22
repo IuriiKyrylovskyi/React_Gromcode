@@ -3,7 +3,13 @@ import TimeLine from "../timeLine/TimeLine";
 import Event from "../event/Event";
 import { formatMins } from "../../../src/utils/dateUtils.js";
 
-const Hour = ({weekStartDate, dataDay, dataHour, hourEvents, handleOpen }) => {
+const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, handleOpen }) => {
+  // const handleOpenModal = () => {
+  //   this.setState({
+  //     isOpen: !this.props.handleOpen(this.state.isOpen)
+  //   })
+  // }
+
   return (
     <div
       className="calendar__time-slot"
