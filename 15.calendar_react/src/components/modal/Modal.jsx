@@ -20,8 +20,7 @@ class Modal extends Component {
     const { title, date, description } = this.state;
     const dayMonthYear =  date.format('YYYY-MM-DD')
     const time =  date.format('hh:mm')
-console.log(time);
-    console.log(date);
+
     if (!isOpen) {
       return null;
     }

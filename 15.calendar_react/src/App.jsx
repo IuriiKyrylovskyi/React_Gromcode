@@ -62,6 +62,7 @@ class App extends Component {
         <Calendar
           weekDates={weekDates}
           weekStartDate={weekStartDate}
+          handleOpen={this.handleOpenModal}
         />
         <Modal
           isOpen={this.state.isOpen}

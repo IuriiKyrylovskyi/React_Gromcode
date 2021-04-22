@@ -3,9 +3,13 @@ import TimeLine from "../timeLine/TimeLine";
 import Event from "../event/Event";
 import { formatMins } from "../../../src/utils/dateUtils.js";
 
-const Hour = ({weekStartDate, dataDay, dataHour, hourEvents }) => {
+const Hour = ({weekStartDate, dataDay, dataHour, hourEvents, handleOpen }) => {
   return (
-    <div className="calendar__time-slot" data-time={dataHour + 1}>
+    <div
+      className="calendar__time-slot"
+      data-time={dataHour + 1}
+      onClick={handleOpen}
+    >
       {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(
