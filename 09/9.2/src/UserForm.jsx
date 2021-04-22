@@ -6,6 +6,8 @@ class UserForm extends Component{
     student: '',
     occupation: '',
     about: '',
+    date: '',
+    time: '',
   }
 
   handleChange = e => {
@@ -72,6 +74,28 @@ class UserForm extends Component{
             className="form-input"
             onChange={this.handleChange}
             value={this.state.about}
+          />
+        </div>
+        <div className="form-control">
+          <label className="form-label" htmlFor="date">Date</label>
+          <input
+            className="form-input"
+            type="date"
+            id="date"
+            name="date"
+            onChange={this.handleChange}
+            value={this.state.date}
+          />
+        </div>
+        <div className="form-control">
+          <label className="form-label" htmlFor="time">Time</label>
+          <input
+            className="form-input"
+            type="time"
+            id="time"
+            name="time"
+            onChange={this.handleChange}
+            value={this.state.time}
           />
         </div>
         <button className="submit-button" type="submit">Submit</button>
