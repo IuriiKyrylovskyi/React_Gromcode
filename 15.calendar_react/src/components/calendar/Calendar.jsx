@@ -55,6 +55,10 @@ class Calendar extends Component {
   //     .then(() => this.fetchEvents())
   // }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.isOpen === nextProps.isOpen;
+  }
+
   render() {
     const { weekStartDate, weekDates, handleOpen } = this.props;
 

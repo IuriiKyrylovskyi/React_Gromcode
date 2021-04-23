@@ -11,12 +11,12 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, handleOpen }) => {
   //     isOpen: !this.props.handleOpen(this.state.isOpen)
   //   })
   // }
-  let isModalOpen = false;
+  // let isModalOpen = false;
 
-  const handleClick = () => { 
-    handleOpen(isModalOpen);
-    console.log({ weekStartDate, dataDay, dataHour, hourEvents });
-  }
+  // const handleClick = () => { 
+  //   handleOpen(isModalOpen);
+  //   console.log({ weekStartDate, dataDay, dataHour, hourEvents });
+  // }
 
   const currentDate = weekStartDate.getFullYear() === new Date().getFullYear() &&
     weekStartDate.getMonth() === new Date().getMonth() &&
@@ -27,7 +27,7 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, handleOpen }) => {
     <div
       className="calendar__time-slot"
       data-time={dataHour + 1}
-      onClick={handleClick}
+      onClick={handleOpen}
     >
       {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {

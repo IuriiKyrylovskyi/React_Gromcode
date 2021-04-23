@@ -9,7 +9,12 @@ import "./common.scss";
 class App extends Component {
   state = {
     weekStartDate: getWeekStartDate(new Date()),
+    isOpen: false,
   };
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.state.isOpen === nextState.isOpen;
+  // }
 
   handleTodayBtnClick = () => {
     const { weekStartDate } = this.state;
@@ -34,16 +39,23 @@ class App extends Component {
     }) 
   }
 
-  handleOpenModal = openStatus => {
-    return openStatus;
+  // handleOpenModal = openStatus => {
+  //   return openStatus;
+  // }
+
+  handleOpenModal = () => {
+    this.setState({
+      ...this.state,
+      isOpen: !this.state.isOpen
+    })
   }
 
   render() {
-    const { weekStartDate } = this.state;
+    const { weekStartDate, isOpen } = this.state;
     const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
     // console.log(weekStartDate);
     // console.log(this.state);
-    console.log(this.handleOpenModal());
+    // console.log(this.handleOpenModal());
     return (
       <>
         <Header
@@ -51,11 +63,13 @@ class App extends Component {
           handleTodayBtn={this.handleTodayBtnClick}
           handleArrowBtn={this.handleArrowBtnClick}
           handleOpen={this.handleOpenModal}
+          isOpen={isOpen}
         />
         <Calendar
           weekDates={weekDates}
           weekStartDate={weekStartDate}
           handleOpen={this.handleOpenModal}
+          isOpen={isOpen}
         />
       </>
     );
