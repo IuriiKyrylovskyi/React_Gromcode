@@ -11,11 +11,17 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, handleOpen }) => {
   //     isOpen: !this.props.handleOpen(this.state.isOpen)
   //   })
   // }
+  let isModalOpen = false;
 
-  const handleClick = () => {
-
+  const handleClick = () => { 
+    handleOpen(isModalOpen);
     console.log({ weekStartDate, dataDay, dataHour, hourEvents });
   }
+
+  const currentDate = weekStartDate.getFullYear() === new Date().getFullYear() &&
+    weekStartDate.getMonth() === new Date().getMonth() &&
+    dataDay === new Date().getDate() &&
+    dataHour === new Date().getHours();
 
   return (
     <div
@@ -45,14 +51,15 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, handleOpen }) => {
         );
       })}
       {
-        weekStartDate.getFullYear() === new Date().getFullYear() &&
-        weekStartDate.getMonth() === new Date().getMonth() &&
-        dataDay === new Date().getDate() &&
-        dataHour === new Date().getHours() && 
-      <TimeLine 
-        weekStartDate={weekStartDate} 
-      />
-        }
+        // weekStartDate.getFullYear() === new Date().getFullYear() &&
+        // weekStartDate.getMonth() === new Date().getMonth() &&
+        // dataDay === new Date().getDate() &&
+        // dataHour === new Date().getHours()
+        currentDate &&
+        <TimeLine 
+          weekStartDate={weekStartDate} 
+        />
+      }
     </div>
   );
 };

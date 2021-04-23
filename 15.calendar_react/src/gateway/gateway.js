@@ -1,6 +1,6 @@
 const baseUrl = "https://608294355dbd2c0017579ede.mockapi.io/events";
 
-export const fetchEvents = () => {
+export const fetchEventsList = () => {
   return fetch(baseUrl).then((response) => {
     if (response.ok) {
       return response.json();
