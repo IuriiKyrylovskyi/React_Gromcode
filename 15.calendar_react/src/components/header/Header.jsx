@@ -27,7 +27,7 @@ class Header extends Component{
     const monthAtWeekEnd = months[new Date(weekDates[6]).getMonth()];
     // console.log(this.state);
     return (
-      <header className="header">
+      <header className="header" data-info="ddd" onClick={e=> console.log(e.target.isOpen)}>
         <button
           className="button create-event-btn"
           onClick={handleOpen}

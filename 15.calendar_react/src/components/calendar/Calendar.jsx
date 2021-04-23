@@ -16,25 +16,29 @@ class Calendar extends Component {
     dateTo: '', 
     description: '',
   };
+  
+  componentDidMount() {
+    this.fetchEvents();
+  }
 
-  // componentDidMount() {
-  //   this.fetchEvents();
-  // }
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.isOpen === nextProps.isOpen;
+  }
 
-  // componentDidUpdate() {
-  //   this.handleEventCreate();
-  //   this.handleEventDelete();
-  // }
+  componentDidUpdate() {
+    // this.handleEventCreate();
+    // this.handleEventDelete();
+  }
 
-  // fetchEvents = () => {
-  //   fetchEventsList()
-  //     .then(eventsList => {
-  //       console.log(eventsList);
-  //       this.setState({
-  //         events: eventsList,
-  //       })
-  //     })
-  // }
+  fetchEvents = () => {
+    fetchEventsList()
+      .then(eventsList => {
+        console.log(eventsList);
+        this.setState({
+          events: eventsList,
+        })
+      })
+  }
 
   // handleEventCreate = () => {
   //   const { title, dateFrom, dateTo, description } = this.state;
@@ -50,14 +54,11 @@ class Calendar extends Component {
   //     .then(() => this.fetchEvents())
   // }
 
-  // handleEventDelete = id => {
-  //   deleteEvent(id)
-  //     .then(() => this.fetchEvents())
-  // }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.isOpen === nextProps.isOpen;
+  handleEventDelete = id => {
+    deleteEvent(id)
+      .then(() => this.fetchEvents())
   }
+
 
   render() {
     const { weekStartDate, weekDates, handleOpen } = this.props;

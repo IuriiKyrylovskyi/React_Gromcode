@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
+import { createEvent } from '../../gateway/gateway'
 import moment from 'moment';
 import "./modal.scss";
 
@@ -8,7 +9,6 @@ const modalRoot = document.querySelector('#modal');
 class Modal extends Component {
   state = {
     title: "",
-    date: '',
     startTime: '',
     endTime: '',
     description: "",
@@ -24,7 +24,6 @@ class Modal extends Component {
     modalRoot.removeChild(this.element);
   }
   
-
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
@@ -32,9 +31,25 @@ class Modal extends Component {
     })
   }
 
+  handleEventCreate = () => {
+    const { title, startTime, endTime, description } = this.state;
+
+    const newEvent = {
+      title: title,
+      dateFrom: startTime,
+      dateTo: endTime,
+      description: description,
+    }
+
+    console.log(newEvent);
+    createEvent(newEvent)
+      // .then(() => this.fetchEvents())
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     console.log(this.state);
+    this.handleEventCreate();
     this.props.handleClose();
   }
 
