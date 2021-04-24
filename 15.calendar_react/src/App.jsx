@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/header/Header";
 import Calendar from "./components/calendar/Calendar";
 
@@ -6,74 +6,44 @@ import { getWeekStartDate, generateWeekRange } from "../src/utils/dateUtils.js";
 
 import "./common.scss";
 
-class App extends Component {
-  state = {
-    weekStartDate: getWeekStartDate(new Date()),
-    isOpen: false,
-  };
+const App = () => {
+  const [weekStartDate, setWeekStartDate] = useState(getWeekStartDate(new Date()));
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.state.isOpen === nextState.isOpen;
-  // }
+  useEffect(() => {
+    handleTodayBtnClick();
+  }, [getWeekStartDate]);
 
-  handleTodayBtnClick = () => {
-    const { weekStartDate } = this.state;
+  useEffect(() => {
+    handleArrowBtnClick();
+  }, [getWeekStartDate]);
+  
+  function handleTodayBtnClick() {
     const weekStartTime = generateWeekRange(getWeekStartDate(weekStartDate))[0].getTime();
     const weekEndTime = weekStartTime + 7 * 24 * 60 * 60 * 1000;
     const nowTime = new Date().getTime();
-
+    
     if (nowTime > weekStartTime && nowTime < weekEndTime) {
       return;
     }
-    this.setState({
-      weekStartDate: getWeekStartDate(new Date()),
-    })
+    setWeekStartDate(getWeekStartDate(new Date()));
   }
+  
+  function handleArrowBtnClick(diff) {
+    const date = weekStartDate;
+    date.setDate(date.getDate() + diff);
 
-  handleArrowBtnClick = diff => {
-    const date = this.state.weekStartDate;
-    date.setDate(date.getDate() + diff)
-
-    return this.setState({
-      weekStartDate: date,
-    }) 
+    setWeekStartDate(date);
   }
-
-  // handleOpenModal = openStatus => {
-  //   return openStatus;
-  // }
-
-  handleOpenModal = () => {
-    this.setState({
-      ...this.state,
-      isOpen: !this.state.isOpen
-    })
-  }
-
-  render() {
-    const { weekStartDate, isOpen } = this.state;
-    const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
-    // console.log(weekStartDate);
-    // console.log(this.state);
-    // console.log(this.handleOpenModal());
-    return (
-      <>
-        <Header
-          weekDates={weekDates}
-          handleTodayBtn={this.handleTodayBtnClick}
-          handleArrowBtn={this.handleArrowBtnClick}
-          handleOpen={this.handleOpenModal}
-          isOpen={isOpen}
-        />
-        <Calendar
-          weekDates={weekDates}
-          weekStartDate={weekStartDate}
-          handleOpen={this.handleOpenModal}
-          isOpen={isOpen}
-        />
-      </>
-    );
-  }
-}
+  
+  const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
+  console.log(weekStartDate);
+  // console.log(this.state);
+  return (
+    <>
+      <Header weekDates={weekDates} handleTodayBtn={handleTodayBtnClick} handleArrowBtn={handleArrowBtnClick} />
+      <Calendar weekDates={weekDates} weekStartDate={weekStartDate} />
+    </>
+  );
+};
 
 export default App;

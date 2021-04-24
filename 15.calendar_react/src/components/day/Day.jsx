@@ -3,7 +3,7 @@ import Hour from "../hour/Hour";
 
 import "./day.scss";
 
-const Day = ({ weekStartDate, dataDay, dayEvents, handleOpen }) => {
+const Day = ({ weekStartDate, dataDay, dayEvents }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
@@ -23,7 +23,6 @@ const Day = ({ weekStartDate, dataDay, dayEvents, handleOpen }) => {
             hourEvents={hourEvents}
             dataDay={dataDay}
             weekStartDate={weekStartDate}
-            handleOpen={handleOpen}
           />
         );
       })}

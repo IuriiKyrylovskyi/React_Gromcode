@@ -21,9 +21,9 @@ class Calendar extends Component {
     this.fetchEvents();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.isOpen === nextProps.isOpen;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.props.isOpen === nextProps.isOpen;
+  // }
 
   componentDidUpdate() {
     // this.handleEventCreate();
@@ -61,7 +61,7 @@ class Calendar extends Component {
 
 
   render() {
-    const { weekStartDate, weekDates, handleOpen } = this.props;
+    const { weekStartDate, weekDates } = this.props;
 
     return (
       <section className="calendar">
@@ -73,7 +73,6 @@ class Calendar extends Component {
               weekDates={weekDates}
               events={this.state.events}
               weekStartDate={weekStartDate}
-              handleOpen={handleOpen}
             />
           </div>
         </div>
