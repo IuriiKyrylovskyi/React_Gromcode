@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./components/header/Header";
 import Calendar from "./components/calendar/Calendar";
 
@@ -9,13 +9,13 @@ import "./common.scss";
 const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(getWeekStartDate(new Date()));
 
-  useEffect(() => {
-    handleTodayBtnClick();
-  }, [getWeekStartDate]);
+  // useEffect(() => {
+  //   handleTodayBtnClick();
+  // }, [getWeekStartDate]);
 
-  useEffect(() => {
-    handleArrowBtnClick();
-  }, [getWeekStartDate]);
+  // useEffect(() => {
+  //   handleArrowBtnClick();
+  // }, [getWeekStartDate]);
   
   function handleTodayBtnClick() {
     const weekStartTime = generateWeekRange(getWeekStartDate(weekStartDate))[0].getTime();
@@ -25,14 +25,14 @@ const App = () => {
     if (nowTime > weekStartTime && nowTime < weekEndTime) {
       return;
     }
-    setWeekStartDate(getWeekStartDate(new Date()));
+    return setWeekStartDate(getWeekStartDate(new Date()));
   }
   
   function handleArrowBtnClick(diff) {
     const date = weekStartDate;
     date.setDate(date.getDate() + diff);
 
-    setWeekStartDate(date);
+    return setWeekStartDate(date);
   }
   
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));

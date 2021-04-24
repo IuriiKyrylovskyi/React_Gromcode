@@ -41,7 +41,7 @@ class Modal extends Component {
       description: description,
     };
 
-    console.log(newEvent);
+    // console.log(newEvent);
     createEvent(newEvent);
     // .then(() => this.fetchEvents())
   };
@@ -60,9 +60,9 @@ class Modal extends Component {
     const timeStart = moment().format("HH:mm");
     const timeEnd = moment().format("HH:mm");
 
-    console.log(timeStart);
-    console.log(timeEnd);
-    console.log(this.state);
+    // console.log(timeStart);
+    // console.log(timeEnd);
+    // console.log(this.state);
 
 
     if (!isOpen) {

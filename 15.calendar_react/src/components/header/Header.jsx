@@ -27,7 +27,7 @@ const Header = (props) => {
   // const { isOpen } = this.state;
   const monthAtWeekStart = months[new Date(weekDates[0]).getMonth()];
   const monthAtWeekEnd = months[new Date(weekDates[6]).getMonth()];
-  console.log("props" + weekDates);
+  console.log("props" + monthAtWeekStart);
   return (
     <header className="header" data-info="ddd" onClick={(e) => console.log(e.target.isOpen)}>
       <button className="button create-event-btn" onClick={onOpenModal}>
