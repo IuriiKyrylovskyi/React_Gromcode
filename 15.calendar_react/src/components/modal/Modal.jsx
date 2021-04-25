@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-// import { useGlobalContext } from "../../context";
+import React, { useState, useEffect } from "react";
+// import { createPortal } from "react-dom";
+import { useGlobalContext } from "../../context";
 import { createEvent } from "../../gateway/gateway";
 import moment from "moment";
 import "./modal.scss";
 
-const modalRoot = document.querySelector("#modal");
+// const modalRoot = document.querySelector("#modal");
 
 const Modal = (props) => {
   const [event, setEvent] = useState({
@@ -16,12 +16,12 @@ const Modal = (props) => {
     description: "",
   });
 
-  const element = document.createElement("div");
+  // const element = document.createElement("div");
 
-  useEffect(() => {
-    modalRoot.appendChild(element);
-    return modalRoot.removeChild(element);
-  });
+  // useEffect(() => {
+  //   modalRoot.appendChild(element);
+  //   return modalRoot.removeChild(element);
+  // });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,14 +46,14 @@ const Modal = (props) => {
     // .then(() => this.fetchEvents())
   };
   
-  // const { isOpen, handleClose } = useGlobalContext();
-  const { isOpen, handleClose } = props;
+  const { isOpen, onCloseModal } = useGlobalContext();
+  // const { isOpen, handleClose } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(event);
     handleEventCreate();
-    handleClose();
+    onCloseModal();
   };
 
   const { title, date, startTime, endTime, description } = event;
@@ -69,13 +69,13 @@ const Modal = (props) => {
     return null;
   }
 
-  return createPortal(
-    <div className="modal overlay" onClick={handleClose}>
+  return (
+    <div className="modal overlay" onClick={onCloseModal}>
       <div className="modal__content" onClick={(e) => e.stopPropagation()}>
         <div className="create-event">
           <button
             className="create-event__close-btn"
-            onClick={handleClose}
+            onClick={onCloseModal}
             //
           >
             +
@@ -90,13 +90,16 @@ const Modal = (props) => {
               name="title"
               placeholder="Title"
               className="event-form__field"
-              value={title}
+              value={"title"}
               onChange={handleChange}
               //
             />
             <div className="event-form__time">
-              <input type="date" name="date" className="event-form__field"
-                value={date}
+              <input
+                type="date"
+                name="date"
+                className="event-form__field"
+                value={"date"}
                 // value={dayMonthYear}
                 onChange={handleChange}
                 // onSelect={selected}
@@ -105,7 +108,7 @@ const Modal = (props) => {
                 type="time"
                 name="startTime"
                 className="event-form__field"
-                value={startTime}
+                value={"startTime"}
                 onChange={handleChange}
                 //
               />
@@ -114,7 +117,7 @@ const Modal = (props) => {
                 type="time"
                 name="endTime"
                 className="event-form__field"
-                value={endTime}
+                value={"endTime"}
                 onChange={handleChange}
                 //
               />
@@ -137,8 +140,9 @@ const Modal = (props) => {
           </form>
         </div>
       </div>
-    </div>,
-    element
+    </div>
+    // ,
+    // element
   );
 };
 
