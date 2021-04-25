@@ -34,7 +34,7 @@ const Header = (props) => {
         </button>
         <span className="navigation__displayed-month">{`${monthAtWeekStart === monthAtWeekEnd ? monthAtWeekStart : monthAtWeekStart + " - " + monthAtWeekEnd}`}</span>
       </div>
-      {isOpen && <Modal isOpen={isOpen} handleClose={onCloseModal} />}
+      {isOpen && <Modal />}
     </header>
   );
 };
