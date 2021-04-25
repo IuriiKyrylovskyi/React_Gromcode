@@ -52,7 +52,7 @@ class Modal extends Component {
     this.handleEventCreate();
     this.props.handleClose();
   };
-  
+
   render() {
     const { isOpen, handleClose } = this.props;
     const { title, date, startTime, endTime, description } = this.state;
@@ -64,11 +64,9 @@ class Modal extends Component {
     // console.log(timeEnd);
     // console.log(this.state);
 
-
     if (!isOpen) {
       return null;
     }
-
 
     return createPortal(
       <div className="modal overlay" onClick={handleClose}>
