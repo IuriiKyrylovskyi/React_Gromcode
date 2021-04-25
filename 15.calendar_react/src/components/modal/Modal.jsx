@@ -16,9 +16,9 @@ const Modal = (props) => {
     description: "",
   });
 
-  useEffect(() => {
-    handleEventCreate();
-  });
+  // useEffect(() => {
+  //   handleEventCreate();
+  // });
 
   // const element = document.createElement("div");
 
