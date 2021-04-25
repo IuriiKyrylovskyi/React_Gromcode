@@ -26,6 +26,8 @@ class Calendar extends Component {
   // }
 
   componentDidUpdate() {
+        // this.fetchEvents();
+
     // this.handleEventCreate();
     // this.handleEventDelete();
   }
@@ -34,6 +36,7 @@ class Calendar extends Component {
     fetchEventsList().then((eventsList) => {
       console.log(eventsList);
       this.setState({
+        ...this.state,
         events: eventsList,
       });
     });
@@ -59,7 +62,7 @@ class Calendar extends Component {
 
   render() {
     const { weekStartDate, weekDates } = this.props;
-    // console.log(weekDates);
+    console.log(weekDates);
     console.log(this.state.events);
     return (
       <section className="calendar">

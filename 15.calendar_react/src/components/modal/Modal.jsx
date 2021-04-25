@@ -37,7 +37,7 @@ const Modal = (props) => {
 
   const handleEventCreate = () => {
     const { title, date, startTime, endTime, description } = form;
-    let id = Math.random();
+    let id = Math.random()*1000;
     const newEvent = {
       id: id,
       title: title,
