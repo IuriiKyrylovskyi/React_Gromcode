@@ -16,6 +16,10 @@ const Modal = (props) => {
     description: "",
   });
 
+  useEffect(() => {
+    handleEventCreate();
+  });
+
   // const element = document.createElement("div");
 
   // useEffect(() => {
@@ -33,8 +37,9 @@ const Modal = (props) => {
 
   const handleEventCreate = () => {
     const { title, date, startTime, endTime, description } = form;
-
+    let id = Math.random();
     const newEvent = {
+      id: id,
       title: title,
       date: date,
       startTime: startTime,
@@ -42,7 +47,7 @@ const Modal = (props) => {
       description: description,
     };
 
-    createEvent(newEvent)
+    createEvent(newEvent);
   };
 
   const { isOpen, onCloseModal } = useGlobalContext();
