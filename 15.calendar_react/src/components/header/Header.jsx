@@ -18,7 +18,7 @@ const Header = (props) => {
   const monthAtWeekEnd = months[new Date(weekDates[6]).getMonth()];
 
   return (
-    <header className="header">
+    <header className="header" onClick={onCloseModal}>
       <button className="button create-event-btn" onClick={onOpenModal}>
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
@@ -34,7 +34,7 @@ const Header = (props) => {
         </button>
         <span className="navigation__displayed-month">{`${monthAtWeekStart === monthAtWeekEnd ? monthAtWeekStart : monthAtWeekStart + " - " + monthAtWeekEnd}`}</span>
       </div>
-      {isOpen && <Modal />}
+      {isOpen && <Modal isOpen={isOpen} onCloseModal={onCloseModal} />}
     </header>
   );
 };

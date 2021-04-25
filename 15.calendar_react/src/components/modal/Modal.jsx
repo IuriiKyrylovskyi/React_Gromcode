@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useGlobalContext } from "../../context";
+// import { useGlobalContext } from "../../context";
 import { createEvent } from "../../gateway/gateway";
 import moment from "moment";
 import "./modal.scss";
 
 const modalRoot = document.querySelector("#modal");
 
-const Modal = () => {
+const Modal = (props) => {
   const [event, setEvent] = useState({
     title: "",
     date: moment().format("MM-DD-YYYY"),
@@ -18,10 +18,10 @@ const Modal = () => {
 
   const element = document.createElement("div");
 
-  // useEffect(() => {
-  //   modalRoot.appendChild(element);
-  //   return modalRoot.removeChild(element);
-  // });
+  useEffect(() => {
+    modalRoot.appendChild(element);
+    return modalRoot.removeChild(element);
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,8 +46,8 @@ const Modal = () => {
     // .then(() => this.fetchEvents())
   };
   
-  const { isOpen, handleClose } = useGlobalContext;
-  // const { isOpen, handleClose } = props;
+  // const { isOpen, handleClose } = useGlobalContext();
+  const { isOpen, handleClose } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
