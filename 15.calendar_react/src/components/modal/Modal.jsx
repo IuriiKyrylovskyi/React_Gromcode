@@ -8,9 +8,9 @@ import "./modal.scss";
 // const modalRoot = document.querySelector("#modal");
 
 const Modal = (props) => {
-  const [event, setEvent] = useState({
+  const [form, setForm] = useState({
     title: "",
-    date: moment().format("MM-DD-YYYY"),
+    date: moment().format("YYYY-MM-DD"),
     startTime: moment().format("HH:mm"),
     endTime: moment().format("HH:mm"),
     description: "",
@@ -25,19 +25,20 @@ const Modal = (props) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEvent({
+    setForm({
+      ...form,
       [name]: value,
     });
   };
 
   const handleEventCreate = () => {
-    const { title, date, startTime, endTime, description } = event;
+    const { title, date, startTime, endTime, description } = form;
 
     const newEvent = {
       title: title,
       date: date,
-      dateFrom: startTime,
-      dateTo: endTime,
+      startTime: startTime,
+      endTime: endTime,
       description: description,
     };
 
@@ -45,18 +46,20 @@ const Modal = (props) => {
     createEvent(newEvent);
     // .then(() => this.fetchEvents())
   };
-  
+
   const { isOpen, onCloseModal } = useGlobalContext();
-  // const { isOpen, handleClose } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(event);
+    console.log(form);
     handleEventCreate();
     onCloseModal();
   };
 
-  const { title, date, startTime, endTime, description } = event;
+  const handleAreaClickToOpenModal = e => {
+    if (e.target.className === '')
+  }
+
   // const dayMonthYear = moment().format("YYYY-MM-DD");
   // const timeStart = moment().format("HH:mm");
   // const timeEnd = moment().format("HH:mm");
@@ -68,6 +71,8 @@ const Modal = (props) => {
   if (!isOpen) {
     return null;
   }
+
+  const { title, date, startTime, endTime, description } = form;
 
   return (
     <div className="modal overlay" onClick={onCloseModal}>
@@ -90,7 +95,7 @@ const Modal = (props) => {
               name="title"
               placeholder="Title"
               className="event-form__field"
-              value={"title"}
+              value={title}
               onChange={handleChange}
               //
             />
@@ -99,8 +104,7 @@ const Modal = (props) => {
                 type="date"
                 name="date"
                 className="event-form__field"
-                value={"date"}
-                // value={dayMonthYear}
+                value={date}
                 onChange={handleChange}
                 // onSelect={selected}
               />
@@ -108,7 +112,7 @@ const Modal = (props) => {
                 type="time"
                 name="startTime"
                 className="event-form__field"
-                value={"startTime"}
+                value={startTime}
                 onChange={handleChange}
                 //
               />
@@ -117,7 +121,7 @@ const Modal = (props) => {
                 type="time"
                 name="endTime"
                 className="event-form__field"
-                value={"endTime"}
+                value={endTime}
                 onChange={handleChange}
                 //
               />
