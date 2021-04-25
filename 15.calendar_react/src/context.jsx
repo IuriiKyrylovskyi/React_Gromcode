@@ -4,6 +4,11 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
+  // const [hourProps, setHourProps] = useState({
+  //   dataDay,
+  //   dataHour,
+  //   hourEvents,
+  // });
 
   const onCloseModal = () => {
     setIsOpen(false);
@@ -13,7 +18,24 @@ const AppProvider = ({ children }) => {
     setIsOpen(true);
   };
 
-  return <AppContext.Provider value={{ isOpen, onCloseModal, onOpenModal }}>{children}</AppContext.Provider>;
+  // const handleHourProps = dataFromHour => {
+  //   return dataFromHour;
+  // }
+
+
+
+  return (
+    <AppContext.Provider
+      value={{
+        isOpen,
+        onCloseModal,
+        onOpenModal,
+        // handleHourProps,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export const useGlobalContext = () => {

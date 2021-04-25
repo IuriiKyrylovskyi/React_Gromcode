@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import { createPortal } from "react-dom";
 import { useGlobalContext } from "../../context";
-import { createEvent } from "../../gateway/gateway";
+import { createEvent, fetchEventsList } from "../../gateway/gateway";
 import moment from "moment";
 import "./modal.scss";
 
@@ -42,9 +42,8 @@ const Modal = (props) => {
       description: description,
     };
 
-    // console.log(newEvent);
     createEvent(newEvent);
-    // .then(() => this.fetchEvents())
+    fetchEventsList();
   };
 
   const { isOpen, onCloseModal } = useGlobalContext();
@@ -56,9 +55,17 @@ const Modal = (props) => {
     onCloseModal();
   };
 
-  const handleAreaClickToOpenModal = e => {
-    if (e.target.className === '')
-  }
+  // const handleAreaClickToOpenModal = e => {
+  //   if (e.target.className === 'calendar__time-slot') {
+  //    const { }
+  //     setForm({
+  //       title: "",
+  //       date: moment().format("YYYY-MM-DD"),
+  //       startTime: moment().format("HH:mm"),
+  //      endTime: moment().format("HH:mm"),
+  //     description: "",})
+  //   }
+  // }
 
   // const dayMonthYear = moment().format("YYYY-MM-DD");
   // const timeStart = moment().format("HH:mm");

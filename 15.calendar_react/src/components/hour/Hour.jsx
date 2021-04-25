@@ -8,8 +8,12 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
   const currentDate = weekStartDate.getFullYear() === new Date().getFullYear() && weekStartDate.getMonth() === new Date().getMonth() && dataDay === new Date().getDate() && dataHour === new Date().getHours();
 
   const { onOpenModal } = useGlobalContext();
+
   return (
-    <div className="calendar__time-slot" data-time={dataHour + 1} onClick={onOpenModal}>
+    <div className="calendar__time-slot"
+      data-time={dataHour + 1}
+      onClick={onOpenModal}
+    >
       {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
@@ -18,7 +22,7 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
         return (
           <Event
             key={id}
-            id={Math.random()}
+            // id={Math.random()}
             //calculating event height = duration of event in minutes
             height={(dateTo.getTime() - dateFrom.getTime()) / (1000 * 60)}
             marginTop={dateFrom.getMinutes()}

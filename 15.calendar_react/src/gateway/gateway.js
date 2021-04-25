@@ -1,4 +1,4 @@
-const baseUrl = "https://608294355dbd2c0017579ede.mockapi.io/events";
+const baseUrl = "https://6085838bd14a870017577e5b.mockapi.io/events/";
 
 export const fetchEventsList = () => {
   return fetch(baseUrl).then((response) => {
@@ -24,7 +24,7 @@ export const createEvent = eventData => {
 }
 
 export const deleteEvent = eventId => {
-  return fetch(`${baseUrl}/${eventId}`, {
+  return fetch(`${baseUrl}/:${eventId}`, {
     method: 'DELETE',
   })
     .then(response => {
