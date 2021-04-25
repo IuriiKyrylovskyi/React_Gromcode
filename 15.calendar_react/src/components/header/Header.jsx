@@ -10,26 +10,15 @@ import "./header.scss";
 
 const Header = (props) => {
   const { isOpen, onOpenModal, onCloseModal } = useGlobalContext();
-  // state = {
-  //   isOpen: false,
-  // }
-
-  // handleOpenModal = () => {
-  //   this.setState({
-  //     isOpen: !this.props.handleOpen(this.state.isOpen)
-  //   })
-  // }
-
   const { weekDates, handleTodayBtn, handleArrowBtn } = props;
   // const prevMonth = moment(props.weekDates[0]).format('MMM');
   // const nextMonth = moment(props.weekDates[6]).format('MMM');
 
-  // const { isOpen } = this.state;
   const monthAtWeekStart = months[new Date(weekDates[0]).getMonth()];
   const monthAtWeekEnd = months[new Date(weekDates[6]).getMonth()];
-  console.log("props" + monthAtWeekStart);
+
   return (
-    <header className="header" data-info="ddd" onClick={(e) => console.log(e.target.isOpen)}>
+    <header className="header">
       <button className="button create-event-btn" onClick={onOpenModal}>
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
