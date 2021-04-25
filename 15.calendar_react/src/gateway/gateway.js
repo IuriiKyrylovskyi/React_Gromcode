@@ -1,5 +1,5 @@
-// const baseUrl = "https://6085838bd14a870017577e5b.mockapi.io/events/";
-const baseUrl = "https://crudcrud.com/api/4acf51b0e63b4a9ba1420bbdfe5b745f/events";
+const baseUrl = "https://6085838bd14a870017577e5b.mockapi.io/events/";
+// const baseUrl = "https://crudcrud.com/api/4acf51b0e63b4a9ba1420bbdfe5b745f/events";
 
 export const fetchEventsList = () => {
   return fetch(baseUrl).then((response) => {

@@ -16,6 +16,7 @@ const Week = ({ weekStartDate, weekDates, events }) => {
             const dateFrom = new Date(event.date + "/" + event.startTime).getTime();
             const dateTo = new Date(event.date + "/" + event.endTime).getTime();
             console.log(`'${event.date + "/" + event.startTime}'`);
+            console.log(dayEnd);
             return dateFrom > dayStart && dateTo < dayEnd;
           }
         );
