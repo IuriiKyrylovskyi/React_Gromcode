@@ -7,7 +7,7 @@ const Event = ({ height, marginTop, title, time }) => {
     height,
     marginTop,
   };
-
+  console.log(eventStyle);
   return (
     <div
       style={eventStyle}

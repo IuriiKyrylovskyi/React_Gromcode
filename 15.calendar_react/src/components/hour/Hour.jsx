@@ -11,13 +11,10 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
 
   useEffect(() => {
     return isOpen === true;
-  })
+  });
 
   return (
-    <div className="calendar__time-slot"
-      data-time={dataHour + 1}
-      onClick={onOpenModal}
-    >
+    <div className="calendar__time-slot" data-time={dataHour + 1} onClick={onOpenModal}>
       {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
