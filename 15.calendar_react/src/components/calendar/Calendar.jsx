@@ -25,7 +25,10 @@ class Calendar extends Component {
   // shouldComponentUpdate(nextProps, nextState) {
   //   return this.props.isOpen === nextProps.isOpen;
   // }
-
+  shouldComponentUpdate(nextProps, nextState) {
+    const { isOpen } = useGlobalContext;
+    return !nextProps.isOpen;
+  }
   componentDidUpdate() {
     // this.fetchEvents();
     // this.handleEventCreate();
