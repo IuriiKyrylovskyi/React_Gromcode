@@ -1,5 +1,7 @@
-const baseUrl = "https://6085838bd14a870017577e5b.mockapi.io/events/";
+const baseUrl = "https://6086c555a3b9c200173b6d11.mockapi.io/events";
+// const baseUrl = "https://events.free.beeceptor.com";
 // const baseUrl = "https://crudcrud.com/api/4acf51b0e63b4a9ba1420bbdfe5b745f/events";
+// const baseUrl = "https://crudcrud.com/api/bf6792e784f6482b94a621f5710b9473/events";
 
 export const fetchEventsList = () => {
   return fetch(baseUrl).then((response) => {
