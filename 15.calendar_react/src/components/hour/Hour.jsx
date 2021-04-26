@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import TimeLine from "../timeLine/TimeLine";
 import Event from "../event/Event";
@@ -7,7 +7,11 @@ import { formatMins } from "../../../src/utils/dateUtils.js";
 const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
   const currentDate = weekStartDate.getFullYear() === new Date().getFullYear() && weekStartDate.getMonth() === new Date().getMonth() && dataDay === new Date().getDate() && dataHour === new Date().getHours();
 
-  const { onOpenModal } = useGlobalContext();
+  const { onOpenModal, isOpen } = useGlobalContext();
+
+  useEffect(() => {
+    return isOpen === true;
+  })
 
   return (
     <div className="calendar__time-slot"
