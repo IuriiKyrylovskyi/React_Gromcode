@@ -11,50 +11,52 @@ import "./calendar.scss";
 class Calendar extends Component {
   state = {
     events: [],
-    title: "",
-    date: "",
-    dateFrom: "",
-    dateTo: "",
-    description: "",
+    // title: "",
+    // date: "",
+    // dateFrom: "",
+    // dateTo: "",
+    // description: "",
   };
 
   componentDidMount() {
     this.fetchEvents();
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.props.isOpen === nextProps.isOpen;
+  // shouldComponentUpdate(prevProps, prevState) {
+  //   // console.log(this.state.events);
+  //   console.log(prevState.events);
+  //   return this.state.events.length !== prevState.events.length
+  //   // {
+  //   //   this.fetchEvents();
+  //   //   // this.handleEventCreate();
+  //   // }
+  //   // this.handleEventDelete();
   // }
 
-  componentDidUpdate() {
-    // this.fetchEvents();
-    // this.handleEventCreate();
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.state.events);
+    console.log(prevState.events);
+    if (this.state.events.length !== prevState.events.length) {
+      this.fetchEvents();
+      // this.handleEventCreate();
+    }
     // this.handleEventDelete();
   }
 
   fetchEvents = () => {
-    fetchEventsList().then((eventsList) => {
+    fetchEventsList()
+      .then((eventsList) => {
       console.log(eventsList);
       this.setState({
-        ...this.state,
+        // ...this.state,
         events: eventsList,
       });
     });
   };
 
   // handleEventCreate = () => {
-  //   const { title, dateFrom, dateTo, description } = this.state;
-
-  //   const newEvent = {
-  //     title: title,
-  //     dateFrom: dateFrom,
-  //     dateTo: dateTo,
-  //     description: description,
-  //   }
-
-  //   createEvent(newEvent)
-  //     .then(() => this.fetchEvents())
-  // }
+  //   this.fetchEvents();
+  // };
 
   handleEventDelete = (id) => {
     deleteEvent(id).then(() => this.fetchEvents());

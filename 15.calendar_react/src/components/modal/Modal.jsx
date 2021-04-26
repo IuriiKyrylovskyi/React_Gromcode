@@ -47,7 +47,8 @@ const Modal = (props) => {
       description: description,
     };
 
-    createEvent(newEvent);
+    createEvent(newEvent)
+      // .then(()=>this.fetchEvents());
   };
 
   const { isOpen, onCloseModal } = useGlobalContext();

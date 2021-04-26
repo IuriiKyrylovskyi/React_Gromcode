@@ -15,7 +15,7 @@ const Day = ({ weekStartDate, dataDay, dayEvents }) => {
         const hourEvents = dayEvents.filter(
           // (event) => event.dateFrom.getHours() === hour
           (event) => new Date(event.dateFrom).getHours() === hour
-        );
+          );
 
         return (
           <Hour
