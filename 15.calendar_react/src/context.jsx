@@ -19,7 +19,10 @@ const AppProvider = ({ children }) => {
     if (e.target.closest(".event")) {
       console.log("onEventClick");
       setEvent(true);
-      return ;
+      return;
+    }
+    if (isEvent) {
+      return setEvent(false);
     }
     setEvent(false);
     setIsOpen(true);

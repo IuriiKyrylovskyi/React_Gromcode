@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from '../../context';
+import { useGlobalContext } from "../../context";
 import "./event.scss";
 
 const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
@@ -16,16 +16,21 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
       <div
         style={eventStyle}
         className="event"
-        // onClick={() => console.log('event')}
+        onClick={() => console.log('event')}
       >
         <div className="event__title">{title}</div>
         <div className="event__time">{time}</div>
+        {isEvent && (
+          <span
+            className="delete-event-btn"
+            style={{ top: height - 10 }}
+            onClick={() => console.log("delete")}
+            //
+          >
+            Delete
+          </span>
+        )}
       </div>
-      {isEvent && (
-        <span className="delete-event-btn" style={{ top: height }}>
-          Delete
-        </span>
-      )}
     </>
   );
 };
