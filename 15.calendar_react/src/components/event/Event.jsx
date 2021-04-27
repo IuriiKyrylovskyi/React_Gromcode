@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import { deleteEvent } from "../../gateway/gateway";
 import { useGlobalContext } from "../../context";
-import { MdDelete } from 'react-icons/md';
+import { MdDelete } from "react-icons/md";
 import "./event.scss";
 
 const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
@@ -8,20 +9,24 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
 
   const [isClicked, setIsClicked] = useState(isEvent);
 
-  const onOpenDelete = e => {
+  // useEffect(() => {
+  //   onCloseDelete();
+  // }, [isClicked]);
+
+  const onOpenDelete = (e) => {
+    setIsClicked(!isClicked);
+  };
+
+  function onCloseDelete() {
+    deleteEvent(id);
     setIsClicked(!isClicked);
   }
-
-   const onCloseDelete = () => {
-     setIsClicked(!isClicked);
-   };
 
   const eventStyle = {
     height,
     marginTop,
   };
   // console.log(eventStyle);
-
 
   return (
     <>
@@ -35,7 +40,7 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
             onClick={onCloseDelete}
             //
           >
-           <MdDelete /> Delete
+            <MdDelete /> Delete
           </span>
         )}
       </div>

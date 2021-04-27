@@ -29,7 +29,7 @@ export const createEvent = (eventData) => {
 };
 
 export const deleteEvent = (eventId) => {
-  return fetch(`${baseUrl}/:${eventId}`, {
+  return fetch(`${baseUrl}/${eventId}`, {
     method: "DELETE",
   }).then((response) => {
     if (!response.ok) {

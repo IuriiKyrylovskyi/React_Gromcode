@@ -5,14 +5,18 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isEvent, setEvent] = useState(false);
+  const [isRender, setIsRender] = useState(false);
   // const [hourProps, setHourProps] = useState({
   //   dataDay,
   //   dataHour,
   //   hourEvents,
   // });
-
+  // const onRerender = () => {
+  //   setIsRender(isRender);
+  // };
   const onCloseModal = () => {
     setIsOpen(false);
+    setIsRender(isRender);
   };
 
   const onOpenModal = (e) => {
@@ -22,7 +26,7 @@ const AppProvider = ({ children }) => {
       return;
     }
     if (isEvent) {
-      return setEvent(false);
+      return; // setEvent(false);
     }
     setEvent(false);
     setIsOpen(true);
