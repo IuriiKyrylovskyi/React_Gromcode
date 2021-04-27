@@ -14,21 +14,14 @@ const AppProvider = ({ children }) => {
   const onCloseModal = () => {
     setIsOpen(false);
   };
-  
-  const onEventClick = e => {
-    if (e.target.className === 'event') {
+
+  const onOpenModal = (e) => {
+    if (e.target.closest(".event")) {
       console.log("onEventClick");
       setEvent(true);
+      return ;
     }
-  }
-
-  const onOpenModal = () => {
-    // onEventClick();
-
-    if (isEvent) {
-      console.log(isEvent);
-      return;
-    }
+    setEvent(false);
     setIsOpen(true);
   };
 
@@ -36,12 +29,11 @@ const AppProvider = ({ children }) => {
   //   return dataFromHour;
   // }
 
-
-
   return (
     <AppContext.Provider
       value={{
         isOpen,
+        isEvent,
         onCloseModal,
         onOpenModal,
         // handleHourProps,

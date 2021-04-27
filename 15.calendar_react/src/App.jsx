@@ -49,7 +49,8 @@ const App = () => {
       <Calendar
         weekDates={weekDates}
         weekStartDate={weekStartDate}
-      //
+        // onclick={(e) => console.log(e.target.className)}
+        //
       />
     </>
   );

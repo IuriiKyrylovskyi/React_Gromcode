@@ -33,15 +33,15 @@ class Calendar extends Component {
   //   // this.handleEventDelete();
   // }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log(this.state.events);
-    console.log(prevState.events);
-    if (this.state.events.length !== prevState.events.length) {
-      this.fetchEvents();
-      // this.handleEventCreate();
-    }
-    // this.handleEventDelete();
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(this.state.events);
+  //   console.log(prevState.events);
+  //   if (this.state.events.length !== prevState.events.length) {
+  //     this.fetchEvents();
+  //     // this.handleEventCreate();
+  //   }
+  //   // this.handleEventDelete();
+  // }
 
   fetchEvents = () => {
     fetchEventsList()

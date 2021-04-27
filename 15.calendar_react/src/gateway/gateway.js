@@ -11,30 +11,29 @@ export const fetchEventsList = () => {
       return response.json();
     }
   });
-}
+};
 
-export const createEvent = eventData => {
+export const createEvent = (eventData) => {
   return fetch(baseUrl, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json;charset=utf-8'
+      "Content-Type": "application/json;charset=utf-8",
     },
     body: JSON.stringify(eventData),
   })
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
-        throw new Error('Failed to create event');
-    }
+        throw new Error("Failed to create event");
+      }
   })
-}
+};
 
-export const deleteEvent = eventId => {
+export const deleteEvent = (eventId) => {
   return fetch(`${baseUrl}/:${eventId}`, {
-    method: 'DELETE',
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Failed to delete event");
+    method: "DELETE",
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error("Failed to delete event");
     }
-  })
-}
+  });
+};

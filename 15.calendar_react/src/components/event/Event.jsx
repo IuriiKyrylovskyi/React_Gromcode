@@ -9,18 +9,24 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
   };
   // console.log(eventStyle);
 
-  const { onEventClick } = useGlobalContext();
+  const { isEvent, onEventClick } = useGlobalContext();
 
   return (
-    <div
-      style={eventStyle}
-      className="event"
-      // onClick={() => handleDelete(id)}
-      onClick={() => console.log('event')}
-    >
-      <div className="event__title">{title}</div>
-      <div className="event__time">{time}</div>
-    </div>
+    <>
+      <div
+        style={eventStyle}
+        className="event"
+        // onClick={() => console.log('event')}
+      >
+        <div className="event__title">{title}</div>
+        <div className="event__time">{time}</div>
+      </div>
+      {isEvent && (
+        <span className="delete-event-btn" style={{ top: height }}>
+          Delete
+        </span>
+      )}
+    </>
   );
 };
 

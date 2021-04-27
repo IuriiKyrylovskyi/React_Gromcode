@@ -34,8 +34,10 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
       {hourEvents.map(({ id, date, startTime, endTime, title }) => {
         const dateFrom = new Date(date + " " + startTime);
         const dateTo = new Date(date + " " + endTime);
-
-        return (
+       // console.log((dateTo - dateFrom) / 1000 / 60 / 60);
+       // const eventDuration = (dateTo - dateFrom) / 1000 / 60 / 60;
+        
+        return ( //eventDuration <= 6 &&
           <Event
             key={id}
             id={id}
