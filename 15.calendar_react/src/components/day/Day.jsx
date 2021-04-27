@@ -21,7 +21,7 @@ const Day = ({ weekStartDate, dataDay, dayEvents }) => {
             return parseInt(event.startTime) === hour;
           }
           );
-console.log(hourEvents);
+// console.log(hourEvents);
         return (
           <Hour
             key={dataDay + hour}
