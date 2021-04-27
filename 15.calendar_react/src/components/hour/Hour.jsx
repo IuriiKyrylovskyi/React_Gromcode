@@ -46,7 +46,7 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
             marginTop={dateFrom.getMinutes()}
             time={`${startTime} - ${endTime}`}
             title={title}
-            handleDelete={onDeleteEvent}
+            // handleDelete={onDeleteEvent}
           />
         );
       })}
