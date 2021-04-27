@@ -16,9 +16,12 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1} onClick={onOpenModal}>
       {/* if no events in the current hour nothing will render here */}
-      {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
+      {/* {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
-        const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
+        const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`; */}
+      {hourEvents.map(({ id, date, startTime, endTime, title }) => {
+        const dateFrom = new Date(date + " " + startTime)//.getTime();
+        const dateTo = new Date(date + " " + endTime)//.getTime();
 
         return (
           <Event
@@ -27,7 +30,7 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
             //calculating event height = duration of event in minutes
             height={(dateTo.getTime() - dateFrom.getTime()) / (1000 * 60)}
             marginTop={dateFrom.getMinutes()}
-            time={`${eventStart} - ${eventEnd}`}
+            time={`${startTime} - ${endTime}`}
             title={title}
           />
         );

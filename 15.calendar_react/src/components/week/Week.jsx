@@ -12,6 +12,7 @@ const Week = ({ weekStartDate, weekDates, events }) => {
         const dayEvents = events.filter(
           // (event) => event.dateFrom > dayStart && event.dateTo < dayEnd
           (event) => {
+            // console.log(event);
             const dateFrom = new Date(event.date + " " + event.startTime).getTime();
             const dateTo = new Date(event.date + " " + event.endTime).getTime();
             // console.log(`'${event.date + "/" + event.startTime}'`);
@@ -23,7 +24,14 @@ const Week = ({ weekStartDate, weekDates, events }) => {
           }
         );
           // console.log(dayStart.getDate());
-        return <Day key={dayStart.getDate()} dataDay={dayStart.getDate()} dayEvents={dayEvents} weekDates={weekDates} weekStartDate={weekStartDate} />;
+        return <Day
+          key={dayStart.getDate()}
+          dataDay={dayStart.getDate()}
+          dayEvents={dayEvents}
+          weekDates={weekDates}
+          weekStartDate={weekStartDate}
+          //
+        />;
       })}
     </div>
   );

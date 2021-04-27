@@ -14,9 +14,14 @@ const Day = ({ weekStartDate, dataDay, dayEvents }) => {
         //getting all events from the day we will render
         const hourEvents = dayEvents.filter(
           // (event) => event.dateFrom.getHours() === hour
-          (event) => new Date(event.dateFrom).getHours() === hour
+          (event) => {
+            // console.log(event.startTime.slice(0, 2));
+            // console.log(parseInt(event.startTime));
+            // console.log(hour);
+            return parseInt(event.startTime) === hour;
+          }
           );
-
+console.log(hourEvents);
         return (
           <Hour
             key={dataDay + hour}
