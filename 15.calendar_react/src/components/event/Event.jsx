@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useGlobalContext } from "../../context";
+import { MdDelete } from 'react-icons/md';
 import "./event.scss";
 
 const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
@@ -8,12 +9,12 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
   const [isClicked, setIsClicked] = useState(isEvent);
 
   const onOpenDelete = e => {
-    setIsClicked(!isEvent);
+    setIsClicked(!isClicked);
   }
 
-  //  const onCloseDelete = (e) => {
-  //    setIsClicked(isEvent);
-  //  };
+   const onCloseDelete = () => {
+     setIsClicked(!isClicked);
+   };
 
   const eventStyle = {
     height,
@@ -31,10 +32,10 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
           <span
             className="delete-event-btn"
             style={{ top: height - 10 }}
-            onClick={onOpenDelete}
+            onClick={onCloseDelete}
             //
           >
-            Delete
+           <MdDelete /> Delete
           </span>
         )}
       </div>
