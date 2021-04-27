@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import TimeLine from "../timeLine/TimeLine";
 import Event from "../event/Event";
+import { deleteEvent } from '../../gateway/gateway';
 // import { formatMins } from "../../../src/utils/dateUtils.js";
 
 const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
@@ -13,8 +14,22 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
     return isOpen === true;
   });
 
+  function onDeleteEvent(e) {
+    if (isOpen) {
+      return
+    }
+    if (e.target.className === 'event') {
+      return deleteEvent();
+    }
+  }
+
   return (
-    <div className="calendar__time-slot" data-time={dataHour + 1} onClick={onOpenModal}>
+    <div
+      className="calendar__time-slot"
+      data-time={dataHour + 1}
+      onClick={onOpenModal}
+      //
+    >
       {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, date, startTime, endTime, title }) => {
         const dateFrom = new Date(date + " " + startTime);
@@ -29,6 +44,7 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
             marginTop={dateFrom.getMinutes()}
             time={`${startTime} - ${endTime}`}
             title={title}
+            handleDelete={onDeleteEvent}
           />
         );
       })}

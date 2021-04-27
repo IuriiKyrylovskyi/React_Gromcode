@@ -40,8 +40,17 @@ const App = () => {
 
   return (
     <>
-      <Header weekDates={weekDates} handleTodayBtn={handleTodayBtnClick} handleArrowBtn={handleArrowBtnClick} />
-      <Calendar weekDates={weekDates} weekStartDate={weekStartDate} />
+      <Header
+        weekDates={weekDates}
+        handleTodayBtn={handleTodayBtnClick}
+        handleArrowBtn={handleArrowBtnClick}
+        //
+      />
+      <Calendar
+        weekDates={weekDates}
+        weekStartDate={weekStartDate}
+      //
+      />
     </>
   );
 };

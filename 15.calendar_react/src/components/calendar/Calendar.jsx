@@ -72,7 +72,12 @@ class Calendar extends Component {
         <div className="calendar__body">
           <div className="calendar__week-container">
             <Sidebar />
-            <Week weekDates={weekDates} events={this.state.events} weekStartDate={weekStartDate} />
+            <Week
+              weekDates={weekDates}
+              events={this.state.events}
+              weekStartDate={weekStartDate}
+              //
+            />
           </div>
         </div>
       </section>
