@@ -23,29 +23,40 @@ class Calendar extends Component {
   }
 
   // shouldComponentUpdate(prevProps, prevState) {
-  //   // console.log(this.state.events);
-  //   console.log(prevState.events);
-  //   return this.state.events.length !== prevState.events.length
-  //   // {
-  //   //   this.fetchEvents();
-  //   //   // this.handleEventCreate();
-  //   // }
-  //   // this.handleEventDelete();
+
+  // //   // console.log(this.state.events);
+  // //   console.log(prevState.events);
+  // //   return this.state.events.length !== prevState.events.length
+  // //   // {
+  // //   //   this.fetchEvents();
+  // //   //   // this.handleEventCreate();
+  // //   // }
+  // //   // this.handleEventDelete();
   // }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log(this.state.events);
-  //   console.log(prevState.events);
-  //   if (this.state.events.length !== prevState.events.length) {
-  //     this.fetchEvents();
-  //     // this.handleEventCreate();
-  //   }
-  //   // this.handleEventDelete();
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.isEvent === false && prevProps.isEvent === true) {
+      //  return this.fetchEvents();
+
+      // console.log(this.state.events);
+      // console.log(prevState.events);
+      // if (this.state.events.length !== prevState.events.length) {
+      // this.fetchEvents();
+      // this.handleEventCreate();
+      // }
+      // this.handleEventDelete();
+      // this.deleteEvent();
+      return fetchEventsList().then((eventsList) => {
+        console.log(eventsList);
+        this.setState({
+          events: eventsList,
+        });
+      });
+    }
+  }
 
   fetchEvents = () => {
-    fetchEventsList()
-      .then((eventsList) => {
+    fetchEventsList().then((eventsList) => {
       console.log(eventsList);
       this.setState({
         // ...this.state,

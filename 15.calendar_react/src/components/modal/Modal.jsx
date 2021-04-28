@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import { createPortal } from "react-dom";
 import { useGlobalContext } from "../../context";
-import { createEvent } from "../../gateway/gateway";
+import { fetchEventsList, createEvent } from "../../gateway/gateway";
 import moment from "moment";
 import "./modal.scss";
 
@@ -48,7 +48,7 @@ const Modal = (props) => {
     };
 
     createEvent(newEvent)
-      // .then(()=>this.fetchEvents());
+      // .then(()=>fetchEvents());
   };
 
   const { isOpen, onCloseModal } = useGlobalContext();
@@ -60,6 +60,12 @@ const Modal = (props) => {
     onCloseModal();
   };
 
+  // function fetchEvents() {
+  //   fetchEventsList()
+  //     .then(eventsList => {
+  //     props.events = eventsList;
+  //   })
+  // }
   // const handleAreaClickToOpenModal = e => {
   //   if (e.target.className === 'calendar__time-slot') {
   //    const { }
