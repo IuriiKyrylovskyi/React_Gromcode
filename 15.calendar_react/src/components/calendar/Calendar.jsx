@@ -26,10 +26,10 @@ class Calendar extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.isEvent === true) {
       this.fetchEvents();
-      console.log(this.state.events);
+      console.log('didUpdate event', this.state.events);
     } else if (prevProps.isOpen === true) {
       this.fetchEvents();
-      console.log(this.state.events);
+      console.log('didUpdate modal', this.state.events);
       //  return this.fetchEvents();
 
       // console.log(this.state.events);
