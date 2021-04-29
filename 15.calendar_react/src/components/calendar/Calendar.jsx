@@ -35,7 +35,8 @@ class Calendar extends Component {
   // }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.isEvent === false && prevProps.isEvent === true) {
+    if (prevProps.isEvent === true && this.props.isEvent === false) {
+      this.fetchEvents();
       //  return this.fetchEvents();
 
       // console.log(this.state.events);
@@ -46,13 +47,14 @@ class Calendar extends Component {
       // }
       // this.handleEventDelete();
       // this.deleteEvent();
-      return fetchEventsList().then((eventsList) => {
-        console.log(eventsList);
-        this.setState({
-          events: eventsList,
-        });
-      });
+      // return fetchEventsList().then((eventsList) => {
+      //   console.log(eventsList);
+      //   this.setState({
+      //     events: eventsList,
+      //   });
+      // });
     }
+    // this.handleEventDelete();
   }
 
   fetchEvents = () => {

@@ -8,6 +8,7 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
   const { isEvent, onEventClick } = useGlobalContext();
 
   const [isClicked, setIsClicked] = useState(isEvent);
+  const [isCloseClicked, setIsCloseClicked] = useState(!isEvent);
 
   // useEffect(() => {
   //   onCloseDelete();
@@ -20,6 +21,7 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
   function onCloseDelete() {
     deleteEvent(id);
     setIsClicked(!isClicked);
+    setIsCloseClicked(!isCloseClicked);
   }
 
   const eventStyle = {
