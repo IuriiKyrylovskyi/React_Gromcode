@@ -19,7 +19,6 @@ const AppProvider = ({ children }) => {
 
   const onOpenModal = (e) => {
     if (e.target.closest(".event")) {
-      console.log("onEventClick");
       setEvent(!isEvent);
       return;
     }

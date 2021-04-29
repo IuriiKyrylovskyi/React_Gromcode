@@ -17,19 +17,24 @@ class Calendar extends Component {
     this.fetchEvents();
   }
 
+  // shouldComponentUpdate(nextProps) {
+  //   if (this.props.isOpen === false || nextProps.isOpen === true) {
+  //     return false;
+  //   }
+  // }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.isEvent === true) {
       this.fetchEvents();
       console.log(this.state.events);
-    }
-    if (prevProps.isOpen === true) {
+    } else if (prevProps.isOpen === true) {
       this.fetchEvents();
       console.log(this.state.events);
       //  return this.fetchEvents();
 
       // console.log(this.state.events);
       // console.log(prevState.events);
-    
+
       // return fetchEventsList().then((eventsList) => {
       //   console.log(eventsList);
       //   this.setState({
