@@ -39,7 +39,7 @@ const App = () => {
 
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
-  const { isEvent } = useGlobalContext();
+  const { isEvent, isOpen } = useGlobalContext();
 
   return (
     <>
@@ -53,6 +53,7 @@ const App = () => {
         weekDates={weekDates}
         weekStartDate={weekStartDate}
         isEvent={isEvent}
+        isOpen={isOpen}
 
         // onclick={(e) => console.log(e.target.className)}
         //

@@ -11,42 +11,25 @@ import "./calendar.scss";
 class Calendar extends Component {
   state = {
     events: [],
-    // title: "",
-    // date: "",
-    // dateFrom: "",
-    // dateTo: "",
-    // description: "",
   };
 
   componentDidMount() {
     this.fetchEvents();
   }
 
-  // shouldComponentUpdate(prevProps, prevState) {
-
-  // //   // console.log(this.state.events);
-  // //   console.log(prevState.events);
-  // //   return this.state.events.length !== prevState.events.length
-  // //   // {
-  // //   //   this.fetchEvents();
-  // //   //   // this.handleEventCreate();
-  // //   // }
-  // //   // this.handleEventDelete();
-  // }
-
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.isEvent === true && this.props.isEvent === false) {
+    if (prevProps.isEvent === true) {
       this.fetchEvents();
+      console.log(this.state.events);
+    }
+    if (prevProps.isOpen === true) {
+      this.fetchEvents();
+      console.log(this.state.events);
       //  return this.fetchEvents();
 
       // console.log(this.state.events);
       // console.log(prevState.events);
-      // if (this.state.events.length !== prevState.events.length) {
-      // this.fetchEvents();
-      // this.handleEventCreate();
-      // }
-      // this.handleEventDelete();
-      // this.deleteEvent();
+    
       // return fetchEventsList().then((eventsList) => {
       //   console.log(eventsList);
       //   this.setState({
@@ -61,7 +44,6 @@ class Calendar extends Component {
     fetchEventsList().then((eventsList) => {
       console.log(eventsList);
       this.setState({
-        // ...this.state,
         events: eventsList,
       });
     });
