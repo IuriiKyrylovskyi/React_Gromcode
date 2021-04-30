@@ -1,6 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../../context";
-import Modal from "../modal/Modal";
+// import Modal from "../modal/Modal";
 
 // import moment from 'moment';
 

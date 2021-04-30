@@ -5,14 +5,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isEvent, setEvent] = useState(false);
-  // const [hourProps, setHourProps] = useState({
-  //   dataDay,
-  //   dataHour,
-  //   hourEvents,
-  // });
-  // const onRerender = () => {
-  //   setIsRender(isRender);
-  // };
+
   const onCloseModal = () => {
     setIsOpen(false);
   };
@@ -25,13 +18,14 @@ const AppProvider = ({ children }) => {
     if (isEvent) {
       return; // setEvent(false);
     }
+    // if (!isEvent && e.target.closest(".calendar__time-slot")) {
+    //   setEvent(false);
+    //   setIsOpen(true);
+    //   return;
+    // }
     setEvent(false);
     setIsOpen(true);
   };
-
-  // const handleHourProps = dataFromHour => {
-  //   return dataFromHour;
-  // }
 
   return (
     <AppContext.Provider
@@ -40,7 +34,6 @@ const AppProvider = ({ children }) => {
         isEvent,
         onCloseModal,
         onOpenModal,
-        // handleHourProps,
       }}
     >
       {children}

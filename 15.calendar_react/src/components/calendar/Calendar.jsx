@@ -14,7 +14,7 @@ const Calendar = (props) => {
 
   function fetchEvents() {
     fetchEventsList().then((eventsList) => {
-      console.log(eventsList);
+      // console.log(eventsList);
       setEvents(eventsList);
     });
   }
@@ -44,8 +44,8 @@ const Calendar = (props) => {
   // }
 
   const { weekStartDate, weekDates } = props;
-  console.log(weekDates);
-  console.log(events);
+  // console.log(weekDates);
+  // console.log(events);
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />

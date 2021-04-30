@@ -8,6 +8,8 @@ import "./modal.scss";
 // const modalRoot = document.querySelector("#modal");
 
 const Modal = (props) => {
+  let dateInput, startTimeInput, endTimeInput;
+
   const [form, setForm] = useState({
     title: "",
     date: moment().format("YYYY-MM-DD"),
@@ -15,6 +17,18 @@ const Modal = (props) => {
     endTime: moment().format("HH:mm"),
     description: "",
   });
+
+  function handleInputsField(e) {
+    if (e.target.className === "event") {
+      dateInput = 0;
+      startTimeInput = 0;
+      endTimeInput = 0;
+      return;
+    }
+    dateInput = moment().format("YYYY-MM-DD");
+    startTimeInput = moment().format("HH:mm");
+    endTimeInput = moment().format("HH:mm");
+  }
 
   // const element = document.createElement("div");
 

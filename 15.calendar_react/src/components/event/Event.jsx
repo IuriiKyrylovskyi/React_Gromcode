@@ -6,15 +6,17 @@ import "./event.scss";
 const Event = ({ id, height, marginTop, title, time, handleDelete, fetchEvents }) => {
   const { isEvent, isOpen } = useGlobalContext();
 
-  const [isClicked, setIsClicked] = useState(isEvent);
+  const [isClicked, setIsClicked] = useState(false);
 
   const onOpenDelete = (e) => {
     if (isOpen) {
       return;
     }
-    if (e.target.className === "event") {
-      return setIsClicked(true);
-    }
+    // if (isEvent) {
+    //   return setIsClicked(false);
+    // }
+    console.log(height);
+    return setIsClicked(!isClicked);
   };
 
   function onCloseDelete() {
