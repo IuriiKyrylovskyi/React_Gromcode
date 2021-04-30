@@ -3,7 +3,7 @@ import Day from "../day/Day";
 
 import "./week.scss";
 
-const Week = ({ weekStartDate, weekDates, events, fetchEvents }) => {
+const Week = ({ weekStartDate, weekDates, events, fetchEvents, deleteEvent }) => {
   console.log(events.map((i) => console.log(i)));
   console.log(weekDates);
   return (
@@ -34,6 +34,7 @@ const Week = ({ weekStartDate, weekDates, events, fetchEvents }) => {
             weekDates={weekDates}
             weekStartDate={weekStartDate}
             fetchEvents={fetchEvents}
+            deleteEvent={deleteEvent}
             //
           />
         );

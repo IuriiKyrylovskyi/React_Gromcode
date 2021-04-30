@@ -14,13 +14,7 @@ import "./calendar.scss";
 //
 const Calendar = (props) => {
   const [events, setEvents] = useState([]);
-  // const [ev, setEv] = useState({
-  //   title: "",
-  //   date: "",
-  //   dateFrom: "",
-  //   dateTo: "",
-  //   description: "",
-  // });
+  
   function fetchEvents() {
     fetchEventsList().then((eventsList) => {
       console.log(eventsList);
@@ -32,17 +26,17 @@ const Calendar = (props) => {
     deleteEvent(id).then(() => fetchEvents());
   }
 
-  const { isOpen } = useGlobalContext();
+  const { isOpen, isEvent } = useGlobalContext();
 
   useEffect(() => {
     fetchEvents();
-  }, [isOpen]);
+  }, []);
 
   // useEffect(() => {
-  //   if (props.isEvent === true) {
+  //   if (isOpen !== isEvent) {
   //     handleEventDelete();
   //   }
-  // });
+  // })
 
   // handleEventCreate = () => {
   //   const { title, dateFrom, dateTo, description } = this.state;
@@ -72,11 +66,12 @@ const Calendar = (props) => {
             events={events}
             weekStartDate={weekStartDate}
             fetchEvents={fetchEvents}
+            deleteEvent={handleEventDelete}
             //
           />
         </div>
       </div>
-      {isOpen && <Modal />}
+      {isOpen && <Modal fetchEvents={fetchEvents} />}
     </section>
   );
 };

@@ -2,28 +2,28 @@ import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import TimeLine from "../timeLine/TimeLine";
 import Event from "../event/Event";
-import { deleteEvent } from '../../gateway/gateway';
+// import { deleteEvent } from '../../gateway/gateway';
 // import { formatMins } from "../../../src/utils/dateUtils.js";
 
-const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, fetchEvents }) => {
+const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, fetchEvents, deleteEvent }) => {
   const currentDate = weekStartDate.getFullYear() === new Date().getFullYear() && weekStartDate.getMonth() === new Date().getMonth() && dataDay === new Date().getDate() && dataHour === new Date().getHours();
 
   const { onOpenModal, isOpen } = useGlobalContext();
 
-  useEffect(() => {
-    return isOpen === true;
-  });
+  // useEffect(() => {
+  //   return isOpen === true;
+  // });
 
-  function onDeleteEvent(e) {
-    if (isOpen) {
-      return;
-    }
-    if (e.target.className === "event") {
-      deleteEvent();
-      // fetchEvents();
-      return;
-    }
-  }
+  // function onDeleteEvent(e) {
+  //   if (isOpen) {
+  //     return;
+  //   }
+  //   if (e.target.className !== "event") {
+  //     // deleteEvent();
+  //     // fetchEvents();
+  //     return;
+  //   }
+  // }
 
   return (
     <div
@@ -49,6 +49,8 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, fetchEvents }) => 
             marginTop={dateFrom.getMinutes()}
             time={`${startTime} - ${endTime}`}
             title={title}
+            fetchEvents={fetchEvents}
+            handleDelete={deleteEvent}
             // handleDelete={onDeleteEvent}
           />
         );

@@ -12,11 +12,11 @@ const App = () => {
 
   // useEffect(() => {
   //   handleTodayBtnClick();
-  // }, [weekStartDate]);
+  // });
 
   // useEffect(() => {
   //   handleArrowBtnClick();
-  // }, [weekStartDate]);
+  // });
 
   function handleTodayBtnClick() {
     const weekStartTime = generateWeekRange(getWeekStartDate(weekStartDate))[0].getTime();
