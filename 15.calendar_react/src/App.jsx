@@ -10,14 +10,6 @@ import "./common.scss";
 const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(getWeekStartDate(new Date()));
 
-  // useEffect(() => {
-  //   handleTodayBtnClick();
-  // });
-
-  // useEffect(() => {
-  //   handleArrowBtnClick();
-  // });
-
   function handleTodayBtnClick() {
     const weekStartTime = generateWeekRange(getWeekStartDate(weekStartDate))[0].getTime();
     const weekEndTime = weekStartTime + 7 * 24 * 60 * 60 * 1000;
@@ -54,8 +46,6 @@ const App = () => {
         weekStartDate={weekStartDate}
         isEvent={isEvent}
         isOpen={isOpen}
-
-        // onclick={(e) => console.log(e.target.className)}
         //
       />
     </>

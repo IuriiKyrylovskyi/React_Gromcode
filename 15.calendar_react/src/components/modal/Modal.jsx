@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import { createPortal } from "react-dom";
 import { useGlobalContext } from "../../context";
-import { fetchEventsList, createEvent } from "../../gateway/gateway";
+import { createEvent } from "../../gateway/gateway";
 import moment from "moment";
 import "./modal.scss";
 
@@ -25,6 +25,7 @@ const Modal = (props) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setForm({
       ...form,
       [name]: value,
@@ -44,8 +45,7 @@ const Modal = (props) => {
       description: description,
     };
 
-    createEvent(newEvent)
-    .then(()=>fetchEvents());
+    createEvent(newEvent).then(() => fetchEvents());
   };
 
   const { isOpen, onCloseModal } = useGlobalContext();

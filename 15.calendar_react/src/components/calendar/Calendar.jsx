@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import Navigation from "./../navigation/Navigation";
 import Week from "../week/Week";
@@ -9,12 +9,9 @@ import { fetchEventsList, createEvent, deleteEvent } from "../../gateway/gateway
 
 import "./calendar.scss";
 
-//
-//
-//
 const Calendar = (props) => {
   const [events, setEvents] = useState([]);
-  
+
   function fetchEvents() {
     fetchEventsList().then((eventsList) => {
       console.log(eventsList);
@@ -26,17 +23,11 @@ const Calendar = (props) => {
     deleteEvent(id).then(() => fetchEvents());
   }
 
-  const { isOpen, isEvent } = useGlobalContext();
+  const { isOpen } = useGlobalContext();
 
   useEffect(() => {
     fetchEvents();
   }, []);
-
-  // useEffect(() => {
-  //   if (isOpen !== isEvent) {
-  //     handleEventDelete();
-  //   }
-  // })
 
   // handleEventCreate = () => {
   //   const { title, dateFrom, dateTo, description } = this.state;
@@ -77,6 +68,8 @@ const Calendar = (props) => {
 };
 
 export default Calendar;
+
+//------------------------------------------------------
 
 // class Calendar extends Component {
 //   state = {
