@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { fetchEventsList, deleteEvent } from "../../gateway/gateway";
+import React, { useState } from "react";
 import { useGlobalContext } from "../../context";
 import { MdDelete } from "react-icons/md";
 import "./event.scss";
 
-const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
-  const { isEvent, onEventClick } = useGlobalContext();
+const Event = ({ id, height, marginTop, title, time, handleDelete, fetchEvents }) => {
+  const { isEvent, isOpen } = useGlobalContext();
 
   const [isClicked, setIsClicked] = useState(isEvent);
 
-  // useEffect(() => {
-  //   onCloseDelete();
-  // }, [isClicked]);
-
   const onOpenDelete = (e) => {
-    setIsClicked(!isClicked);
+    if (isOpen) {
+      return;
+    }
+    if (e.target.className === "event") {
+      return setIsClicked(true);
+    }
   };
 
   function onCloseDelete() {
-    deleteEvent(id);
-    fetchEventsList();
+    handleDelete(id);
+    fetchEvents();
     setIsClicked(false);
   }
 
@@ -27,11 +27,15 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
     height,
     marginTop,
   };
-  // console.log(eventStyle);
 
   return (
     <>
-      <div style={eventStyle} className="event" onClick={onOpenDelete}>
+      <div
+        style={eventStyle}
+        className="event"
+        onClick={onOpenDelete}
+        //
+      >
         <div className="event__title">{title}</div>
         <div className="event__time">{time}</div>
         {isClicked && (
