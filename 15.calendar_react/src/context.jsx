@@ -20,15 +20,18 @@ const AppProvider = ({ children }) => {
       return; // setEvent(false);
     }
     if (e.target.className === "calendar__time-slot") {
+      // console.log(onOpenModalStartTime());
       setDateInput("");
       setStartTimeInput("");
       setEndTimeInput("");
 
       setEvent(false);
       setIsOpen(true);
+      console.log(e);
+      console.log(e.nativeEvent);
       return;
     }
-   
+
     if (!e.target.closest("event")) {
       console.log(e.target.className);
       setDateInput(moment().format("YYYY-MM-DD"));
@@ -39,6 +42,10 @@ const AppProvider = ({ children }) => {
       setIsOpen(true);
     }
   };
+
+  // function onOpenModalStartTime(start) {
+  //   setStartTimeInput(start);
+  // }
 
   return (
     <AppContext.Provider
@@ -51,6 +58,7 @@ const AppProvider = ({ children }) => {
         dateInput,
         startTimeInput,
         endTimeInput,
+        // onOpenModalStartTime,
       }}
     >
       {children}

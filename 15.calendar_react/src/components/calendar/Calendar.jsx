@@ -27,7 +27,7 @@ const Calendar = (props) => {
 
   useEffect(() => {
     fetchEvents();
-  }, []);
+  },[]);
 
   // handleEventCreate = () => {
   //   const { title, dateFrom, dateTo, description } = this.state;
