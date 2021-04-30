@@ -20,7 +20,7 @@ const Event = ({ id, height, marginTop, title, time, handleDelete }) => {
   function onCloseDelete() {
     deleteEvent(id);
     fetchEventsList();
-    setIsClicked(!isClicked);
+    setIsClicked(false);
   }
 
   const eventStyle = {

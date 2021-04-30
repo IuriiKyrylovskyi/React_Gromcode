@@ -5,7 +5,7 @@ import Event from "../event/Event";
 import { deleteEvent } from '../../gateway/gateway';
 // import { formatMins } from "../../../src/utils/dateUtils.js";
 
-const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
+const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, fetchEvents }) => {
   const currentDate = weekStartDate.getFullYear() === new Date().getFullYear() && weekStartDate.getMonth() === new Date().getMonth() && dataDay === new Date().getDate() && dataHour === new Date().getHours();
 
   const { onOpenModal, isOpen } = useGlobalContext();
@@ -16,10 +16,12 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
 
   function onDeleteEvent(e) {
     if (isOpen) {
-      return
+      return;
     }
-    if (e.target.className === 'event') {
-      return deleteEvent();
+    if (e.target.className === "event") {
+      deleteEvent();
+      // fetchEvents();
+      return;
     }
   }
 
@@ -34,10 +36,11 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents }) => {
       {hourEvents.map(({ id, date, startTime, endTime, title }) => {
         const dateFrom = new Date(date + " " + startTime);
         const dateTo = new Date(date + " " + endTime);
-       // console.log((dateTo - dateFrom) / 1000 / 60 / 60);
-       // const eventDuration = (dateTo - dateFrom) / 1000 / 60 / 60;
-        
-        return ( //eventDuration <= 6 &&
+        // console.log((dateTo - dateFrom) / 1000 / 60 / 60);
+        // const eventDuration = (dateTo - dateFrom) / 1000 / 60 / 60;
+
+        return (
+          //eventDuration <= 6 &&
           <Event
             key={id}
             id={id}

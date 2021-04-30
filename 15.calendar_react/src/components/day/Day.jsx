@@ -3,11 +3,11 @@ import Hour from "../hour/Hour";
 
 import "./day.scss";
 
-const Day = ({ weekStartDate, dataDay, dayEvents }) => {
+const Day = ({ weekStartDate, dataDay, dayEvents, fetchEvents }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
-  
+
   return (
     <div className="calendar__day" data-day={dataDay}>
       {hours.map((hour) => {
@@ -20,17 +20,17 @@ const Day = ({ weekStartDate, dataDay, dayEvents }) => {
             // console.log(hour);
             return parseInt(event.startTime) === hour;
           }
-          );
-// console.log(hourEvents);
-        return (
-          <Hour
-            key={dataDay + hour}
-            dataHour={hour}
-            hourEvents={hourEvents}
-            dataDay={dataDay}
-            weekStartDate={weekStartDate}
-          />
         );
+        // console.log(hourEvents);
+        return <Hour
+          key={dataDay + hour}
+          dataHour={hour}
+          hourEvents={hourEvents}
+          dataDay={dataDay}
+          weekStartDate={weekStartDate}
+          fetchEvents={fetchEvents}
+        //
+        />;
       })}
     </div>
   );

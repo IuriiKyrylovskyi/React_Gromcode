@@ -16,10 +16,6 @@ const Modal = (props) => {
     description: "",
   });
 
-  // useEffect(() => {
-  //   handleEventCreate();
-  // });
-
   // const element = document.createElement("div");
 
   // useEffect(() => {
@@ -47,8 +43,8 @@ const Modal = (props) => {
       description: description,
     };
 
-    createEvent(newEvent)
-      // .then(()=>fetchEvents());
+    createEvent(newEvent);
+    // .then(()=>fetchEvents());
   };
 
   const { isOpen, onCloseModal } = useGlobalContext();
@@ -59,6 +55,10 @@ const Modal = (props) => {
     handleEventCreate();
     onCloseModal();
   };
+
+  // useEffect(() => {
+  //   handleSubmit();
+  // });
 
   // function fetchEvents() {
   //   fetchEventsList()
