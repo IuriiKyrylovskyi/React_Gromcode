@@ -12,9 +12,12 @@ const Event = ({ id, height, marginTop, title, time, handleDelete, fetchEvents }
     if (isOpen) {
       return;
     }
-    // if (isEvent) {
-    //   return setIsClicked(false);
+    // if (e.target.className === 'event') {
+    //   return setIsClicked(!isEvent);
     // }
+    if (!isEvent && !isClicked) {
+      return setIsClicked(!isEvent);
+    }
     console.log(height);
     return setIsClicked(!isClicked);
   };

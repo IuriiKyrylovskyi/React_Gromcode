@@ -17,6 +17,7 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, fetchEvents, delet
       className="calendar__time-slot"
       data-time={dataHour + 1}
       onClick={onOpenModal}
+      // onTarget={() => console.log(dataDay)}
       //
     >
       {/* if no events in the current hour nothing will render here */}

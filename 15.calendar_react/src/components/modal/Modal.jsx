@@ -2,33 +2,36 @@ import React, { useState } from "react";
 // import { createPortal } from "react-dom";
 import { useGlobalContext } from "../../context";
 import { createEvent } from "../../gateway/gateway";
-import moment from "moment";
+// import moment from "moment";
 import "./modal.scss";
 
 // const modalRoot = document.querySelector("#modal");
 
 const Modal = (props) => {
-  let dateInput, startTimeInput, endTimeInput;
+  const { dateInput, startTimeInput, endTimeInput } = useGlobalContext();
 
   const [form, setForm] = useState({
     title: "",
-    date: moment().format("YYYY-MM-DD"),
-    startTime: moment().format("HH:mm"),
-    endTime: moment().format("HH:mm"),
+    date: dateInput,
+    // date: moment().format("YYYY-MM-DD"),
+    startTime: startTimeInput,
+    // startTime: moment().format("HH:mm"),
+    endTime: endTimeInput,
+    // endTime: moment().format("HH:mm"),
     description: "",
   });
 
-  function handleInputsField(e) {
-    if (e.target.className === "event") {
-      dateInput = 0;
-      startTimeInput = 0;
-      endTimeInput = 0;
-      return;
-    }
-    dateInput = moment().format("YYYY-MM-DD");
-    startTimeInput = moment().format("HH:mm");
-    endTimeInput = moment().format("HH:mm");
-  }
+  // function handleInputsField(e) {
+  //   if (e.target.className === "event") {
+  //     dateInput = 0;
+  //     startTimeInput = 0;
+  //     endTimeInput = 0;
+  //     return;
+  //   }
+  //   dateInput = moment().format("YYYY-MM-DD");
+  //   startTimeInput = moment().format("HH:mm");
+  //   endTimeInput = moment().format("HH:mm");
+  // }
 
   // const element = document.createElement("div");
 
