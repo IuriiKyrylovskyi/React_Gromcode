@@ -53,6 +53,7 @@ const Hour = ({ weekStartDate, dataDay, dataHour, hourEvents, fetchEvents, delet
       })}
       {currentDate && <TimeLine weekStartDate={weekStartDate} />}
       {/* {isOpen && <Modal fetchEvents={fetchEvents} />} */}
+      {/* <TimeLine weekStartDate={weekStartDate} /> */}
     </div>
   );
 };
