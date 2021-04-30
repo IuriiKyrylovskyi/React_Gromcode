@@ -33,6 +33,7 @@ const Modal = (props) => {
 
   const handleEventCreate = () => {
     const { title, date, startTime, endTime, description } = form;
+    const { fetchEvents } = props;
     let id; // = Math.random()*1000;
     const newEvent = {
       id: id,
@@ -43,8 +44,8 @@ const Modal = (props) => {
       description: description,
     };
 
-    createEvent(newEvent);
-    // .then(()=>fetchEvents());
+    createEvent(newEvent)
+    .then(()=>fetchEvents());
   };
 
   const { isOpen, onCloseModal } = useGlobalContext();
@@ -55,28 +56,6 @@ const Modal = (props) => {
     handleEventCreate();
     onCloseModal();
   };
-
-  // useEffect(() => {
-  //   handleSubmit();
-  // });
-
-  // function fetchEvents() {
-  //   fetchEventsList()
-  //     .then(eventsList => {
-  //     props.events = eventsList;
-  //   })
-  // }
-  // const handleAreaClickToOpenModal = e => {
-  //   if (e.target.className === 'calendar__time-slot') {
-  //    const { }
-  //     setForm({
-  //       title: "",
-  //       date: moment().format("YYYY-MM-DD"),
-  //       startTime: moment().format("HH:mm"),
-  //      endTime: moment().format("HH:mm"),
-  //     description: "",})
-  //   }
-  // }
 
   // const dayMonthYear = moment().format("YYYY-MM-DD");
   // const timeStart = moment().format("HH:mm");
